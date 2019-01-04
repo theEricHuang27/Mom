@@ -14,6 +14,7 @@
 		60C1CE1D21DE763F0045CF33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */; };
 		60C1CE2821DE763F0045CF33 /* MomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE2721DE763F0045CF33 /* MomTests.swift */; };
 		60C1CE3321DE76400045CF33 /* MomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE3221DE76400045CF33 /* MomUITests.swift */; };
+		E04262F221DFDB80006A86D5 /* styleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04262F121DFDB80006A86D5 /* styleConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		60C1CE2E21DE76400045CF33 /* MomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE3221DE76400045CF33 /* MomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomUITests.swift; sourceTree = "<group>"; };
 		60C1CE3421DE76400045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E04262F121DFDB80006A86D5 /* styleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				60C1CE1221DE763B0045CF33 /* AppDelegate.swift */,
 				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
+				E04262F121DFDB80006A86D5 /* styleConstants.swift */,
 				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
 				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
 				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */,
+				E04262F221DFDB80006A86D5 /* styleConstants.swift in Sources */,
 				60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
