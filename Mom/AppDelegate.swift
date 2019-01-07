@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Mom
+//  FirebaseAuthentication
 //
-//  Created by Aidan Barr Bono (student LM) on 1/3/19.
-//  Copyright © 2019 Duck Inc. All rights reserved.
+//  Created by Chang-Chi Huang (student LM) on 11/27/18.
+//  Copyright © 2018 Chang-Chi Huang (student LM). All rights reserved.
 //
 
 import UIKit
@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
