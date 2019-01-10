@@ -39,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		051FF253692265C5F7454EDF /* Pods-MomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MomTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MomTests/Pods-MomTests.release.xcconfig"; sourceTree = "<group>"; };
 		1C4A4DECC406CAFD1BC73478 /* Pods_MomUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MomUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE1221DE763B0045CF33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,15 +53,10 @@
 		60C1CE2E21DE76400045CF33 /* MomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE3221DE76400045CF33 /* MomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomUITests.swift; sourceTree = "<group>"; };
 		60C1CE3421DE76400045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A8291C6C9EB57191BD52F44 /* Pods-Mom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mom/Pods-Mom.release.xcconfig"; sourceTree = "<group>"; };
-		7EA6676B9F3CA518D877EA32 /* Pods-Mom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mom/Pods-Mom.debug.xcconfig"; sourceTree = "<group>"; };
 		8B63D08AB5D87D87A01B1784 /* Pods_Mom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5A1AA75E5C960CD6DAED2FE /* Pods-MomUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MomUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MomUITests/Pods-MomUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D8BCFA67F1FB56240575FED9 /* Pods_MomTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MomTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04262F121DFDB80006A86D5 /* styleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleConstants.swift; sourceTree = "<group>"; };
 		E04262F521E3DC42006A86D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E5E9FB0A19328A965975BBBC /* Pods-MomUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MomUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MomUITests/Pods-MomUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E766427A17911119E0923D54 /* Pods-MomTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MomTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MomTests/Pods-MomTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +94,6 @@
 				60C1CE2621DE763F0045CF33 /* MomTests */,
 				60C1CE3121DE76400045CF33 /* MomUITests */,
 				60C1CE1021DE763B0045CF33 /* Products */,
-				848104F905990FBD1E21C52E /* Pods */,
 				78B4CE422E4D0C1F43C9A094 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -156,19 +149,6 @@
 				1C4A4DECC406CAFD1BC73478 /* Pods_MomUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		848104F905990FBD1E21C52E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7EA6676B9F3CA518D877EA32 /* Pods-Mom.debug.xcconfig */,
-				7A8291C6C9EB57191BD52F44 /* Pods-Mom.release.xcconfig */,
-				E766427A17911119E0923D54 /* Pods-MomTests.debug.xcconfig */,
-				051FF253692265C5F7454EDF /* Pods-MomTests.release.xcconfig */,
-				E5E9FB0A19328A965975BBBC /* Pods-MomUITests.debug.xcconfig */,
-				A5A1AA75E5C960CD6DAED2FE /* Pods-MomUITests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,7 +555,6 @@
 		};
 		60C1CE3821DE76400045CF33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EA6676B9F3CA518D877EA32 /* Pods-Mom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -594,7 +573,6 @@
 		};
 		60C1CE3921DE76400045CF33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A8291C6C9EB57191BD52F44 /* Pods-Mom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -613,7 +591,6 @@
 		};
 		60C1CE3B21DE76400045CF33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E766427A17911119E0923D54 /* Pods-MomTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -635,7 +612,6 @@
 		};
 		60C1CE3C21DE76400045CF33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 051FF253692265C5F7454EDF /* Pods-MomTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -657,7 +633,6 @@
 		};
 		60C1CE3E21DE76400045CF33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5E9FB0A19328A965975BBBC /* Pods-MomUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -678,7 +653,6 @@
 		};
 		60C1CE3F21DE76400045CF33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5A1AA75E5C960CD6DAED2FE /* Pods-MomUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
