@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38E1CD858AE2B7C5350D91BD /* Pods_MomTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BCFA67F1FB56240575FED9 /* Pods_MomTests.framework */; };
-		58099E4CAE6CC86037348A3E /* Pods_Mom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63D08AB5D87D87A01B1784 /* Pods_Mom.framework */; };
 		60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1221DE763B0045CF33 /* AppDelegate.swift */; };
 		60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1421DE763B0045CF33 /* ViewController.swift */; };
 		60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1621DE763B0045CF33 /* Main.storyboard */; };
@@ -16,9 +14,7 @@
 		60C1CE1D21DE763F0045CF33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */; };
 		60C1CE2821DE763F0045CF33 /* MomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE2721DE763F0045CF33 /* MomTests.swift */; };
 		60C1CE3321DE76400045CF33 /* MomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE3221DE76400045CF33 /* MomUITests.swift */; };
-		90230D967AC9CAD9D27132A0 /* Pods_MomUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4A4DECC406CAFD1BC73478 /* Pods_MomUITests.framework */; };
 		E04262F221DFDB80006A86D5 /* styleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04262F121DFDB80006A86D5 /* styleConstants.swift */; };
-		E04262F621E3DC42006A86D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E04262F521E3DC42006A86D5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,24 +35,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C4A4DECC406CAFD1BC73478 /* Pods_MomUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MomUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Mom.app; path = "/Users/s012506/Documents/Mom/build/Debug-iphoneos/Mom.app"; sourceTree = "<absolute>"; };
 		60C1CE1221DE763B0045CF33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C1CE1421DE763B0045CF33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		60C1CE1721DE763B0045CF33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		60C1CE1921DE763F0045CF33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60C1CE1C21DE763F0045CF33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60C1CE1E21DE763F0045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60C1CE2321DE763F0045CF33 /* MomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60C1CE2321DE763F0045CF33 /* MomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MomTests.xctest; path = "/Users/s012506/Documents/Mom/build/Debug-iphoneos/MomTests.xctest"; sourceTree = "<absolute>"; };
 		60C1CE2721DE763F0045CF33 /* MomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomTests.swift; sourceTree = "<group>"; };
 		60C1CE2921DE76400045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60C1CE2E21DE76400045CF33 /* MomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60C1CE2E21DE76400045CF33 /* MomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MomUITests.xctest; path = "/Users/s012506/Documents/Mom/build/Debug-iphoneos/MomUITests.xctest"; sourceTree = "<absolute>"; };
 		60C1CE3221DE76400045CF33 /* MomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomUITests.swift; sourceTree = "<group>"; };
 		60C1CE3421DE76400045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B63D08AB5D87D87A01B1784 /* Pods_Mom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8BCFA67F1FB56240575FED9 /* Pods_MomTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MomTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04262F121DFDB80006A86D5 /* styleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleConstants.swift; sourceTree = "<group>"; };
-		E04262F521E3DC42006A86D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58099E4CAE6CC86037348A3E /* Pods_Mom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38E1CD858AE2B7C5350D91BD /* Pods_MomTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90230D967AC9CAD9D27132A0 /* Pods_MomUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,19 +82,7 @@
 				60C1CE1121DE763B0045CF33 /* Mom */,
 				60C1CE2621DE763F0045CF33 /* MomTests */,
 				60C1CE3121DE76400045CF33 /* MomUITests */,
-				60C1CE1021DE763B0045CF33 /* Products */,
-				78B4CE422E4D0C1F43C9A094 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		60C1CE1021DE763B0045CF33 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				60C1CE0F21DE763B0045CF33 /* Mom.app */,
-				60C1CE2321DE763F0045CF33 /* MomTests.xctest */,
-				60C1CE2E21DE76400045CF33 /* MomUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		60C1CE1121DE763B0045CF33 /* Mom */ = {
@@ -118,7 +95,6 @@
 				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
 				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
 				60C1CE1E21DE763F0045CF33 /* Info.plist */,
-				E04262F521E3DC42006A86D5 /* GoogleService-Info.plist */,
 			);
 			path = Mom;
 			sourceTree = "<group>";
@@ -139,16 +115,6 @@
 				60C1CE3421DE76400045CF33 /* Info.plist */,
 			);
 			path = MomUITests;
-			sourceTree = "<group>";
-		};
-		78B4CE422E4D0C1F43C9A094 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8B63D08AB5D87D87A01B1784 /* Pods_Mom.framework */,
-				D8BCFA67F1FB56240575FED9 /* Pods_MomTests.framework */,
-				1C4A4DECC406CAFD1BC73478 /* Pods_MomUITests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +209,7 @@
 				Base,
 			);
 			mainGroup = 60C1CE0621DE763B0045CF33;
-			productRefGroup = 60C1CE1021DE763B0045CF33 /* Products */;
+			productRefGroup = 60C1CE0621DE763B0045CF33;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -260,7 +226,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				60C1CE1D21DE763F0045CF33 /* LaunchScreen.storyboard in Resources */,
-				E04262F621E3DC42006A86D5 /* GoogleService-Info.plist in Resources */,
 				60C1CE1A21DE763F0045CF33 /* Assets.xcassets in Resources */,
 				60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */,
 			);
