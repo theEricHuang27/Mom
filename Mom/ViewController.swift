@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
 
+    func Notification(){
+      
+       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+       // let request = UNNotificationRequest(identifier: "Notification", content: content, trigger: trigger)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
     }
 
 
