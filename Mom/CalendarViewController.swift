@@ -191,6 +191,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             })
         }
     }
-    @IBAction func unwindToCalendar(_ sender: UIStoryboardSegue){}
+    func setDirection(Direction: Int){
+        self.Direction = Direction
+    }
 }
 

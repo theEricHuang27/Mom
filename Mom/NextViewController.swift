@@ -15,4 +15,7 @@ class NextViewController: UIViewController {
         super.viewDidLoad()
         DateLabel.text = dateString
     }
+    @IBAction func NewEvent(_ sender: Any) {
+        
+    }
 }

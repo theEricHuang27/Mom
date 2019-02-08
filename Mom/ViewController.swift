@@ -17,6 +17,5 @@ class ViewController: UIViewController {
     @IBAction func Calendar(_ sender: UIButton) {
         performSegue(withIdentifier: "HomeToCalendar", sender: self)
     }
-    
 }
 
