@@ -13,6 +13,7 @@
 		5192A6892200D138009F9A13 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */; };
 		5192A68B2200D272009F9A13 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A68A2200D272009F9A13 /* NextViewController.swift */; };
 		5192A68D220A17BA009F9A13 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A68C220A17BA009F9A13 /* Event.swift */; };
+		51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */; };
 		60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1221DE763B0045CF33 /* AppDelegate.swift */; };
 		60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1421DE763B0045CF33 /* ViewController.swift */; };
 		60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1621DE763B0045CF33 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		5192A68A2200D272009F9A13 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 		5192A68C220A17BA009F9A13 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE1221DE763B0045CF33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C1CE1421DE763B0045CF33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,13 +115,14 @@
 			children = (
 				60C1CE1221DE763B0045CF33 /* AppDelegate.swift */,
 				E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */,
-				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
-				5192A6862200D071009F9A13 /* Animations.swift */,
-				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
-				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
 				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
-				5192A68A2200D272009F9A13 /* NextViewController.swift */,
+				5192A6862200D071009F9A13 /* Animations.swift */,
+				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
 				5192A68C220A17BA009F9A13 /* Event.swift */,
+				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
+				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
+				5192A68A2200D272009F9A13 /* NextViewController.swift */,
+				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
 				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
 				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
 				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
@@ -282,6 +285,7 @@
 				5192A68B2200D272009F9A13 /* NextViewController.swift in Sources */,
 				60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */,
 				5192A6872200D071009F9A13 /* Animations.swift in Sources */,
+				51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */,
 				E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */,
 				5192A6852200CB92009F9A13 /* CalendarVars.swift in Sources */,
 				60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */,

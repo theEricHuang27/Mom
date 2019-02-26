@@ -25,4 +25,7 @@ class Event: NSObject {
         self.subject = subject
         self.information = information
     }
+    func toString(){
+        print("Date: \(date)")
+    }
 }
