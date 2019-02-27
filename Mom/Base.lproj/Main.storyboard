@@ -244,17 +244,17 @@
             <objects>
                 <viewController id="fto-Co-tgb" customClass="NextViewController" customModule="Mom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iaf-Te-VfJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RY-me-GOm">
-                                <rect key="frame" x="189" y="158" width="36" height="24"/>
+                                <rect key="frame" x="189" y="114" width="36" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa7-Sk-3W1">
-                                <rect key="frame" x="312" y="108" width="82" height="32"/>
+                                <rect key="frame" x="312" y="64" width="82" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="New Event">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -288,53 +288,54 @@
             <objects>
                 <viewController id="Gzb-G2-ITD" customClass="EventViewController" customModule="Mom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HnS-a9-5sQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6xz-vT-lHs">
-                                <rect key="frame" x="50" y="178" width="26" height="25"/>
+                                <rect key="frame" x="50" y="134" width="26" height="25"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8a-4b-mkN">
-                                <rect key="frame" x="45" y="138" width="58" height="20"/>
+                                <rect key="frame" x="45" y="94" width="58" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxr-2f-3f9">
-                                <rect key="frame" x="50" y="253" width="36" height="20"/>
+                                <rect key="frame" x="50" y="209" width="36" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-Df-zNH">
-                                <rect key="frame" x="50" y="599" width="26" height="25"/>
+                                <rect key="frame" x="50" y="555" width="26" height="25"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ni-oH-2FY">
-                                <rect key="frame" x="50" y="559" width="101.5" height="20"/>
+                                <rect key="frame" x="50" y="515" width="101.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="10" translatesAutoresizingMaskIntoConstraints="NO" id="Arz-cY-oeW">
-                                <rect key="frame" x="50" y="293" width="314" height="216"/>
+                                <rect key="frame" x="50" y="249" width="314" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="572297638.50597799">
                                     <!--2019-02-19 19:33:58 +0000-->
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aV7-EW-nBK">
-                                <rect key="frame" x="278" y="757" width="116" height="36"/>
+                                <rect key="frame" x="278" y="806" width="116" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Create Event">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="CreateEvent:" destination="Gzb-G2-ITD" eventType="touchUpInside" id="BiR-t9-dhw"/>
+                                    <segue destination="fto-Co-tgb" kind="show" identifier="EventToNext" id="1XX-xz-Jx6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -374,4 +375,7 @@
             <point key="canvasLocation" x="1101" y="497"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1XX-xz-Jx6"/>
+    </inferredMetricsTieBreakers>
 </document>

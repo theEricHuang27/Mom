@@ -28,6 +28,10 @@ class EventViewController: UIViewController, UITextFieldDelegate {
         event.toString()
         _ = navigationController?.popViewController(animated: true)
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let event = Event(date: date, subject: subject, information: information)
+//        NextViewController
+//    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if SubjectTextField.isFirstResponder {
             InformationTextField.becomeFirstResponder()

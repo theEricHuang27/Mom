@@ -10,12 +10,13 @@ import UIKit
 
 class NextViewController: UIViewController {
 
+    var events: [Event] = []
     @IBOutlet weak var DateLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         DateLabel.text = dateString
     }
-    @IBAction func NewEvent(_ sender: Any) {
-        
+    @IBAction func NewEvent(_ sender: Event) {
+
     }
 }
