@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().shadowImage = UIImage()
 //        UINavigationBar.appearance().isTranslucent = true
 //        UINavigationBar.appearance()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+                // handle error, or granted is false do something
+            if granted {
+                
+            }
+            })
         return true
     }
 
