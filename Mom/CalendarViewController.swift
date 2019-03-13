@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 var dateString = ""
 
@@ -35,6 +36,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             weekday = 7
         }
         GetStartDateDayPosition()
+        UNUserNotificationCenter.current().delegate = self
+        
+        Notifications.generateNotificationFrom(Event(date: Date(), subject: "help me dad", information: "you might need to study asshole"))
+        print("we did it")
     }
     
     @IBAction func Next(_ sender: Any) {
@@ -196,3 +201,19 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 }
 
+extension CalendarViewController : UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // code when an action is chosen
+        switch response.actionIdentifier {
+        case "SNOOZE": Notifications.generateSnoozeNotificationFrom(response.notification.request)
+        case "VIEW": break
+        default: break
+        }
+        completionHandler()
+    }
+}

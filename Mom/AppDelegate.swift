@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
             })
+        
+        Notifications.createOptions()
+        
         return true
     }
 
