@@ -8,24 +8,32 @@
 
 import Foundation
 
-class Event: NSObject {
+class Event: NSObject, NSCoding{
     // Vars
-    var date: Date
+    var d: Date
     var subject: String
     var information: String
     
     // Init's
     override init(){
-        date = Date()
+        d = Date()
         subject = ""
         information = ""
     }
-    init(date: Date, subject: String, information: String){
-        self.date = date
+    init(d: Date, subject: String, information: String){
+        self.d = d
         self.subject = subject
         self.information = information
     }
-    func toString(){
-        print("Date: \(date)")
+    func encode(with coder: NSCoder) {
+        coder.encode(d, forKey: "d")
+        coder.encode(subject, forKey: "subject")
+        coder.encode(information, forKey: "information")
+    }
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        self.d = decoder.decodeObject(forKey: "d") as! Date
+        self.subject = decoder.decodeObject(forKey: "subject") as! String
+        self.information = decoder.decodeObject(forKey: "information") as! String
     }
 }

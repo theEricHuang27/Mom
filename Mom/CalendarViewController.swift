@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 
 var dateString = ""
+var defaults = UserDefaults.standard
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -181,7 +182,20 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        dateString = "\(indexPath.row - PositionIndex + 1) \(currentMonth) \(year)"
+        let month: Int
+        if(currentMonth == "January"){ month = 1 }
+        else if(currentMonth == "February"){ month = 2 }
+        else if(currentMonth == "March"){ month = 3 }
+        else if(currentMonth == "April"){ month = 4 }
+        else if(currentMonth == "May"){ month = 5 }
+        else if(currentMonth == "June"){ month = 6 }
+        else if(currentMonth == "July"){ month = 7 }
+        else if(currentMonth == "August"){ month = 8 }
+        else if(currentMonth == "September"){ month = 9 }
+        else if(currentMonth == "October"){ month = 10 }
+        else if(currentMonth == "November"){ month = 11 }
+        else { month = 12 }
+        dateString = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)"
         performSegue(withIdentifier: "NextView", sender: self)
         collectionView.reloadData()
     }

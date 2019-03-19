@@ -4,34 +4,43 @@
 //
 //  Created by Connor Stange (student LM) on 2/19/19.
 //  Copyright © 2019 Duck Inc. All rights reserved.
-//
 
 import UIKit
 
-class EventViewController: UIViewController, UITextFieldDelegate {
+class EventViewController: UIViewController, UITextFieldDelegate{
 
+    var events: [Event] = []
     @IBOutlet var SubjectTextField: UITextField!
     @IBOutlet var DatePicker: UIDatePicker!
     @IBOutlet var InformationTextField: UITextField!
     @IBOutlet var CreateEventButton: UIButton!
+    @IBOutlet var dateChooser: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SubjectTextField.delegate = self
         InformationTextField.delegate = self
         SubjectTextField.becomeFirstResponder()
+        dateChooser.setDate(getDate(s: dateString), animated: false)
+        if let e = defaults.array(forKey: dateString){
+            events = e as! [Event]
+        }
+        else{
+            defaults.set(events, forKey: dateString)
+        }
     }
+    
     @IBAction func CreateEvent(_ sender: UIButton) {
         guard let subject = SubjectTextField.text else {return}
-        let date = DatePicker.date
+        let d: Date = DatePicker.date
         guard let information = InformationTextField.text else {return}
-        let event = Event(date: date, subject: subject, information: information)
-        event.toString()
+        events.append(Event(d: d, subject: subject, information: information))
+//        UserDefaults.standard.setValue(events as! [Event], forKeyPath: getDate(d: d))
+        let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
+        defaults.set(eventData, forKey: dateString)
         _ = navigationController?.popViewController(animated: true)
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let event = Event(date: date, subject: subject, information: information)
-//        NextViewController
-//    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if SubjectTextField.isFirstResponder {
             InformationTextField.becomeFirstResponder()
@@ -41,5 +50,45 @@ class EventViewController: UIViewController, UITextFieldDelegate {
             CreateEventButton.isEnabled = true
         }
         return true
+    }
+    // Func: getDate
+    // Input: Date
+    // Output: String Date ("mm/dd/yyyy") representive of input
+    func getDate(d: Date) -> String{
+        let d = "\(d.description[...(d.description).firstIndex(of: " ")!])"
+        var month = d[d.firstIndex(of: "-")!...d.lastIndex(of: "-")!]
+        month.remove(at: month.firstIndex(of: "-")!)
+        month.remove(at: month.firstIndex(of: "-")!)
+        if(Int(month)! < 10){
+            month.remove(at: month.firstIndex(of: "0")!)
+        }
+        var day = "\(d[d.lastIndex(of: "-")!...])"
+        day.remove(at: day.firstIndex(of: "-")!)
+        day.remove(at: day.firstIndex(of: " ")!)
+        if(Int(day)! < 10){
+            day.remove(at: day.firstIndex(of: "0")!)
+        }
+        var year = d[...d.firstIndex(of: "-")!]
+        year.remove(at: year.firstIndex(of: "-")!)
+        return "\(month)/\(day)/\(year)"
+    }
+    // Func: getDate
+    // Input: String Date ("mm/dd/yyyy")
+    // Output: Date representive of input
+    func getDate(s: String) -> Date{
+        var month = s[...s.firstIndex(of: "/")!]
+        month.remove(at: month.firstIndex(of: "/")!)
+        var day = s[s.firstIndex(of: "/")!...s.lastIndex(of: "/")!]
+        day.remove(at: day.firstIndex(of: "/")!)
+        day.remove(at: day.firstIndex(of: "/")!)
+        var year = s[s.lastIndex(of: "/")!...]
+        year.remove(at: year.firstIndex(of: "/")!)
+        let d = NSDateComponents()
+        d.day = Int(day)!
+        d.month = Int(month)!
+        d.year = Int(year)!
+        d.hour = 7
+        d.minute = 30
+        return (NSCalendar(identifier: NSCalendar.Identifier.gregorian)?.date(from: d as DateComponents))!
     }
 }
