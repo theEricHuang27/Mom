@@ -39,7 +39,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         GetStartDateDayPosition()
         UNUserNotificationCenter.current().delegate = self
         
-        Notifications.generateNotificationFrom(Event(date: Date(), subject: "help me dad", information: "you might need to study asshole"))
+        Notifications.generateNotificationFrom(Event(d: Date(), subject: "help me dad", information: "you might need to study asshole"))
         print("we did it")
     }
     

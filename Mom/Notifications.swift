@@ -31,7 +31,7 @@ class Notifications : NSObject {
         
         if let reminderComponents = reminderDateComponents {
                 
-                dateComponents = calendar.dateComponents([.second, .minute, .hour, .day, .month, .year], from: event.date)
+                dateComponents = calendar.dateComponents([.second, .minute, .hour, .day, .month, .year], from: event.d)
                 dateComponents.day = dateComponents.day! - (reminderComponents.day ?? 0)
                 dateComponents.hour = dateComponents.hour! - (reminderComponents.hour ?? 0)
                 dateComponents.minute = dateComponents.minute! - (reminderComponents.minute ?? 0)
