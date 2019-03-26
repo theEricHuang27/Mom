@@ -15,6 +15,8 @@
 		5192A68D220A17BA009F9A13 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A68C220A17BA009F9A13 /* Event.swift */; };
 		51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */; };
 		600387FF22285E6A00BE4331 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600387FE22285E6A00BE4331 /* Notifications.swift */; };
+		602E6E4E2249408F0069F50B /* blackboardJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E6E4D2249408F0069F50B /* blackboardJSON.swift */; };
+		602E6E502249454D0069F50B /* blackboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E6E4F2249454D0069F50B /* blackboardViewController.swift */; };
 		60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1221DE763B0045CF33 /* AppDelegate.swift */; };
 		60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1421DE763B0045CF33 /* ViewController.swift */; };
 		60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1621DE763B0045CF33 /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		60C1CE1D21DE763F0045CF33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */; };
 		60C1CE2821DE763F0045CF33 /* MomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE2721DE763F0045CF33 /* MomTests.swift */; };
 		60C1CE3321DE76400045CF33 /* MomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE3221DE76400045CF33 /* MomUITests.swift */; };
+		CCF3F1D32A7B8A076E0EDFA0 /* Pods_Mom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 485171EA00E3D029556552A6 /* Pods_Mom.framework */; };
 		E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		485171EA00E3D029556552A6 /* Pods_Mom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5192A68221FF705C009F9A13 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5192A6842200CB92009F9A13 /* CalendarVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
 		5192A6862200D071009F9A13 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		5192A68C220A17BA009F9A13 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		600387FE22285E6A00BE4331 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		602E6E4D2249408F0069F50B /* blackboardJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blackboardJSON.swift; sourceTree = "<group>"; };
+		602E6E4F2249454D0069F50B /* blackboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blackboardViewController.swift; sourceTree = "<group>"; };
 		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE1221DE763B0045CF33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C1CE1421DE763B0045CF33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +70,9 @@
 		60C1CE2E21DE76400045CF33 /* MomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE3221DE76400045CF33 /* MomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomUITests.swift; sourceTree = "<group>"; };
 		60C1CE3421DE76400045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4FE73D4DBCFC6A3F81D3609 /* Pods-Mom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mom/Pods-Mom.debug.xcconfig"; sourceTree = "<group>"; };
 		E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleConstants.swift; sourceTree = "<group>"; };
+		F8B5676ED8EF5C5A0BFAE5A0 /* Pods-Mom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mom/Pods-Mom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF3F1D32A7B8A076E0EDFA0 /* Pods_Mom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +108,8 @@
 				60C1CE2621DE763F0045CF33 /* MomTests */,
 				60C1CE3121DE76400045CF33 /* MomUITests */,
 				60C1CE1021DE763B0045CF33 /* Products */,
+				B351EC92F740BE3B84F4F83A /* Pods */,
+				80D673277EDB439E080607A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				60C1CE1221DE763B0045CF33 /* AppDelegate.swift */,
+				602E6E4F2249454D0069F50B /* blackboardViewController.swift */,
 				E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */,
 				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
 				5192A6862200D071009F9A13 /* Animations.swift */,
@@ -125,6 +137,7 @@
 				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
 				5192A68A2200D272009F9A13 /* NextViewController.swift */,
 				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
+				602E6E4D2249408F0069F50B /* blackboardJSON.swift */,
 				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
 				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
 				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
@@ -152,6 +165,23 @@
 			path = MomUITests;
 			sourceTree = "<group>";
 		};
+		80D673277EDB439E080607A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				485171EA00E3D029556552A6 /* Pods_Mom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B351EC92F740BE3B84F4F83A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4FE73D4DBCFC6A3F81D3609 /* Pods-Mom.debug.xcconfig */,
+				F8B5676ED8EF5C5A0BFAE5A0 /* Pods-Mom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +189,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60C1CE3721DE76400045CF33 /* Build configuration list for PBXNativeTarget "Mom" */;
 			buildPhases = (
+				5AFF518ADC0AC678D28CDDB9 /* [CP] Check Pods Manifest.lock */,
 				60C1CE0B21DE763B0045CF33 /* Sources */,
 				60C1CE0C21DE763B0045CF33 /* Frameworks */,
 				60C1CE0D21DE763B0045CF33 /* Resources */,
+				DE484A5AE6923A5C0E55F8BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,6 +310,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5AFF518ADC0AC678D28CDDB9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE484A5AE6923A5C0E55F8BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mom/Pods-Mom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mom/Pods-Mom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		60C1CE0B21DE763B0045CF33 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -289,11 +370,13 @@
 				5192A68B2200D272009F9A13 /* NextViewController.swift in Sources */,
 				60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */,
 				5192A6872200D071009F9A13 /* Animations.swift in Sources */,
+				602E6E4E2249408F0069F50B /* blackboardJSON.swift in Sources */,
 				51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */,
 				E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */,
 				5192A6852200CB92009F9A13 /* CalendarVars.swift in Sources */,
 				60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */,
 				5192A6892200D138009F9A13 /* DateCollectionViewCell.swift in Sources */,
+				602E6E502249454D0069F50B /* blackboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +549,7 @@
 		};
 		60C1CE3821DE76400045CF33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4FE73D4DBCFC6A3F81D3609 /* Pods-Mom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +568,7 @@
 		};
 		60C1CE3921DE76400045CF33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8B5676ED8EF5C5A0BFAE5A0 /* Pods-Mom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
