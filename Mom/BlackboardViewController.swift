@@ -48,7 +48,9 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
         if(webView.url! == URL(string: "https://lmsd.blackboard.com/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1")){
             
             // moves the webview off the screen for loading things
-            webView.leftAnchor.constraint(equalTo: view.rightAnchor)
+            webView.translatesAutoresizingMaskIntoConstraints = false
+            webView.leftAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            webView.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             
             let request = URLRequest(url: URL(string:"https://lmsd.blackboard.com/learn/api/public/v1/calendars/items?since=\(start)T00:00:00.000Z&until\(end)T00:00:00.000Z")!)
             webView.load(request)
@@ -66,7 +68,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                             print(error)
                                         }
             })
-            webView.removeFromSuperview()
+//            webView.removeFromSuperview()
         }
         
     }
