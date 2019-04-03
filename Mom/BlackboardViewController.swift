@@ -16,7 +16,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
 
     var webView: WKWebView!
     var json: Data!
-    var calenderStruct: blackboardResponse!
+    var blackboardStruct: blackboardResponse!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,20 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                             let doc = try Kanna.HTML(html: html as! String, encoding: String.Encoding.utf8)
                                             print(doc.body!.text!)
                                             self.json = doc.body!.text!.data(using: .utf8)!
-                                            self.calenderStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
+                                            self.blackboardStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
+                                            for results in self.blackboardStruct.results {
+                                                let subject = results.title!
+                                                
+                                                var information = "\(results.calendarName)\n"
+                                                if let a = results.description{
+                                                    information += a
+                                                }
+                                                let formatter = ISO8601DateFormatter()
+                                                formatter.formatOptions.insert(ISO8601DateFormatter.Options.withFractionalSeconds)
+                                                let date =                                                 formatter.date(from: results.start!)!
+                                                let event = Event(d: date, subject: subject, information: information)
+                                            }
+                                            
                                         } catch let error as NSError {
                                             print(error)
                                         }
