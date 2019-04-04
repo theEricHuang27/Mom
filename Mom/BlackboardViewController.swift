@@ -77,17 +77,21 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                                 let date =                                                 formatter.date(from: results.start!)!
                                                 let event = Event(d: date, subject: subject, information: information)
                                                 let string = self.getDate(d: event.d)
-                                                if let loadedData = defaults.data(forKey: string){
+                                                // checks if it exists
+                                                if let loadedData = blackboardDefaults.data(forKey: string){
+                                                    // checks if it can make an array of events with the data
                                                     if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event]{
                                                         self.events = loadedEvents
+                                                        self.events.append(event)
+                                                        let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
+                                                        blackboardDefaults.set(eventData, forKey: string)
                                                     }
                                                 }
                                                 else{
-                                                    defaults.set(self.events, forKey: string)
+                                                    self.events.append(event)
+                                                    let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
+                                                    blackboardDefaults.set(eventData, forKey: string)
                                                 }
-                                                self.events.append(event)
-                                                let eventData = NSKeyedArchiver.archivedData(withRootObject: event)
-                                                blackboardDefaults.set(eventData, forKey: dateString)
                                             }
                                             
                                         } catch let error as NSError {
