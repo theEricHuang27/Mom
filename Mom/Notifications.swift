@@ -11,55 +11,97 @@ import UserNotifications
 
 class Notifications : NSObject {
     
-    static var snoozeTime = 5
-//    static var reminderTime : [Int]? = [0, 0, 0]
-    static var reminderDateComponents : DateComponents? = DateComponents(year: 0, month: 0, day: 0, hour: 0, minute: 0, second: 5)
+    static var snoozeTime : TimeInterval = 5
+    static var reminderDateComponents : DateComponents? = DateComponents(hour: 0, minute: 5, second: 0)
     
     
     static func generateNotificationFrom(_ event : Event) {
+        
+        // if they don't have notifications on don't make a notification
+        guard let reminderComponents = reminderDateComponents else { return }
+        
+        // create content for the notification
         let content = UNMutableNotificationContent()
         content.title = "On Point"
         content.subtitle = event.subject
         content.body = event.information
         content.sound = .default
         content.badge = 1
-        content.categoryIdentifier = "ALERT"
+        content.categoryIdentifier = NotificationTypes.alert
         
-        
+        // set up
         let calendar = Calendar.current
         var dateComponents = DateComponents()
         
-        if let reminderComponents = reminderDateComponents {
-                
-                dateComponents = calendar.dateComponents([.second, .minute, .hour, .day, .month, .year], from: event.d)
-                dateComponents.day = dateComponents.day! - (reminderComponents.day ?? 0)
-                dateComponents.hour = dateComponents.hour! - (reminderComponents.hour ?? 0)
-                dateComponents.minute = dateComponents.minute! - (reminderComponents.minute ?? 0)
-                dateComponents.second = dateComponents.second! - (reminderComponents.second ?? 0)
-                
-        }
+        // create trigger for the time before the notification
+        dateComponents = calendar.dateComponents([.second, .minute, .hour, .day, .month, .year], from: event.d)
+        print(reminderComponents)
+        let triggerComponents = generateComponentsFrom(referenceTime: dateComponents, before: reminderComponents)
         
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "ALERT", content: content, trigger: trigger)
-        
+        // finish creating and add notification request
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: NotificationTypes.alert, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
     }
     
     static func generateSnoozeNotificationFrom(_ request : UNNotificationRequest) {
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "ALERT", content: request.content, trigger: trigger)
-        
+        // create a time interval trigger for after the event and add the reqeust
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Notifications.snoozeTime, repeats: false)
+        let request = UNNotificationRequest(identifier: NotificationTypes.snooze, content: request.content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
     }
     
     static func createOptions(){
+        // create view and snooze actions and add them to categores
+        // called from AppDelegate didFinishLaunchingWithOptions:
         let view = UNNotificationAction(identifier: "VIEW", title: "View", options: .foreground)
         let snooze = UNNotificationAction(identifier: "SNOOZE", title: "Snooze", options: UNNotificationActionOptions(rawValue: 0))
-        let alertCategory = UNNotificationCategory(identifier: "ALERT", actions: [view, snooze], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+        let alertCategory = UNNotificationCategory(identifier: NotificationTypes.alert, actions: [view, snooze], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
         UNUserNotificationCenter.current().setNotificationCategories([alertCategory])
     }
+    
+    // called to recreate all the notifications when the settings swap
+    // called from SettingsViewController
+    static func redoNotifications() {
+        
+        // holder list
+        var requestsToBeChanged : [UNNotificationRequest] = []
+        
+        // fill with requests that should be redone
+        UNUserNotificationCenter.current().getPendingNotificationRequests() { requests in
+            for request in requests {
+                if request.identifier == NotificationTypes.alert {
+                    requestsToBeChanged.append(request)
+                }
+            }
+        }
+        
+        // remove all the requests and remake them
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationTypes.alert])
+        for request in requestsToBeChanged {
+            let oldTrigger = request.trigger as! UNCalendarNotificationTrigger
+            let dateComponents = generateComponentsFrom(referenceTime: oldTrigger.dateComponents, before: reminderDateComponents!)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: trigger)
+            UNUserNotificationCenter.current().add(newRequest, withCompletionHandler: nil)
+        }
+    }
+    
+    // utility function to find the the difference of two DateComponents
+    static func generateComponentsFrom(referenceTime: DateComponents, before: DateComponents) -> DateComponents {
+        var newComponents = DateComponents()
+        newComponents.day = referenceTime.day! - (before.day ?? 0)
+        newComponents.hour = referenceTime.hour! - (before.hour ?? 0)
+        newComponents.minute = referenceTime.minute! - (before.minute ?? 0)
+        newComponents.second = referenceTime.second! - (before.second ?? 0)
+        return newComponents
+    }
+}
+
+struct NotificationTypes {
+    static var alert = "ALERT"
+    static var snooze = "SNOOZE"
 }
