@@ -20,6 +20,8 @@ class SettingsViewController: UIViewController {
         // this is like a lame substitute for now
         let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: (notificationTimeBeforeDatePicker?.date)!)
         Notifications.reminderDateComponents = dateComponents
+        let snoozeComponents = Calendar.current.dateComponents([.minute, .hour], from: (snoozeTimeDatePicker?.date)!)
+        Notifications.snoozeTime = Double(snoozeComponents.minute!)
 
         let alertController = UIAlertController(title: "Edit current notifications", message: "Would you like to change notification timers for already created events?", preferredStyle: .alert)
         
@@ -40,6 +42,14 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         setUpSnoozeTimeDatePicker()
         setUpNotificationDatePicker()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     func setUpNotificationDatePicker() {
@@ -57,8 +67,14 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
-        let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: (notificationTimeBeforeDatePicker?.date)!)
-        alertTimeBeforeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes."
+        if datePicker == self.notificationTimeBeforeDatePicker {
+            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
+            alertTimeBeforeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes."
+        } else if datePicker == self.snoozeTimeDatePicker {
+            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
+            snoozeTimeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes."
+        }
+//        view.endEditing(true)
     }
     
     func setUpSnoozeTimeDatePicker() {
@@ -67,5 +83,8 @@ class SettingsViewController: UIViewController {
         if let startDate = Calendar.current.date(from: DateComponents(minute: Int(Notifications.snoozeTime))) {
             snoozeTimeDatePicker?.setDate(startDate, animated: false)
         }
+        
+        snoozeTimeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
+        snoozeTimeTextField.inputView = snoozeTimeDatePicker
     }
 }
