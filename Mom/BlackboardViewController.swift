@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import Kanna
 
-var blackboardDefaults = UserDefaults.standard
+var blackboardDefaults = UserDefaults()
 
 class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
@@ -65,6 +65,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                             print(doc.body!.text!)
                                             self.json = doc.body!.text!.data(using: .utf8)!
                                             self.blackboardStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
+                                            blackboardDefaults = UserDefaults()
                                             for results in self.blackboardStruct.results {
                                                 let subject = results.title!
                                                 
@@ -76,21 +77,22 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                                 formatter.formatOptions.insert(ISO8601DateFormatter.Options.withFractionalSeconds)
                                                 let date =                                                 formatter.date(from: results.start!)!
                                                 let event = Event(d: date, subject: subject, information: information)
-                                                let string = self.getDate(d: event.d)
+                                                let dateString = self.getDate(d: event.d)
                                                 // checks if it exists
-                                                if let loadedData = blackboardDefaults.data(forKey: string){
+                                                if let loadedData = blackboardDefaults.data(forKey: dateString){
                                                     // checks if it can make an array of events with the data
                                                     if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event]{
                                                         self.events = loadedEvents
                                                         self.events.append(event)
                                                         let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
-                                                        blackboardDefaults.set(eventData, forKey: string)
+                                                        blackboardDefaults.set(eventData, forKey: dateString)
                                                     }
                                                 }
                                                 else{
+                                                    self.events = []
                                                     self.events.append(event)
                                                     let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
-                                                    blackboardDefaults.set(eventData, forKey: string)
+                                                    blackboardDefaults.set(eventData, forKey: dateString)
                                                 }
                                             }
                                             
