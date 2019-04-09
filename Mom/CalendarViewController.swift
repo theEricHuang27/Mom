@@ -149,6 +149,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calendar", for: indexPath) as! DateCollectionViewCell
         cell.backgroundColor = UIColor.clear
         cell.DateLabel.textColor = UIColor.black
+        cell.dot.alpha = 1
+        if !(hasEvent(indexPath: indexPath)){
+            cell.dot.alpha = 0
+        }
         cell.Circle.isHidden = true
         if cell.isHidden{
             cell.isHidden = false
@@ -229,5 +233,29 @@ extension CalendarViewController : UNUserNotificationCenterDelegate {
         default: break
         }
         completionHandler()
+    }
+    func hasEvent(indexPath: IndexPath) -> Bool{
+        let d = defaults.dictionaryRepresentation().keys
+        let month: Int
+        var s: String
+        if(currentMonth == "January"){ month = 1 }
+        else if(currentMonth == "February"){ month = 2 }
+        else if(currentMonth == "March"){ month = 3 }
+        else if(currentMonth == "April"){ month = 4 }
+        else if(currentMonth == "May"){ month = 5 }
+        else if(currentMonth == "June"){ month = 6 }
+        else if(currentMonth == "July"){ month = 7 }
+        else if(currentMonth == "August"){ month = 8 }
+        else if(currentMonth == "September"){ month = 9 }
+        else if(currentMonth == "October"){ month = 10 }
+        else if(currentMonth == "November"){ month = 11 }
+        else { month = 12 }
+        s = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)"
+        for x in d{
+            if s == x{
+                return true
+            }
+        }
+        return false
     }
 }

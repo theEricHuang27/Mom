@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		515AF32C224E7AA80068C49D /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AF32B224E7AA80068C49D /* EventTableViewCell.swift */; };
+		5166EA58225CF76300935B8A /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5166EA57225CF76300935B8A /* DescriptionViewController.swift */; };
 		5192A68321FF705C009F9A13 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A68221FF705C009F9A13 /* CalendarViewController.swift */; };
 		5192A6852200CB92009F9A13 /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A6842200CB92009F9A13 /* CalendarVars.swift */; };
 		5192A6872200D071009F9A13 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192A6862200D071009F9A13 /* Animations.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		0AC31C4B05A3A0E7CD1ED4F4 /* Pods_Mom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		515AF32B224E7AA80068C49D /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		5166EA57225CF76300935B8A /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		5192A68221FF705C009F9A13 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5192A6842200CB92009F9A13 /* CalendarVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
 		5192A6862200D071009F9A13 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
 				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
 				5192A68A2200D272009F9A13 /* NextViewController.swift */,
+				5166EA57225CF76300935B8A /* DescriptionViewController.swift */,
+				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
 				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
 				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
 				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
@@ -368,6 +374,7 @@
 				5192A68321FF705C009F9A13 /* CalendarViewController.swift in Sources */,
 				5192A68D220A17BA009F9A13 /* Event.swift in Sources */,
 				600387FF22285E6A00BE4331 /* (null) in Sources */,
+				515AF32C224E7AA80068C49D /* EventTableViewCell.swift in Sources */,
 				5192A68B2200D272009F9A13 /* NextViewController.swift in Sources */,
 				60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */,
 				5192A6872200D071009F9A13 /* Animations.swift in Sources */,
@@ -377,6 +384,7 @@
 				51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */,
 				E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */,
 				5192A6852200CB92009F9A13 /* CalendarVars.swift in Sources */,
+				5166EA58225CF76300935B8A /* DescriptionViewController.swift in Sources */,
 				60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */,
 				5192A6892200D138009F9A13 /* DateCollectionViewCell.swift in Sources */,
 			);

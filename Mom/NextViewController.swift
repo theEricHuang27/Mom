@@ -7,27 +7,131 @@
 // display
 
 import UIKit
+var time = ""
+var subj = ""
+var desc = ""
 
-class NextViewController: UIViewController {
+class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var events: [Event] = []
+    var cellsArray: [UITableViewCell] = []
     @IBOutlet weak var DateLabel: UILabel!
+    @IBOutlet var Table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         DateLabel.text = dateString
-        if let e = defaults.array(forKey: dateString){
-            events = e as! [Event]
+        if let loadedData = defaults.data(forKey: dateString) {
+            if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
+                events = order(e: loadedEvents)
+            }
         }
-//        events = UserDefaults.standard.array(forKey: dateString)
     }
-    @IBAction func NewEvent(_ sender: Event) {
-//        events.append(getEvent())
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if events.count > 12{
+            return events.count
+        }
+        else{
+            return 12
+        }
     }
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath) as! EventTableViewCell
+        if indexPath.row < events.count{
+            cell.Date.text = getTime(s: events[indexPath.row].d.description)
+            cell.Subject.text = events[indexPath.row].subject
+        }
+        else{
+            cell.Date.text = ""
+            cell.Subject.text = ""
+        }
+        cellsArray.append(cell)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        for x in cellsArray{
+            let cell: UITableViewCell = x
+            cell.alpha = 1
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        time = getTime(s: events[indexPath.row].d.description)
+        subj = events[indexPath.row].subject
+        desc = events[indexPath.row].information
+        performSegue(withIdentifier: "Description", sender: self)
+    }
+    
+    
+    @IBAction func Reload(_ sender: UIButton) {
+        if let loadedData = defaults.data(forKey: dateString) {
+            if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
+                events = order(e: loadedEvents)
+            }
+        }
+        Table.reloadData()
+    }
+    
+    func getTime(s: String) -> String{
+        let r: String
+        var time = s[s.firstIndex(of: ":")!...s.lastIndex(of: ":")!]
+        time.remove(at: time.lastIndex(of: ":")!)
+        var hour = s[s.firstIndex(of: " ")!...s.firstIndex(of: ":")!]
+        hour.remove(at: hour.firstIndex(of: " ")!)
+        hour.remove(at: hour.firstIndex(of: ":")!)
+        var m = Int(hour)!
+        if m >= 16{
+            m = m-16
+            if m == 0{
+                r = "12:00 PM"
+            }
+            else if m >= 10{
+                r = "\(m)\(time) PM"
+            }
+            else{
+                r = " \(m)\(time) PM"
+            }
+        }
+        else{
+            m = m-4
+            if m == 0{
+                r = "12:00 AM"
+            }
+            else if m >= 10{
+                r = "\(m)\(time) AM"
+            }
+            else{
+                r = " \(m)\(time) AM"
+            }
+        }
+        return r
+    }
+    func order(e: [Event]) -> [Event]{
+        var events = e
+        var new: [Event] = []
+        var next: Event = Event()
+        var index: Int = 0
+        var lowest = 2500
+        var a: String
+        var b: Substring
+        for _ in 0...events.count-1{
+            for y in events{
+                a = "\(y.d.description)"
+                b = a[a.firstIndex(of: " ")!...a.lastIndex(of: ":")!]
+                b.remove(at: b.firstIndex(of: " ")!)
+                b.remove(at: b.firstIndex(of: ":")!)
+                b.remove(at: b.firstIndex(of: ":")!)
+                if Int("\(b)")! < lowest{
+                    lowest = Int("\(b)")!
+                    next = y
+                    index = events.firstIndex(of: y)!
+                }
+            }
+            lowest = 2500
+            new.append(next)
+            events.remove(at: index)
+        }
+        return new
+    }
 }

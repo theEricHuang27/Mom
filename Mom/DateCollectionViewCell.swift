@@ -11,6 +11,7 @@ import UIKit
 class DateCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet weak var Circle: UIView!
+    @IBOutlet var dot: UILabel!
     
     func DrawCircle(){
         let circleCenter = Circle.center

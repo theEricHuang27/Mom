@@ -22,22 +22,26 @@ class EventViewController: UIViewController, UITextFieldDelegate{
         InformationTextField.delegate = self
         SubjectTextField.becomeFirstResponder()
         dateChooser.setDate(getDate(s: dateString), animated: false)
-        if let e = defaults.array(forKey: dateString){
-            events = e as! [Event]
-        }
-        else{
-            defaults.set(events, forKey: dateString)
-        }
     }
     
     @IBAction func CreateEvent(_ sender: UIButton) {
         guard let subject = SubjectTextField.text else {return}
         let d: Date = DatePicker.date
         guard let information = InformationTextField.text else {return}
-        events.append(Event(d: d, subject: subject, information: information))
-//        UserDefaults.standard.setValue(events as! [Event], forKeyPath: getDate(d: d))
-        let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
-        defaults.set(eventData, forKey: dateString)
+        if let loadedData = defaults.data(forKey: dateString) {
+            if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
+                events = loadedEvents
+                events.append(Event(d: d, subject: subject, information: information))
+                let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
+                defaults.set(eventData, forKey: dateString)
+            }
+        }
+        else{
+            events.append(Event(d: d, subject: subject, information: information))
+            let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
+            defaults.set(eventData, forKey: dateString)
+            
+        }
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -89,6 +93,7 @@ class EventViewController: UIViewController, UITextFieldDelegate{
         d.year = Int(year)!
         d.hour = 7
         d.minute = 30
+        d.timeZone = TimeZone(abbreviation: "EST")
         return (NSCalendar(identifier: NSCalendar.Identifier.gregorian)?.date(from: d as DateComponents))!
     }
 }
