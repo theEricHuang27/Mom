@@ -11,6 +11,9 @@ import UIKit
 
 extension UIColor {
     
+    /*
+    https://drive.google.com/drive/folders/1WIEAaqItFUd0yJjCw2Ryyc_qko64gJQ2
+    */
     static var myPurple = UIColor(red: 0.42, green: 0.06, blue: 0.73, alpha: 1.0)
     static var myMagenta = UIColor(red: 0.58, green: 0.15, blue: 0.56, alpha: 1.0)
     static var myDeepPink = UIColor(red: 1.00, green: 0.28, blue: 0.76, alpha: 1.0)
