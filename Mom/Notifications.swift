@@ -12,7 +12,7 @@ import UserNotifications
 class Notifications : NSObject {
     
     static var snoozeTime : TimeInterval = 5
-    static var reminderDateComponents : DateComponents? = DateComponents(hour: 0, minute: 5, second: 0)
+    static var reminderDateComponents : DateComponents? = DateComponents(minute: 5)
     
     
     static func generateNotificationFrom(_ event : Event) {
@@ -67,6 +67,12 @@ class Notifications : NSObject {
     // called from SettingsViewController
     static func redoNotifications() {
         
+        // if they don't want any notifications
+        guard let reminder = reminderDateComponents else {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationTypes.alert])
+            return
+        }
+        
         // holder list
         var requestsToBeChanged : [UNNotificationRequest] = []
         
@@ -83,7 +89,7 @@ class Notifications : NSObject {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [NotificationTypes.alert])
         for request in requestsToBeChanged {
             let oldTrigger = request.trigger as! UNCalendarNotificationTrigger
-            let dateComponents = generateComponentsFrom(referenceTime: oldTrigger.dateComponents, before: reminderDateComponents!)
+            let dateComponents = generateComponentsFrom(referenceTime: oldTrigger.dateComponents, before: reminder)
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
             let newRequest = UNNotificationRequest(identifier: request.identifier, content: request.content, trigger: trigger)
             UNUserNotificationCenter.current().add(newRequest, withCompletionHandler: nil)

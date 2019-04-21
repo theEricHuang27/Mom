@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Notifications.createOptions()
         
+        UserDefaults.standard.register(defaults: ["DarkTheme" : false])
+        
         return true
     }
 

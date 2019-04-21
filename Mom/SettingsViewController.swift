@@ -15,11 +15,40 @@ class SettingsViewController: UIViewController {
     var notificationTimeBeforeDatePicker : UIDatePicker?
     var snoozeTimeDatePicker : UIDatePicker?
     
+    @IBOutlet weak var alertBeforeSwitch: UISwitch!
+    @IBAction func alertBeforeValueChanged(_ sender: UISwitch) {
+        if alertBeforeSwitch.isOn {
+            alertTimeBeforeTextField.isEnabled = true
+        } else {
+            alertTimeBeforeTextField.isEnabled = false
+        }
+    }
+    
+    
+    @IBAction func lightThemeTouchedUp(_ sender: UIButton) {
+        if UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // change current view as a preview of the theme
+            UserDefaults.standard.set(false, forKey: "DarkTheme")
+            self.view.backgroundColor = UIColor.white
+        }
+    }
+    
+    @IBAction func darkThemeTouchedUp(_ sender: UIButton) {
+        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // change current view as a preview of the theme
+            UserDefaults.standard.set(true, forKey: "DarkTheme")
+            self.view.backgroundColor = UIColor.black
+        }
+    }
+    
     @IBAction func applyButtonTouchedUp(_ sender: UIButton) {
-        // put the time into the user defaults thing
-        // this is like a lame substitute for now
-        let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: (notificationTimeBeforeDatePicker?.date)!)
-        Notifications.reminderDateComponents = dateComponents
+        
+        if alertBeforeSwitch.isOn {
+            Notifications.reminderDateComponents = nil
+        } else {
+            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: (notificationTimeBeforeDatePicker?.date)!)
+            Notifications.reminderDateComponents = dateComponents
+        }
         let snoozeComponents = Calendar.current.dateComponents([.minute, .hour], from: (snoozeTimeDatePicker?.date)!)
         Notifications.snoozeTime = Double(snoozeComponents.minute!)
 
@@ -30,11 +59,10 @@ class SettingsViewController: UIViewController {
         }
         let denyAction = UIAlertAction(title: "Keep", style: .default, handler: nil)
         
-        alertController.addAction(okAction)
         alertController.addAction(denyAction)
+        alertController.addAction(okAction)
         
         self.present(alertController, animated: true, completion: nil)
-        
     }
     
     override func viewDidLoad() {
@@ -74,7 +102,6 @@ class SettingsViewController: UIViewController {
             let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
             snoozeTimeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes."
         }
-//        view.endEditing(true)
     }
     
     func setUpSnoozeTimeDatePicker() {
