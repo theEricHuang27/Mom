@@ -10,8 +10,6 @@ import UIKit
 import WebKit
 import Kanna
 
-var blackboardDefaults = UserDefaults()
-
 class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     var webView: WKWebView!
@@ -42,10 +40,11 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("loaded")
         print(webView.url!)
-        let dates = DateInterval.init(start: Date.init(timeIntervalSinceNow: -2419200), duration: 9590400)
+        let dates = DateInterval.init(start: Date.init(timeIntervalSinceNow: -5184000), duration: 10368000)
         let start = dates.start.description.split(separator: " ")[0]
         let end = dates.end.description.split(separator: " ")[0]
-        
+        print("\(start)")
+        print("\(end)")
         if(webView.url! == URL(string: "https://lmsd.blackboard.com/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1")){
             
             // moves the webview off the screen for loading things
@@ -61,11 +60,15 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
             webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
                                        completionHandler: { (html: Any?, error: Error?) in
                                         do{
+                                            for x in defaults.dictionaryRepresentation().keys{
+                                                if x.description.last == "2"{
+                                                    defaults.removeObject(forKey: x)
+                                                }
+                                            }
                                             let doc = try Kanna.HTML(html: html as! String, encoding: String.Encoding.utf8)
                                             print(doc.body!.text!)
                                             self.json = doc.body!.text!.data(using: .utf8)!
                                             self.blackboardStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
-                                            blackboardDefaults = UserDefaults()
                                             for results in self.blackboardStruct.results {
                                                 let subject = results.title!
                                                 
@@ -79,20 +82,20 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                                 let event = Event(d: date, subject: subject, information: information)
                                                 let dateString = self.getDate(d: event.d)
                                                 // checks if it exists
-                                                if let loadedData = blackboardDefaults.data(forKey: dateString){
+                                                if let loadedData = defaults.data(forKey: "\(dateString)*2"){
                                                     // checks if it can make an array of events with the data
                                                     if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event]{
                                                         self.events = loadedEvents
                                                         self.events.append(event)
                                                         let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
-                                                        blackboardDefaults.set(eventData, forKey: dateString)
+                                                        defaults.set(eventData, forKey: "\(dateString)*2")
                                                     }
                                                 }
                                                 else{
                                                     self.events = []
                                                     self.events.append(event)
                                                     let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
-                                                    blackboardDefaults.set(eventData, forKey: dateString)
+                                                    defaults.set(eventData, forKey: "\(dateString)*2")
                                                 }
                                             }
                                             

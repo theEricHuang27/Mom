@@ -28,18 +28,18 @@ class EventViewController: UIViewController, UITextFieldDelegate{
         guard let subject = SubjectTextField.text else {return}
         let d: Date = DatePicker.date
         guard let information = InformationTextField.text else {return}
-        if let loadedData = defaults.data(forKey: dateString) {
+        if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
                 events = loadedEvents
                 events.append(Event(d: d, subject: subject, information: information))
                 let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
-                defaults.set(eventData, forKey: dateString)
+                defaults.set(eventData, forKey: "\(dateString)*1")
             }
         }
         else{
             events.append(Event(d: d, subject: subject, information: information))
             let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
-            defaults.set(eventData, forKey: dateString)
+            defaults.set(eventData, forKey: "\(dateString)*1")
             
         }
         _ = navigationController?.popViewController(animated: true)
