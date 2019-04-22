@@ -20,10 +20,20 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         DateLabel.text = dateString
-        if let loadedData = defaults.data(forKey: dateString) {
+        if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
-                events = order(e: loadedEvents)
+                events = loadedEvents
             }
+        }
+        if let loadedData = defaults.data(forKey: "\(dateString)*2") {
+            if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
+                for x in loadedEvents{
+                    events.append(x)
+                }
+            }
+        }
+        if events.count > 0{
+            events = order(e: events)
         }
     }
     
@@ -65,10 +75,20 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func Reload(_ sender: UIButton) {
-        if let loadedData = defaults.data(forKey: dateString) {
+        if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
-                events = order(e: loadedEvents)
+                events = loadedEvents
             }
+        }
+        if let loadedData = defaults.data(forKey: "\(dateString)*2") {
+            if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
+                for x in loadedEvents{
+                    events.append(x)
+                }
+            }
+        }
+        if events.count > 0{
+            events = order(e: events)
         }
         Table.reloadData()
     }
@@ -108,15 +128,15 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         return r
     }
     func order(e: [Event]) -> [Event]{
-        var events = e
+        var z = e
         var new: [Event] = []
         var next: Event = Event()
         var index: Int = 0
         var lowest = 2500
         var a: String
         var b: Substring
-        for _ in 0...events.count-1{
-            for y in events{
+        for _ in 0...z.count-1{
+            for y in z{
                 a = "\(y.d.description)"
                 b = a[a.firstIndex(of: " ")!...a.lastIndex(of: ":")!]
                 b.remove(at: b.firstIndex(of: " ")!)
@@ -125,12 +145,12 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if Int("\(b)")! < lowest{
                     lowest = Int("\(b)")!
                     next = y
-                    index = events.firstIndex(of: y)!
+                    index = z.firstIndex(of: y)!
                 }
             }
             lowest = 2500
             new.append(next)
-            events.remove(at: index)
+            z.remove(at: index)
         }
         return new
     }

@@ -238,6 +238,7 @@ extension CalendarViewController : UNUserNotificationCenterDelegate {
         let d = defaults.dictionaryRepresentation().keys
         let month: Int
         var s: String
+        var s2: String
         if(currentMonth == "January"){ month = 1 }
         else if(currentMonth == "February"){ month = 2 }
         else if(currentMonth == "March"){ month = 3 }
@@ -250,9 +251,10 @@ extension CalendarViewController : UNUserNotificationCenterDelegate {
         else if(currentMonth == "October"){ month = 10 }
         else if(currentMonth == "November"){ month = 11 }
         else { month = 12 }
-        s = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)"
+        s = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)*1"
+        s2 = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)*2"
         for x in d{
-            if s == x{
+            if s == x || s2 == x{
                 return true
             }
         }
