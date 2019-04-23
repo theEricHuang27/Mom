@@ -75,6 +75,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func Reload(_ sender: UIButton) {
+        events = []
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
                 events = loadedEvents

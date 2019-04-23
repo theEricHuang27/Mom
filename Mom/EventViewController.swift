@@ -22,6 +22,7 @@ class EventViewController: UIViewController, UITextFieldDelegate{
         InformationTextField.delegate = self
         SubjectTextField.becomeFirstResponder()
         dateChooser.setDate(getDate(s: dateString), animated: false)
+        
     }
     
     @IBAction func CreateEvent(_ sender: UIButton) {
@@ -40,7 +41,6 @@ class EventViewController: UIViewController, UITextFieldDelegate{
             events.append(Event(d: d, subject: subject, information: information))
             let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
             defaults.set(eventData, forKey: "\(dateString)*1")
-            
         }
         _ = navigationController?.popViewController(animated: true)
     }
