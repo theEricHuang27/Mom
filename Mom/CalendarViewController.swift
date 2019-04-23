@@ -40,7 +40,6 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         UNUserNotificationCenter.current().delegate = self
         
         Notifications.generateNotificationFrom(Event(d: Date(), subject: "help me dad", information: "you might need to study asshole"))
-        print("we did it")
     }
     
     @IBAction func Next(_ sender: Any) {

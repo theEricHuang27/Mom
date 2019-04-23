@@ -12,11 +12,15 @@ class DescriptionViewController: UIViewController {
 
     @IBOutlet var Subject: UILabel!
     @IBOutlet var Day: UILabel!
-    @IBOutlet var Description: UILabel!
+    @IBOutlet var Description: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         Subject.text = subj
         Day.text = "\(dateString) @ \(time)"
-        Description.text = desc
+        let htmlString = desc
+        let htmlData = NSString(string: htmlString).data(using: String.Encoding.unicode.rawValue)
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
+        let attributedString = try! NSAttributedString(data: htmlData!, options: options, documentAttributes: nil)
+        Description.attributedText = attributedString
     }
 }

@@ -395,12 +395,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="40" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-bS-RZW">
-                                <rect key="frame" x="50" y="248" width="314" height="535"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-Da-ly8">
                                 <rect key="frame" x="50" y="193" width="314" height="25"/>
                                 <constraints>
@@ -410,25 +404,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="scs-kL-mog">
+                                <rect key="frame" x="50" y="248" width="314" height="535"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="m3c-Da-ly8" firstAttribute="top" secondItem="kvy-6g-F9X" secondAttribute="bottom" constant="30" id="524-Z2-xe3"/>
                             <constraint firstItem="kvy-6g-F9X" firstAttribute="leading" secondItem="d7H-RZ-HfF" secondAttribute="leading" constant="50" id="DRx-DR-IwA"/>
+                            <constraint firstItem="scs-kL-mog" firstAttribute="leading" secondItem="d7H-RZ-HfF" secondAttribute="leading" constant="50" id="Fqt-dB-X47"/>
                             <constraint firstItem="kvy-6g-F9X" firstAttribute="top" secondItem="d7H-RZ-HfF" secondAttribute="top" constant="50" id="GM8-Ft-Daq"/>
-                            <constraint firstItem="cDL-bS-RZW" firstAttribute="top" secondItem="m3c-Da-ly8" secondAttribute="bottom" constant="30" id="Jlb-jM-rAo"/>
-                            <constraint firstItem="cDL-bS-RZW" firstAttribute="leading" secondItem="d7H-RZ-HfF" secondAttribute="leading" constant="50" id="LoN-fO-cZX"/>
-                            <constraint firstItem="d7H-RZ-HfF" firstAttribute="bottom" secondItem="cDL-bS-RZW" secondAttribute="bottom" constant="30" id="Nfb-Uz-le3"/>
-                            <constraint firstItem="d7H-RZ-HfF" firstAttribute="trailing" secondItem="cDL-bS-RZW" secondAttribute="trailing" constant="50" id="Nfn-RB-MT1"/>
+                            <constraint firstItem="scs-kL-mog" firstAttribute="top" secondItem="m3c-Da-ly8" secondAttribute="bottom" constant="30" id="Syt-TN-RU8"/>
+                            <constraint firstItem="d7H-RZ-HfF" firstAttribute="bottom" secondItem="scs-kL-mog" secondAttribute="bottom" constant="30" id="oaI-Vh-Rye"/>
                             <constraint firstItem="d7H-RZ-HfF" firstAttribute="trailing" secondItem="kvy-6g-F9X" secondAttribute="trailing" constant="50" id="p6B-CM-xUt"/>
                             <constraint firstItem="m3c-Da-ly8" firstAttribute="leading" secondItem="d7H-RZ-HfF" secondAttribute="leading" constant="50" id="q4Z-by-bcQ"/>
                             <constraint firstItem="d7H-RZ-HfF" firstAttribute="trailing" secondItem="m3c-Da-ly8" secondAttribute="trailing" constant="50" id="qYG-IJ-xMq"/>
+                            <constraint firstItem="d7H-RZ-HfF" firstAttribute="trailing" secondItem="scs-kL-mog" secondAttribute="trailing" constant="50" id="v4a-jx-JmI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d7H-RZ-HfF"/>
                     </view>
                     <connections>
                         <outlet property="Day" destination="m3c-Da-ly8" id="Nrb-GF-xIs"/>
-                        <outlet property="Description" destination="cDL-bS-RZW" id="EcI-xQ-Wej"/>
+                        <outlet property="Description" destination="scs-kL-mog" id="AUO-6e-fU4"/>
                         <outlet property="Subject" destination="kvy-6g-F9X" id="Y6M-ym-O6n"/>
                     </connections>
                 </viewController>

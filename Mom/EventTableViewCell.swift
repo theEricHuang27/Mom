@@ -9,8 +9,7 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var Date: UILabel!
     @IBOutlet var Subject: UILabel!
-    
 }
