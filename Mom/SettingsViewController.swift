@@ -5,11 +5,10 @@
 //  Created by Aidan Barr Bono (student LM) on 3/28/19.
 //  Copyright © 2019 Duck Inc. All rights reserved.
 //
-
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var alertTimeBeforeTextField: UITextField!
     @IBOutlet weak var snoozeTimeTextField: UITextField!
     var notificationTimeBeforeDatePicker : UIDatePicker?
@@ -51,7 +50,7 @@ class SettingsViewController: UIViewController {
         }
         let snoozeComponents = Calendar.current.dateComponents([.minute, .hour], from: (snoozeTimeDatePicker?.date)!)
         Notifications.snoozeTime = Double(snoozeComponents.minute!)
-
+        
         let alertController = UIAlertController(title: "Edit current notifications", message: "Would you like to change notification timers for already created events?", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Change", style: .default) { (action) in
