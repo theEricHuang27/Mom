@@ -22,5 +22,6 @@ class DescriptionViewController: UIViewController {
         let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
         let attributedString = try! NSAttributedString(data: htmlData!, options: options, documentAttributes: nil)
         Description.attributedText = attributedString
+        Description.font = UIFont(descriptor: UIFontDescriptor(name: "Helvetica Neue", size: 17), size: 17)
     }
 }
