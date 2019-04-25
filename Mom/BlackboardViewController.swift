@@ -61,8 +61,8 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                             self.blackboardStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
                                             for results in self.blackboardStruct.results {
                                                 let subject = results.title!
-                                                var information = ""
-//                                                var information = "<br>\(results.calendarName)<br>"
+//                                                var information = ""
+                                                var information = "<br><b>\(results.calendarName)</b></br>"
                                                 if let a = results.description{
                                                     information += a
                                                 }
