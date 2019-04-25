@@ -7,7 +7,20 @@
 //
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, ThemedViewController {
+    
+    @IBOutlet weak var themeLabel: UILabel!
+    @IBOutlet weak var notificationSettingsLabel: UILabel!
+    @IBOutlet weak var alertMeBeforeAnEventLabel: UILabel!
+    @IBOutlet weak var snoozeTimeLabel: UILabel!
+    
+    var backView: UIView { return self.view }
+    var tabBar: UITabBar { return self.tabBarController!.tabBar }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel] {
+        return [themeLabel, notificationSettingsLabel, alertMeBeforeAnEventLabel, snoozeTimeLabel]
+    }
+    
     
     @IBOutlet weak var alertTimeBeforeTextField: UITextField!
     @IBOutlet weak var snoozeTimeTextField: UITextField!
@@ -19,6 +32,7 @@ class SettingsViewController: UIViewController {
         if alertBeforeSwitch.isOn {
             alertTimeBeforeTextField.isEnabled = true
         } else {
+            alertTimeBeforeTextField.text = "None"
             alertTimeBeforeTextField.isEnabled = false
         }
     }
@@ -27,16 +41,24 @@ class SettingsViewController: UIViewController {
     @IBAction func lightThemeTouchedUp(_ sender: UIButton) {
         if UserDefaults.standard.bool(forKey: "DarkTheme") {
             // change current view as a preview of the theme
-            UserDefaults.standard.set(false, forKey: "DarkTheme")
-            self.view.backgroundColor = UIColor.white
+//            UserDefaults.standard.set(false, forKey: "DarkTheme")
+//            self.navigationController?.navigationBar.barTintColor = UIColor.white
+//            self.tabBarController?.tabBar.barTintColor = UIColor.white
+            
+            // this should be the only line in this function once we is a good boy
+            theme(isDarkTheme: false)
         }
     }
     
     @IBAction func darkThemeTouchedUp(_ sender: UIButton) {
         if !UserDefaults.standard.bool(forKey: "DarkTheme") {
             // change current view as a preview of the theme
-            UserDefaults.standard.set(true, forKey: "DarkTheme")
-            self.view.backgroundColor = UIColor.black
+//            UserDefaults.standard.set(true, forKey: "DarkTheme")
+//            self.navigationController?.navigationBar.barTintColor = UIColor.myDeepGrey
+//            self.tabBarController?.tabBar.barTintColor = UIColor.myDeepGrey
+            
+            // this should be the only line in this function once we is a good boy
+            theme(isDarkTheme: true)
         }
     }
     
@@ -48,8 +70,8 @@ class SettingsViewController: UIViewController {
             let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: (notificationTimeBeforeDatePicker?.date)!)
             Notifications.reminderDateComponents = dateComponents
         }
-        let snoozeComponents = Calendar.current.dateComponents([.minute, .hour], from: (snoozeTimeDatePicker?.date)!)
-        Notifications.snoozeTime = Double(snoozeComponents.minute!)
+        let snoozeComponents = Calendar.current.dateComponents([.minute], from: (snoozeTimeDatePicker?.date)!)
+        Notifications.snoozeTime = snoozeComponents.minute!
         
         let alertController = UIAlertController(title: "Edit current notifications", message: "Would you like to change notification timers for already created events?", preferredStyle: .alert)
         
@@ -71,9 +93,42 @@ class SettingsViewController: UIViewController {
         setUpNotificationDatePicker()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
-        
         view.addGestureRecognizer(tapGesture)
+        
+        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+        
+//        if let comps = Notifications.reminderDateComponents {
+//            alertTimeBeforeTextField.text = "\(comps.hour ?? 0 ) hours and \(comps.minute ?? 0) minutes"
+//        } else {
+//            alertTimeBeforeTextField.text = "None"
+//        }
     }
+    
+    // so should i make them able to test out the dark theme or not
+    // if i make it so they can't they have to save changes before viewing the theme
+    // if i make it so they can, i have to use this function to stop them from leaving the view controller without applying
+    //      otherwise the rest of the app won't be on the new theme
+    // first option seems easier
+    //      should probaby make it a switch then, instead of using two labels
+    
+    // or i could make it so that you don't have to hit apply when changing themes
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        
+//        let alertController = UIAlertController(title: "Save Changes?", message: nil, preferredStyle: .alert)
+//
+//        let okAction = UIAlertAction(title: "Leave", style: .destructive) { (action) in
+//
+//        }
+//        let denyAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+//            self.present(self, animated: false, completion: nil)
+//        }
+//
+//        alertController.addAction(denyAction)
+//        alertController.addAction(okAction)
+//
+//        self.present(alertController, animated: true, completion: nil)
+//    }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -87,30 +142,49 @@ class SettingsViewController: UIViewController {
             if let startDate = Calendar.current.date(from: components) {
                 notificationTimeBeforeDatePicker?.setDate(startDate, animated: false)
             }
+            alertTimeBeforeTextField.text = "\(components.hour ?? 0) hours and \(components.minute ?? 0) minutes"
+        } else {
+            alertTimeBeforeTextField.text = "None"
         }
         
         notificationTimeBeforeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
         alertTimeBeforeTextField.inputView = notificationTimeBeforeDatePicker
-    }
-    
-    @objc func dateChanged(datePicker: UIDatePicker) {
-        if datePicker == self.notificationTimeBeforeDatePicker {
-            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
-            alertTimeBeforeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes."
-        } else if datePicker == self.snoozeTimeDatePicker {
-            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
-            snoozeTimeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes."
-        }
+        
     }
     
     func setUpSnoozeTimeDatePicker() {
         snoozeTimeDatePicker = UIDatePicker()
         snoozeTimeDatePicker?.datePickerMode = .countDownTimer
-        if let startDate = Calendar.current.date(from: DateComponents(minute: Int(Notifications.snoozeTime))) {
+        if let startDate = Calendar.current.date(from: DateComponents(minute: Notifications.snoozeTime)) {
             snoozeTimeDatePicker?.setDate(startDate, animated: false)
         }
         
         snoozeTimeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
         snoozeTimeTextField.inputView = snoozeTimeDatePicker
+        snoozeTimeTextField.text = "\(Notifications.snoozeTime) minutes"
     }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        if datePicker == self.notificationTimeBeforeDatePicker {
+            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
+            alertTimeBeforeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes"
+        } else if datePicker == self.snoozeTimeDatePicker {
+            let dateComponents = Calendar.current.dateComponents([.minute], from: datePicker.date)
+            snoozeTimeTextField.text = "\(dateComponents.minute ?? 0) minutes"
+        }
+    }
+    
+//    func theme(isDarkTheme : Bool) {
+//        if isDarkTheme {
+//            backView.backgroundColor = UIColor.myDeepGrey
+//            for label in labels {
+//                label.textColor = UIColor.white
+//            }
+//        } else {
+//            backView.backgroundColor = UIColor.white
+//            for label in labels {
+//                label.textColor = UIColor.myDeepGrey
+//            }
+//        }
+//    }
 }

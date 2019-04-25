@@ -309,7 +309,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jok-Qg-M7l">
-                                                    <rect key="frame" x="494" y="0.0" width="274" height="43.5"/>
+                                                    <rect key="frame" x="100" y="0.0" width="274" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="274" id="ACz-8S-JrA"/>
                                                     </constraints>
@@ -667,8 +667,12 @@
                     <navigationItem key="navigationItem" id="wNt-vO-mgJ"/>
                     <connections>
                         <outlet property="alertBeforeSwitch" destination="jGZ-dY-Alj" id="rGT-fP-2Du"/>
+                        <outlet property="alertMeBeforeAnEventLabel" destination="xfU-bC-mMs" id="zDs-sD-aEq"/>
                         <outlet property="alertTimeBeforeTextField" destination="Zr8-uU-lia" id="Z3z-oi-oCw"/>
+                        <outlet property="notificationSettingsLabel" destination="sE8-Bl-P63" id="RrU-vD-TYt"/>
+                        <outlet property="snoozeTimeLabel" destination="OvR-eA-Jib" id="ceV-MO-ug8"/>
                         <outlet property="snoozeTimeTextField" destination="9Zm-eN-HhX" id="7Bv-Rd-aIt"/>
+                        <outlet property="themeLabel" destination="BpE-4v-bbS" id="uo0-gg-uSc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kC5-WQ-ySd" userLabel="First Responder" sceneMemberID="firstResponder"/>

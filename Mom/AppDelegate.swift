@@ -14,12 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().isTranslucent = true
-//        UINavigationBar.appearance()
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
                 // handle error, or granted is false do something
             if granted {
@@ -29,7 +25,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Notifications.createOptions()
         
-        UserDefaults.standard.register(defaults: ["DarkTheme" : false])
+        UserDefaults.standard.register(defaults: ["DarkTheme": false, "snoozeTime": 5, "reminderTimeBefore": [0, 15]])
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        let tabBarAppearance = UITabBar.appearance()
+        
+        //  must add code to keep dark theme if the setting is there
+        if UserDefaults.standard.bool(forKey: "DarkTheme") {
+            // must add more general changes to colors
+            // could make a protocol that all view controllers implement
+            //      all this would require from the VC would be a list of all the elements that would need colors changed
+            //      possibly seperate lists for text elements, button elements, general stuff...
+            //      loop through the list a set the colors to be something in the dark theme
+            // this would be a lot of work and a lot of outlets, but thats what we pay for making an app with a storyboard...
+            // that also DID NOT WORK because i tried to access labels in view controllers before they were created so it looks like
+            // we are going to do it all in each individual view did load
+            // still might want to use a protocol somehow
+            navigationBarAppearance.barTintColor = UIColor.myDeepGrey
+            tabBarAppearance.barTintColor = UIColor.myDeepGrey
+            
+        } else {
+            navigationBarAppearance.barTintColor = UIColor.white
+            tabBarAppearance.barTintColor = UIColor.white
+        }
         
         return true
     }
