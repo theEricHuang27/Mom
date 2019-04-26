@@ -15,7 +15,7 @@ protocol ThemedViewController {
     var navBar: UINavigationBar { get }
     var labels: [UILabel]? { get }
     var buttons: [UIButton]? { get }
-    func defaultTheme(isDarkTheme: Bool) -> Void
+    func theme(isDarkTheme: Bool) -> Void
 }
 
 extension ThemedViewController {
@@ -55,7 +55,7 @@ extension ThemedViewController {
         
         backView.backgroundColor = backViewBackgroundColor
 //        tabBar.barTintColor = tabBarColor
-//        navBar.barTintColor = navBarColor
+        navBar.barTintColor = navBarColor
 //        navBarApp.barTintColor = navBarColor
 //        tabBarApp.barTintColor = tabBarColor
         if let labels = labels {
@@ -72,3 +72,21 @@ extension ThemedViewController {
         
     }
 }
+
+/*
+ This protocol should be implemented to every view controller that could have changes based on the theme
+ The variables at the top should be filled with outlet connections
+ Each view controller should override the viewWillAppear(animated:) function like so
+ 
+ override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+ }
+ 
+ The theme(isDarkTheme:) method should be implemented like so
+ 
+ func theme(isDarkTheme: Bool) {
+    self.defaultTheme(isDarkTheme: isDarkTheme)
+    // other VC specific theme changes
+ }
+ */

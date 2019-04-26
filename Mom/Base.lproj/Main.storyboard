@@ -53,34 +53,14 @@
                     <view key="view" contentMode="scaleToFill" id="IkK-Px-bjc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ida-vN-a2g">
-                                <rect key="frame" x="107" y="369" width="200" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="uek-VJ-uiM"/>
-                                    <constraint firstAttribute="width" constant="200" id="yn0-dw-I3u"/>
-                                </constraints>
-                                <state key="normal" title="Sync with BlackBoard"/>
-                                <connections>
-                                    <action selector="syncWithBlackBoard:" destination="9F1-5e-FWk" eventType="touchUpInside" id="b8b-39-ODo"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ida-vN-a2g" firstAttribute="centerY" secondItem="IkK-Px-bjc" secondAttribute="centerY" id="QbR-h3-fYw"/>
-                            <constraint firstItem="ida-vN-a2g" firstAttribute="centerX" secondItem="IkK-Px-bjc" secondAttribute="centerX" id="Ugc-De-biC"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="N69-SH-w85"/>
                     </view>
                     <navigationItem key="navigationItem" id="niz-JW-PdN"/>
-                    <connections>
-                        <outlet property="syncButton" destination="ida-vN-a2g" id="GbW-yq-Y6h"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycd-IZ-td8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-388.40579710144931" y="1193.9732142857142"/>
+            <point key="canvasLocation" x="-388" y="1861"/>
         </scene>
         <!--PowerSchool-->
         <scene sceneID="gbM-CQ-dp3">
@@ -92,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="9F1-5e-FWk" kind="relationship" relationship="rootViewController" id="IzF-jp-GUF"/>
+                        <segue destination="TCN-qf-kbH" kind="relationship" relationship="rootViewController" id="EZg-8z-qbC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFQ-b9-wir" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -628,7 +608,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-wG-wEE">
-                                <rect key="frame" x="157" y="648" width="100" height="65"/>
+                                <rect key="frame" x="157" y="733" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="g14-mn-WLG"/>
                                 </constraints>
@@ -637,11 +617,18 @@
                                     <action selector="applyButtonTouchedUp:" destination="gDr-a0-52C" eventType="touchUpInside" id="BpR-XX-zxl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-nv-7Ka">
+                                <rect key="frame" x="133" y="623" width="148" height="30"/>
+                                <state key="normal" title="Sync with Blackboard"/>
+                                <connections>
+                                    <action selector="syncWithBlackboardButtonTouchedUp:" destination="gDr-a0-52C" eventType="touchUpInside" id="jcN-jG-eQM"/>
+                                    <segue destination="9F1-5e-FWk" kind="show" id="xup-Gk-EHr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="xfU-bC-mMs" secondAttribute="trailing" constant="150" id="3At-6h-sXc"/>
-                            <constraint firstItem="WU3-wG-wEE" firstAttribute="top" secondItem="9Zm-eN-HhX" secondAttribute="bottom" constant="100" id="40D-p8-CV3"/>
                             <constraint firstItem="xfU-bC-mMs" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="9Gc-YO-gUV"/>
                             <constraint firstItem="6zt-8p-gkC" firstAttribute="top" secondItem="BpE-4v-bbS" secondAttribute="bottom" constant="30" id="CND-Y6-6FO"/>
                             <constraint firstItem="Zr8-uU-lia" firstAttribute="top" secondItem="xfU-bC-mMs" secondAttribute="bottom" constant="30" id="HVZ-NF-0Xe"/>
@@ -649,6 +636,7 @@
                             <constraint firstItem="BpE-4v-bbS" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="K4d-h6-ANQ"/>
                             <constraint firstItem="9Zm-eN-HhX" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="L6O-FI-Dni"/>
                             <constraint firstItem="BpE-4v-bbS" firstAttribute="top" secondItem="CG0-cR-mRw" secondAttribute="top" constant="50" id="MB7-az-irJ"/>
+                            <constraint firstItem="WU3-wG-wEE" firstAttribute="top" secondItem="c3e-nv-7Ka" secondAttribute="bottom" constant="80" id="Oyp-uC-myW"/>
                             <constraint firstItem="OvR-eA-Jib" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="Pq3-E3-gg3"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="Zr8-uU-lia" secondAttribute="trailing" constant="100" id="SAz-1T-J36"/>
                             <constraint firstItem="xfU-bC-mMs" firstAttribute="top" secondItem="sE8-Bl-P63" secondAttribute="bottom" constant="30" id="U6e-gy-1iM"/>
@@ -656,16 +644,18 @@
                             <constraint firstItem="ovs-lr-j9j" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="100" id="Wmv-p1-mxS"/>
                             <constraint firstItem="jGZ-dY-Alj" firstAttribute="leading" secondItem="xfU-bC-mMs" secondAttribute="trailing" constant="51" id="XoS-8m-b47"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="OvR-eA-Jib" secondAttribute="trailing" constant="100" id="YN6-ms-FXK"/>
+                            <constraint firstItem="c3e-nv-7Ka" firstAttribute="top" secondItem="9Zm-eN-HhX" secondAttribute="bottom" constant="75" id="ave-W3-Hw0"/>
                             <constraint firstItem="ovs-lr-j9j" firstAttribute="top" secondItem="BpE-4v-bbS" secondAttribute="bottom" constant="30" id="e2E-Zz-XJy"/>
                             <constraint firstItem="Zr8-uU-lia" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="eTT-nJ-DDY"/>
                             <constraint firstItem="jGZ-dY-Alj" firstAttribute="top" secondItem="BpE-4v-bbS" secondAttribute="bottom" constant="170" id="jem-rL-5A5"/>
                             <constraint firstItem="sE8-Bl-P63" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="jiO-98-BrL"/>
+                            <constraint firstItem="c3e-nv-7Ka" firstAttribute="centerX" secondItem="qET-yU-dcZ" secondAttribute="centerX" id="mqM-ne-1OK"/>
                             <constraint firstItem="OvR-eA-Jib" firstAttribute="top" secondItem="Zr8-uU-lia" secondAttribute="bottom" constant="30" id="op9-ad-eIe"/>
                             <constraint firstItem="sE8-Bl-P63" firstAttribute="top" secondItem="ovs-lr-j9j" secondAttribute="bottom" constant="50" id="oq6-44-qlA"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="9Zm-eN-HhX" secondAttribute="trailing" constant="100" id="p6m-ER-Igz"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="jGZ-dY-Alj" secondAttribute="trailing" constant="50" id="qKJ-6i-etI"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="6zt-8p-gkC" secondAttribute="trailing" constant="100" id="qzI-dh-TdN"/>
-                            <constraint firstItem="CG0-cR-mRw" firstAttribute="bottom" secondItem="WU3-wG-wEE" secondAttribute="bottom" constant="100" id="rZ3-6L-Wll"/>
+                            <constraint firstItem="CG0-cR-mRw" firstAttribute="bottom" secondItem="WU3-wG-wEE" secondAttribute="bottom" constant="50" id="rZ3-6L-Wll"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="BpE-4v-bbS" secondAttribute="trailing" constant="50" id="rhb-nM-RRy"/>
                             <constraint firstItem="9Zm-eN-HhX" firstAttribute="top" secondItem="OvR-eA-Jib" secondAttribute="bottom" constant="30" id="zfi-q2-3au"/>
                         </constraints>
@@ -682,12 +672,29 @@
                         <outlet property="notificationSettingsLabel" destination="sE8-Bl-P63" id="RrU-vD-TYt"/>
                         <outlet property="snoozeTimeLabel" destination="OvR-eA-Jib" id="ceV-MO-ug8"/>
                         <outlet property="snoozeTimeTextField" destination="9Zm-eN-HhX" id="7Bv-Rd-aIt"/>
+                        <outlet property="syncWithBlackboardButton" destination="c3e-nv-7Ka" id="Cbm-Tn-LZf"/>
                         <outlet property="themeLabel" destination="BpE-4v-bbS" id="uo0-gg-uSc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kC5-WQ-ySd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1133.3333333333335" y="1860.9375"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gnT-3Y-444">
+            <objects>
+                <viewController id="TCN-qf-kbH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w53-Jz-MNd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BIh-cp-cnn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tjh-mq-WeM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oIN-Wp-jAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-387" y="1194"/>
         </scene>
     </scenes>
 </document>

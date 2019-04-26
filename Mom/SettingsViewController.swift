@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
     // buttons
     @IBOutlet weak var lightThemeButton: UIButton!
     @IBOutlet weak var darkThemeButton: UIButton!
+    @IBOutlet weak var syncWithBlackboardButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     
     
@@ -28,7 +29,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
         return [themeLabel, notificationSettingsLabel, alertMeBeforeAnEventLabel, snoozeTimeLabel]
     }
     var buttons: [UIButton]? {
-        return [lightThemeButton, darkThemeButton, applyButton]
+        return [lightThemeButton, darkThemeButton, syncWithBlackboardButton, applyButton]
     }
     
     
@@ -71,6 +72,8 @@ class SettingsViewController: UIViewController, ThemedViewController {
             theme(isDarkTheme: true)
         }
     }
+    @IBAction func syncWithBlackboardButtonTouchedUp(_ sender: UIButton) {
+    }
     
     @IBAction func applyButtonTouchedUp(_ sender: UIButton) {
         
@@ -106,6 +109,8 @@ class SettingsViewController: UIViewController, ThemedViewController {
         view.addGestureRecognizer(tapGesture)
         
         theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+        
+        navBar.topItem?.title = "Settings"
         
     }
     
@@ -180,8 +185,11 @@ class SettingsViewController: UIViewController, ThemedViewController {
     }
     
     func theme(isDarkTheme: Bool) {
-        defaultTheme(isDarkTheme: isDarkTheme)
+        self.defaultTheme(isDarkTheme: isDarkTheme)
 //        applyButton.layer.cornerRadius = 5
 //        applyButton.backgroundColor = UIColor.myPurple
+//        syncWithBlackboardButton.setTitleColor(UIColor.myYellow, for: .normal)
+//        syncWithBlackboardButton.layer.cornerRadius = 5
+//        syncWithBlackboardButton.backgroundColor = UIColor.myPurple
     }
 }
