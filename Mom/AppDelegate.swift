@@ -41,12 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // that also DID NOT WORK because i tried to access labels in view controllers before they were created so it looks like
             // we are going to do it all in each individual view did load
             // still might want to use a protocol somehow
-            navigationBarAppearance.barTintColor = UIColor.myDeepGrey
-            tabBarAppearance.barTintColor = UIColor.myDeepGrey
+            navigationBarAppearance.barTintColor = UIColor.myPurple
+            tabBarAppearance.barTintColor = UIColor.myPurple
             
         } else {
-            navigationBarAppearance.barTintColor = UIColor.white
-            tabBarAppearance.barTintColor = UIColor.white
+            navigationBarAppearance.barTintColor = UIColor.myPurple
+            tabBarAppearance.barTintColor = UIColor.myPurple
         }
         
         return true

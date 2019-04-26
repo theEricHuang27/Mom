@@ -55,7 +55,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ida-vN-a2g">
-                                <rect key="frame" x="132.5" y="391.5" width="149" height="30"/>
+                                <rect key="frame" x="107" y="369" width="200" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="uek-VJ-uiM"/>
+                                    <constraint firstAttribute="width" constant="200" id="yn0-dw-I3u"/>
+                                </constraints>
                                 <state key="normal" title="Sync with BlackBoard"/>
                                 <connections>
                                     <action selector="syncWithBlackBoard:" destination="9F1-5e-FWk" eventType="touchUpInside" id="b8b-39-ODo"/>
@@ -70,6 +74,9 @@
                         <viewLayoutGuide key="safeArea" id="N69-SH-w85"/>
                     </view>
                     <navigationItem key="navigationItem" id="niz-JW-PdN"/>
+                    <connections>
+                        <outlet property="syncButton" destination="ida-vN-a2g" id="GbW-yq-Y6h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycd-IZ-td8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -669,6 +676,9 @@
                         <outlet property="alertBeforeSwitch" destination="jGZ-dY-Alj" id="rGT-fP-2Du"/>
                         <outlet property="alertMeBeforeAnEventLabel" destination="xfU-bC-mMs" id="zDs-sD-aEq"/>
                         <outlet property="alertTimeBeforeTextField" destination="Zr8-uU-lia" id="Z3z-oi-oCw"/>
+                        <outlet property="applyButton" destination="WU3-wG-wEE" id="CuD-NL-SPz"/>
+                        <outlet property="darkThemeButton" destination="6zt-8p-gkC" id="ncA-fY-qNr"/>
+                        <outlet property="lightThemeButton" destination="ovs-lr-j9j" id="BgD-RA-SQd"/>
                         <outlet property="notificationSettingsLabel" destination="sE8-Bl-P63" id="RrU-vD-TYt"/>
                         <outlet property="snoozeTimeLabel" destination="OvR-eA-Jib" id="ceV-MO-ug8"/>
                         <outlet property="snoozeTimeTextField" destination="9Zm-eN-HhX" id="7Bv-Rd-aIt"/>

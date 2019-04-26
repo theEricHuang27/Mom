@@ -10,7 +10,16 @@ import UIKit
 import WebKit
 import Kanna
 
-class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
+    
+    @IBOutlet weak var syncButton: UIButton!
+    
+    var backView: UIView { return self.view }
+    var tabBar: UITabBar { return self.tabBarController!.tabBar }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel]? { return nil }
+    var buttons: [UIButton]? { return [syncButton]}
+    
 
     var webView: WKWebView!
     var json: Data!
@@ -19,6 +28,12 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
     }
     
     @IBAction func syncWithBlackBoard(_ sender: UIButton) {
@@ -115,5 +130,12 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
         var year = d[...d.firstIndex(of: "-")!]
         year.remove(at: year.firstIndex(of: "-")!)
         return "\(month)/\(day)/\(year)"
+    }
+    
+    func theme(isDarkTheme: Bool) {
+        self.defaultTheme(isDarkTheme: isDarkTheme)
+        syncButton.setTitleColor(UIColor.myYellow, for: .normal)
+        syncButton.layer.cornerRadius = 5
+        syncButton.backgroundColor = UIColor.myPurple
     }
 }

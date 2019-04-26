@@ -13,13 +13,13 @@ protocol ThemedViewController {
     var backView: UIView { get }
     var tabBar: UITabBar { get }
     var navBar: UINavigationBar { get }
-    var labels: [UILabel] { get }
-    func theme(isDarkTheme: Bool) -> Void
+    var labels: [UILabel]? { get }
+    var buttons: [UIButton]? { get }
+    func defaultTheme(isDarkTheme: Bool) -> Void
 }
 
 extension ThemedViewController {
-    func theme(isDarkTheme: Bool) -> Void {
-        var labelTextColor: UIColor
+    func defaultTheme(isDarkTheme: Bool) -> Void {
         var backViewBackgroundColor: UIColor
         var navBarColor: UIColor
         var tabBarColor: UIColor
@@ -27,6 +27,9 @@ extension ThemedViewController {
 //        var tabBarColor: UIColor
 //        let navBarApp = UINavigationBar.appearance()
 //        var navBarColor: UIColor
+        var labelTextColor: UIColor
+        var buttonTextColor: UIColor
+        var buttonBackgroundColor: UIColor
         
         if isDarkTheme {
             UserDefaults.standard.set(true, forKey: "DarkTheme")
@@ -36,6 +39,8 @@ extension ThemedViewController {
             backViewBackgroundColor = UIColor.myDeepGrey
             navBarColor = UIColor.myDeepGrey
             tabBarColor = UIColor.myDeepGrey
+            buttonTextColor = UIColor.myYellow
+            buttonBackgroundColor = UIColor.myBlue
         } else {
             UserDefaults.standard.set(false, forKey: "DarkTheme")
 //            tabBarColor = UIColor.myDeepGrey
@@ -44,16 +49,25 @@ extension ThemedViewController {
             backViewBackgroundColor = UIColor.white
             navBarColor = UIColor.white
             tabBarColor = UIColor.white
+            buttonTextColor = UIColor.myMagenta
+            buttonBackgroundColor = UIColor.white
         }
         
         backView.backgroundColor = backViewBackgroundColor
-        tabBar.barTintColor = tabBarColor
-        navBar.barTintColor = navBarColor
+//        tabBar.barTintColor = tabBarColor
+//        navBar.barTintColor = navBarColor
 //        navBarApp.barTintColor = navBarColor
 //        tabBarApp.barTintColor = tabBarColor
-        
-        for label in labels {
-            label.textColor = labelTextColor
+        if let labels = labels {
+            for label in labels {
+                label.textColor = labelTextColor
+            }
+        }
+        if let buttons = buttons {
+            for button in buttons {
+                button.setTitleColor(buttonTextColor, for: .normal)
+    //            button.backgroundColor = buttonBackgroundColor
+            }
         }
         
     }

@@ -9,16 +9,26 @@ import UIKit
 
 class SettingsViewController: UIViewController, ThemedViewController {
     
+    // labels
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var notificationSettingsLabel: UILabel!
     @IBOutlet weak var alertMeBeforeAnEventLabel: UILabel!
     @IBOutlet weak var snoozeTimeLabel: UILabel!
     
+    // buttons
+    @IBOutlet weak var lightThemeButton: UIButton!
+    @IBOutlet weak var darkThemeButton: UIButton!
+    @IBOutlet weak var applyButton: UIButton!
+    
+    
     var backView: UIView { return self.view }
     var tabBar: UITabBar { return self.tabBarController!.tabBar }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
-    var labels: [UILabel] {
+    var labels: [UILabel]? {
         return [themeLabel, notificationSettingsLabel, alertMeBeforeAnEventLabel, snoozeTimeLabel]
+    }
+    var buttons: [UIButton]? {
+        return [lightThemeButton, darkThemeButton, applyButton]
     }
     
     
@@ -97,11 +107,6 @@ class SettingsViewController: UIViewController, ThemedViewController {
         
         theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
         
-//        if let comps = Notifications.reminderDateComponents {
-//            alertTimeBeforeTextField.text = "\(comps.hour ?? 0 ) hours and \(comps.minute ?? 0) minutes"
-//        } else {
-//            alertTimeBeforeTextField.text = "None"
-//        }
     }
     
     // so should i make them able to test out the dark theme or not
@@ -174,17 +179,9 @@ class SettingsViewController: UIViewController, ThemedViewController {
         }
     }
     
-//    func theme(isDarkTheme : Bool) {
-//        if isDarkTheme {
-//            backView.backgroundColor = UIColor.myDeepGrey
-//            for label in labels {
-//                label.textColor = UIColor.white
-//            }
-//        } else {
-//            backView.backgroundColor = UIColor.white
-//            for label in labels {
-//                label.textColor = UIColor.myDeepGrey
-//            }
-//        }
-//    }
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+//        applyButton.layer.cornerRadius = 5
+//        applyButton.backgroundColor = UIColor.myPurple
+    }
 }
