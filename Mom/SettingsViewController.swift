@@ -102,8 +102,8 @@ class SettingsViewController: UIViewController, ThemedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpSnoozeTimeDatePicker()
-        setUpNotificationDatePicker()
+//        setUpSnoozeTimeDatePicker()
+//        setUpNotificationDatePicker()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
@@ -111,6 +111,8 @@ class SettingsViewController: UIViewController, ThemedViewController {
         theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
         
         navBar.topItem?.title = "Settings"
+        
+        var reminderTimeBeforePicker = UIPickerView()
         
     }
     
@@ -144,52 +146,47 @@ class SettingsViewController: UIViewController, ThemedViewController {
         view.endEditing(true)
     }
     
-    func setUpNotificationDatePicker() {
-        notificationTimeBeforeDatePicker = UIDatePicker()
-        notificationTimeBeforeDatePicker?.datePickerMode = .countDownTimer
-        notificationTimeBeforeDatePicker?.minuteInterval = 5
-        if let components = Notifications.reminderDateComponents {
-            if let startDate = Calendar.current.date(from: components) {
-                notificationTimeBeforeDatePicker?.setDate(startDate, animated: false)
-            }
-            alertTimeBeforeTextField.text = "\(components.hour ?? 0) hours and \(components.minute ?? 0) minutes"
-        } else {
-            alertTimeBeforeTextField.text = "None"
-        }
-        
-        notificationTimeBeforeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
-        alertTimeBeforeTextField.inputView = notificationTimeBeforeDatePicker
-        
-    }
-    
-    func setUpSnoozeTimeDatePicker() {
-        snoozeTimeDatePicker = UIDatePicker()
-        snoozeTimeDatePicker?.datePickerMode = .countDownTimer
-        if let startDate = Calendar.current.date(from: DateComponents(minute: Notifications.snoozeTime)) {
-            snoozeTimeDatePicker?.setDate(startDate, animated: false)
-        }
-        
-        snoozeTimeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
-        snoozeTimeTextField.inputView = snoozeTimeDatePicker
-        snoozeTimeTextField.text = "\(Notifications.snoozeTime) minutes"
-    }
-    
-    @objc func dateChanged(datePicker: UIDatePicker) {
-        if datePicker == self.notificationTimeBeforeDatePicker {
-            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
-            alertTimeBeforeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes"
-        } else if datePicker == self.snoozeTimeDatePicker {
-            let dateComponents = Calendar.current.dateComponents([.minute], from: datePicker.date)
-            snoozeTimeTextField.text = "\(dateComponents.minute ?? 0) minutes"
-        }
-    }
+//    func setUpNotificationDatePicker() {
+//        notificationTimeBeforeDatePicker = UIDatePicker()
+//        notificationTimeBeforeDatePicker?.datePickerMode = .countDownTimer
+//        notificationTimeBeforeDatePicker?.minuteInterval = 5
+//        if let components = Notifications.reminderDateComponents {
+//            if let startDate = Calendar.current.date(from: components) {
+//                notificationTimeBeforeDatePicker?.setDate(startDate, animated: false)
+//            }
+//            alertTimeBeforeTextField.text = "\(components.hour ?? 0) hours and \(components.minute ?? 0) minutes"
+//        } else {
+//            alertTimeBeforeTextField.text = "None"
+//        }
+//
+//        notificationTimeBeforeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
+//        alertTimeBeforeTextField.inputView = notificationTimeBeforeDatePicker
+//
+//    }
+//
+//    func setUpSnoozeTimeDatePicker() {
+//        snoozeTimeDatePicker = UIDatePicker()
+//        snoozeTimeDatePicker?.datePickerMode = .countDownTimer
+//        if let startDate = Calendar.current.date(from: DateComponents(minute: Notifications.snoozeTime)) {
+//            snoozeTimeDatePicker?.setDate(startDate, animated: false)
+//        }
+//
+//        snoozeTimeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
+//        snoozeTimeTextField.inputView = snoozeTimeDatePicker
+//        snoozeTimeTextField.text = "\(Notifications.snoozeTime) minutes"
+//    }
+//
+//    @objc func dateChanged(datePicker: UIDatePicker) {
+//        if datePicker == self.notificationTimeBeforeDatePicker {
+//            let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: datePicker.date)
+//            alertTimeBeforeTextField.text = "\(dateComponents.hour ?? 0) hours and \(dateComponents.minute ?? 0) minutes"
+//        } else if datePicker == self.snoozeTimeDatePicker {
+//            let dateComponents = Calendar.current.dateComponents([.minute], from: datePicker.date)
+//            snoozeTimeTextField.text = "\(dateComponents.minute ?? 0) minutes"
+//        }
+//    }
     
     func theme(isDarkTheme: Bool) {
         self.defaultTheme(isDarkTheme: isDarkTheme)
-//        applyButton.layer.cornerRadius = 5
-//        applyButton.backgroundColor = UIColor.myPurple
-//        syncWithBlackboardButton.setTitleColor(UIColor.myYellow, for: .normal)
-//        syncWithBlackboardButton.layer.cornerRadius = 5
-//        syncWithBlackboardButton.backgroundColor = UIColor.myPurple
     }
 }
