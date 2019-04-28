@@ -19,6 +19,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     var textFields: [UITextField]? { return nil }
     
 
+    @IBOutlet weak var loadingGif: UIImageView!
     var webView: WKWebView!
     var json: Data!
     var blackboardStruct: blackboardResponse!
@@ -26,6 +27,8 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingGif.image = UIImage.gif(name: "loading")
+//        loadingGif.loadGif(name: "loading")
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         let configuration = WKWebViewConfiguration()
@@ -55,7 +58,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
             }
             // moves the webview off the screen for loading things
             webView.translatesAutoresizingMaskIntoConstraints = false
-            webView.leftAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+            webView.rightAnchor.constraint(equalTo: view.leftAnchor).isActive = true
             webView.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             
             let request = URLRequest(url: URL(string:"https://lmsd.blackboard.com/learn/api/public/v1/calendars/items?since=\(start)T00:00:00.000Z&until=\(end)T00:00:00.000Z&limit=1000")!)

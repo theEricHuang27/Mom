@@ -43,6 +43,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var loaded = false
     var events: [Event] = []
+    // why have this variable?
     var cellsArray: [UITableViewCell] = []
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet var Table: UITableView!
@@ -76,15 +77,16 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if events.count > 12{
-            return events.count
-        }
-        else{
-            return 12
-        }
+            return 1
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return events.count
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath) as! EventTableViewCell
         if indexPath.row < events.count{
             cell.Date.text = getTime(s: events[indexPath.row].d.description)
@@ -98,14 +100,33 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.Date.textColor = tableCellTextColor
         cell.Subject.textColor = tableCellTextColor
         cellsArray.append(cell)
+        
+        cell.Date.text = getTime(s: events[indexPath.section].d.description)
+        cell.Subject.text = events[indexPath.row].subject
+        
+        cell.layer.cornerRadius = 5
+        cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        cell.layoutSubviews()
+        
+        
+//        cellsArray.append(cell)
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 50
+//    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        for x in cellsArray{
-            let cell: UITableViewCell = x
-            cell.alpha = 1
-        }
+        
+        
+//        for x in cellsArray {
+//            let cell: UITableViewCell = x
+//            cell.alpha = 1
+//        }
+        
+        cell.alpha = 1
+        cell.backgroundColor = UIColor.myPurple
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         time = getTime(s: events[indexPath.row].d.description)
