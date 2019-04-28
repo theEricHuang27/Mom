@@ -10,8 +10,36 @@ import UserNotifications
 
 class Notifications : NSObject {
     
-    static var snoozeTime : TimeInterval = 5
-    static var reminderDateComponents : DateComponents? = DateComponents(minute: 5)
+    // make these { set get } properties that link directly into the userDefaults
+//    static var snoozeTime : TimeInterval = 5
+    static var snoozeTime: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "snoozeTime")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "snoozeTime")
+        }
+    }
+    static var reminderDateComponents: DateComponents? {
+        get {
+            // MUST FIND WAY TO STORE NIL
+            // try using object(forKey:) again
+            if let arr =  UserDefaults.standard.array(forKey: "reminderTimeBefore") as! [Int]? {
+                return DateComponents(hour: arr[0], minute: arr[1])
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let comps = newValue {
+                let arr = [comps.hour, comps.minute]
+                UserDefaults.standard.set(arr, forKey: "reminderTimeBefore")
+            } else {
+                UserDefaults.standard.set(nil, forKey: "reminderTimeBefore")
+            }
+            
+        }
+    }
     
     
     static func generateNotificationFrom(_ event : Event) {
@@ -47,7 +75,7 @@ class Notifications : NSObject {
     static func generateSnoozeNotificationFrom(_ request : UNNotificationRequest) {
         
         // create a time interval trigger for after the event and add the reqeust
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Notifications.snoozeTime, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(Notifications.snoozeTime), repeats: false)
         let request = UNNotificationRequest(identifier: NotificationTypes.snooze, content: request.content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
@@ -60,6 +88,8 @@ class Notifications : NSObject {
         let snooze = UNNotificationAction(identifier: "SNOOZE", title: "Snooze", options: UNNotificationActionOptions(rawValue: 0))
         let alertCategory = UNNotificationCategory(identifier: NotificationTypes.alert, actions: [view, snooze], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
         UNUserNotificationCenter.current().setNotificationCategories([alertCategory])
+        
+
     }
     
     // called to recreate all the notifications when the settings swap
