@@ -158,7 +158,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUX-2U-19e">
-                                                    <rect key="frame" x="31.666666666666668" y="0.0" width="5.3333333333333321" height="40"/>
+                                                    <rect key="frame" x="31.666666666666668" y="0.0" width="2.3333333333333321" height="40"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                             <constraint firstItem="Iac-vR-alJ" firstAttribute="centerY" secondItem="wjK-rT-c1H" secondAttribute="centerY" id="EmM-i9-qZF"/>
                                             <constraint firstItem="pUX-2U-19e" firstAttribute="top" secondItem="wjK-rT-c1H" secondAttribute="top" id="FRv-ua-C3e"/>
                                             <constraint firstItem="pUX-2U-19e" firstAttribute="leading" secondItem="Iac-vR-alJ" secondAttribute="trailing" id="LcR-r8-ak0"/>
-                                            <constraint firstAttribute="trailing" secondItem="pUX-2U-19e" secondAttribute="trailing" constant="3" id="qKQ-Gy-kOs"/>
+                                            <constraint firstAttribute="trailing" secondItem="pUX-2U-19e" secondAttribute="trailing" constant="6" id="qKQ-Gy-kOs"/>
                                             <constraint firstAttribute="bottom" secondItem="pUX-2U-19e" secondAttribute="bottom" id="t7O-IH-vke"/>
                                         </constraints>
                                         <size key="customSize" width="40" height="40"/>
