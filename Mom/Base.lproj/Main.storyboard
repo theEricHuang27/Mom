@@ -62,11 +62,11 @@
             </objects>
             <point key="canvasLocation" x="-388" y="1861"/>
         </scene>
-        <!--PowerSchool-->
+        <!--Blackboard-->
         <scene sceneID="gbM-CQ-dp3">
             <objects>
                 <navigationController id="XfA-uX-UAQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="PowerSchool" id="uct-wg-SoV"/>
+                    <tabBarItem key="tabBarItem" title="Blackboard" id="uct-wg-SoV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gDQ-a2-e0R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -275,30 +275,37 @@
                                     <segue destination="Gzb-G2-ITD" kind="show" identifier="NextVCToEventVC" id="dJS-zF-3Jq"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZ0-Qd-zVv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JZ0-Qd-zVv">
                                 <rect key="frame" x="20" y="232" width="374" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.4823529411764706" green="0.0" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Table" id="28m-ph-ys1" customClass="EventTableViewCell" customModule="Mom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Table" rowHeight="150" id="28m-ph-ys1" customClass="EventTableViewCell" customModule="Mom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="150"/>
+
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="28m-ph-ys1" id="qfa-xo-XPe">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiC-19-dop">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="25" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="1A4-CG-2Cf"/>
+                                                        <constraint firstAttribute="height" constant="100" id="R17-7M-V1o"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jok-Qg-M7l">
-                                                    <rect key="frame" x="100" y="0.0" width="274" height="43.5"/>
+
+                                                    <rect key="frame" x="100" y="25" width="274" height="100"/>
+
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="274" id="ACz-8S-JrA"/>
+                                                        <constraint firstAttribute="height" constant="100" id="jRF-M8-NKG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -306,15 +313,16 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Jok-Qg-M7l" firstAttribute="leading" secondItem="AiC-19-dop" secondAttribute="trailing" id="2fe-Wv-PVc"/>
+                                                <constraint firstItem="AiC-19-dop" firstAttribute="centerY" secondItem="qfa-xo-XPe" secondAttribute="centerY" id="43B-R4-NRV"/>
                                                 <constraint firstAttribute="trailing" secondItem="Jok-Qg-M7l" secondAttribute="trailing" id="54c-Fg-3b9"/>
                                                 <constraint firstItem="AiC-19-dop" firstAttribute="centerY" secondItem="qfa-xo-XPe" secondAttribute="centerY" id="5IF-8y-zzu"/>
-                                                <constraint firstItem="Jok-Qg-M7l" firstAttribute="top" secondItem="qfa-xo-XPe" secondAttribute="top" id="8HX-kU-Y2A"/>
+                                                <constraint firstItem="Jok-Qg-M7l" firstAttribute="centerY" secondItem="qfa-xo-XPe" secondAttribute="centerY" id="HR3-UO-xfE"/>
                                                 <constraint firstItem="AiC-19-dop" firstAttribute="leading" secondItem="qfa-xo-XPe" secondAttribute="leading" id="OvS-li-q4J"/>
                                                 <constraint firstItem="Jok-Qg-M7l" firstAttribute="centerY" secondItem="qfa-xo-XPe" secondAttribute="centerY" id="Zrt-Rq-UlF"/>
-                                                <constraint firstItem="AiC-19-dop" firstAttribute="top" secondItem="qfa-xo-XPe" secondAttribute="top" id="gld-P5-9nI"/>
-                                                <constraint firstAttribute="bottom" secondItem="Jok-Qg-M7l" secondAttribute="bottom" id="kQp-rS-0gm"/>
-                                                <constraint firstAttribute="bottom" secondItem="AiC-19-dop" secondAttribute="bottom" id="svX-Oa-lXs"/>
+                                                <constraint firstItem="Jok-Qg-M7l" firstAttribute="leading" secondItem="AiC-19-dop" secondAttribute="trailing" id="dUD-zY-KLu"/>
                                             </constraints>
+                                            <edgeInsets key="layoutMargins" top="20" left="8" bottom="20" right="8"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="Date" destination="AiC-19-dop" id="6gz-tf-Pea"/>
