@@ -42,6 +42,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var newEventButton: UIButton!
     @IBOutlet weak var reloadButton: UIButton!
     
+    var loaded = false
     var events: [Event] = []
     var cellsArray: [UITableViewCell] = []
     @IBOutlet weak var DateLabel: UILabel!
@@ -49,6 +50,10 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         DateLabel.text = dateString
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
@@ -65,6 +70,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         if events.count > 0{
             events = order(e: events)
         }
+        self.Reload()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,8 +119,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "Description", sender: self)
     }
     
-    
-    @IBAction func Reload(_ sender: UIButton) {
+    func Reload(){
         events = []
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
