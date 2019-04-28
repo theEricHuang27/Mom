@@ -39,6 +39,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tableCellColor: UIColor = UIColor.white
     var tableCellTextColor: UIColor = UIColor.black
     
+    
     @IBOutlet weak var newEventButton: UIButton!
     
     var loaded = false
