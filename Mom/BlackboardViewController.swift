@@ -35,7 +35,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
         webView.navigationDelegate = self
         let request = URLRequest(url: URL(string: "https://lmsd.blackboard.com/webapps/login/?action=relogin")!)
         webView.load(request)
-//        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,5 +130,10 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     func theme(isDarkTheme: Bool) {
         self.defaultTheme(isDarkTheme: isDarkTheme)
         // addtional VC specific set up
+        if isDarkTheme {
+            webView.backgroundColor = UIColor.myDeepGrey
+        } else {
+            webView.backgroundColor = UIColor.white
+        }
     }
 }

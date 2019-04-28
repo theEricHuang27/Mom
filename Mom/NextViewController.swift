@@ -19,7 +19,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [DateLabel]
     }
     var buttons: [UIButton]? {
-        return [newEventButton, reloadButton]
+        return [newEventButton]
     }
     var textFields: [UITextField]? { return nil }
     
@@ -40,7 +40,6 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tableCellTextColor: UIColor = UIColor.black
     
     @IBOutlet weak var newEventButton: UIButton!
-    @IBOutlet weak var reloadButton: UIButton!
     
     var loaded = false
     var events: [Event] = []
@@ -71,13 +70,9 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
             events = order(e: events)
         }
         self.Reload()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
         Table.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

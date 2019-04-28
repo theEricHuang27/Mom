@@ -244,6 +244,9 @@
                     <connections>
                         <outlet property="Calendar" destination="pqA-tv-xwF" id="mux-o7-mWP"/>
                         <outlet property="MonthLabel" destination="fZG-hF-LOr" id="Xvb-bo-KgV"/>
+                        <outlet property="backButton" destination="8UY-ZQ-nf0" id="vD9-4i-EiM"/>
+                        <outlet property="daysOfTheWeekStackView" destination="a9f-vS-zWF" id="xHF-Wh-K6s"/>
+                        <outlet property="nextButton" destination="10o-i4-eEw" id="ohN-WF-D2d"/>
                         <segue destination="fto-Co-tgb" kind="show" identifier="NextView" id="9jW-qg-D2q"/>
                     </connections>
                 </viewController>
@@ -279,7 +282,7 @@
                                 <rect key="frame" x="20" y="232" width="374" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Table" id="28m-ph-ys1" customClass="EventTableViewCell" customModule="Mom" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Table" id="28m-ph-ys1" customClass="EventTableViewCell" customModule="Mom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="28m-ph-ys1" id="qfa-xo-XPe">
@@ -346,6 +349,7 @@
                     <connections>
                         <outlet property="DateLabel" destination="1RY-me-GOm" id="SaK-6s-KVj"/>
                         <outlet property="Table" destination="JZ0-Qd-zVv" id="WZL-L2-NPx"/>
+                        <outlet property="newEventButton" destination="wa7-Sk-3W1" id="FIA-CG-x3R"/>
                         <segue destination="cqP-aS-SMs" kind="show" identifier="Description" id="Fdz-xO-n9o"/>
                     </connections>
                 </viewController>
@@ -529,7 +533,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="148" translatesAutoresizingMaskIntoConstraints="NO" id="NgX-18-Ji6">
-                                <rect key="frame" x="83" y="188.5" width="248" height="30"/>
+                                <rect key="frame" x="100" y="188.5" width="248" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovs-lr-j9j">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
@@ -564,13 +568,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE8-Bl-P63">
-                                <rect key="frame" x="50" y="268.5" width="314" height="20.5"/>
+                                <rect key="frame" x="50" y="268.5" width="264" height="20.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="221" translatesAutoresizingMaskIntoConstraints="NO" id="9tx-tx-c31">
-                                <rect key="frame" x="50" y="319" width="314" height="31"/>
+                                <rect key="frame" x="50" y="328.5" width="314" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-bC-mMs">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="31"/>
@@ -595,7 +599,7 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex 5:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zr8-uU-lia">
-                                <rect key="frame" x="50" y="425" width="314" height="27"/>
+                                <rect key="frame" x="50" y="389.5" width="60" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="g6Q-2C-k5B"/>
                                 </constraints>
@@ -604,13 +608,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvR-eA-Jib">
-                                <rect key="frame" x="50" y="477" width="314" height="20"/>
+                                <rect key="frame" x="50" y="446.5" width="264" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex 5:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Zm-eN-HhX">
-                                <rect key="frame" x="50" y="522" width="314" height="27"/>
+                                <rect key="frame" x="50" y="496.5" width="264" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="MQC-gq-TGQ"/>
                                 </constraints>
@@ -619,9 +623,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-wG-wEE">
-
-                                <rect key="frame" x="157" y="733" width="100" height="30"/>
-
+                                <rect key="frame" x="185" y="733" width="44" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="j1a-lA-aQm"/>
                                 </constraints>
@@ -631,9 +633,8 @@
                                     <action selector="applyButtonTouchedUp:" destination="gDr-a0-52C" eventType="touchUpInside" id="BpR-XX-zxl"/>
                                 </connections>
                             </button>
-
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-nv-7Ka">
-                                <rect key="frame" x="133" y="623" width="148" height="30"/>
+                                <rect key="frame" x="133" y="598.5" width="148" height="54.5"/>
                                 <state key="normal" title="Sync with Blackboard"/>
                                 <connections>
                                     <action selector="syncWithBlackboardButtonTouchedUp:" destination="gDr-a0-52C" eventType="touchUpInside" id="jcN-jG-eQM"/>
@@ -652,13 +653,10 @@
                             <constraint firstItem="9Zm-eN-HhX" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="L6O-FI-Dni"/>
                             <constraint firstItem="BpE-4v-bbS" firstAttribute="top" secondItem="CG0-cR-mRw" secondAttribute="top" constant="50" id="MB7-az-irJ"/>
                             <constraint firstItem="WU3-wG-wEE" firstAttribute="top" secondItem="c3e-nv-7Ka" secondAttribute="bottom" constant="80" id="Oyp-uC-myW"/>
-
                             <constraint firstItem="OvR-eA-Jib" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="Pq3-E3-gg3"/>
-                            <constraint firstItem="nds-cM-2Bh" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="QrP-9h-l5U"/>
+                            <constraint firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="50" id="QrP-9h-l5U"/>
                             <constraint firstItem="sE8-Bl-P63" firstAttribute="top" secondItem="NgX-18-Ji6" secondAttribute="bottom" constant="50" id="Sdd-ba-Adj"/>
-                            <constraint firstItem="Zr8-uU-lia" firstAttribute="top" secondItem="nds-cM-2Bh" secondAttribute="bottom" constant="25" id="V0G-2A-hwB"/>
                             <constraint firstItem="WU3-wG-wEE" firstAttribute="centerX" secondItem="qET-yU-dcZ" secondAttribute="centerX" id="Vu4-Y3-RM9"/>
-
                             <constraint firstItem="ovs-lr-j9j" firstAttribute="leading" secondItem="CG0-cR-mRw" secondAttribute="leading" constant="100" id="Wmv-p1-mxS"/>
                             <constraint firstItem="jGZ-dY-Alj" firstAttribute="leading" secondItem="xfU-bC-mMs" secondAttribute="trailing" constant="51" id="XoS-8m-b47"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="OvR-eA-Jib" secondAttribute="trailing" constant="100" id="YN6-ms-FXK"/>
@@ -676,7 +674,6 @@
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="bottom" secondItem="WU3-wG-wEE" secondAttribute="bottom" constant="50" id="rZ3-6L-Wll"/>
                             <constraint firstItem="CG0-cR-mRw" firstAttribute="trailing" secondItem="BpE-4v-bbS" secondAttribute="trailing" constant="50" id="rhb-nM-RRy"/>
                             <constraint firstItem="9Zm-eN-HhX" firstAttribute="top" secondItem="OvR-eA-Jib" secondAttribute="bottom" constant="30" id="zfi-q2-3au"/>
-
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CG0-cR-mRw"/>
                     </view>
