@@ -7,7 +7,24 @@
 
 import UIKit
 
-class EventViewController: UIViewController, UITextFieldDelegate{
+class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewController {
+    
+    var backView: UIView { return self.view }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel]? {
+        return nil
+    }
+    var buttons: [UIButton]? {
+        return [CreateEventButton]
+    }
+    var textFields: [UITextField]? {
+        return [InformationTextField, SubjectTextField]
+    }
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+        
+    }
+    
 
     var events: [Event] = []
     @IBOutlet var SubjectTextField: UITextField!
@@ -23,6 +40,11 @@ class EventViewController: UIViewController, UITextFieldDelegate{
         SubjectTextField.becomeFirstResponder()
         dateChooser.setDate(getDate(s: dateString), animated: false)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
     
     @IBAction func CreateEvent(_ sender: UIButton) {

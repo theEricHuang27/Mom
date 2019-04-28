@@ -11,10 +11,10 @@ import UIKit
 
 protocol ThemedViewController {
     var backView: UIView { get }
-    var tabBar: UITabBar { get }
     var navBar: UINavigationBar { get }
     var labels: [UILabel]? { get }
     var buttons: [UIButton]? { get }
+    var textFields: [UITextField]? { get }
     func theme(isDarkTheme: Bool) -> Void
 }
 
@@ -22,42 +22,41 @@ extension ThemedViewController {
     func defaultTheme(isDarkTheme: Bool) -> Void {
         var backViewBackgroundColor: UIColor
         var navBarColor: UIColor
-        var tabBarColor: UIColor
 //        let tabBarApp = UITabBar.appearance()
 //        var tabBarColor: UIColor
 //        let navBarApp = UINavigationBar.appearance()
 //        var navBarColor: UIColor
         var labelTextColor: UIColor
         var buttonTextColor: UIColor
+        var textFieldTextColor: UIColor
+        var textFieldBackgroundColor: UIColor
         var buttonBackgroundColor: UIColor
         
         if isDarkTheme {
             UserDefaults.standard.set(true, forKey: "DarkTheme")
 //            tabBarColor = UIColor.white
-//            navBarColor = UIColor.white
             labelTextColor = UIColor.white
             backViewBackgroundColor = UIColor.myDeepGrey
-            navBarColor = UIColor.myDeepGrey
-            tabBarColor = UIColor.myDeepGrey
+            navBarColor = UIColor.myPurple
             buttonTextColor = UIColor.myYellow
             buttonBackgroundColor = UIColor.myBlue
+            textFieldTextColor = UIColor.white
+            textFieldBackgroundColor = UIColor.clear
         } else {
             UserDefaults.standard.set(false, forKey: "DarkTheme")
 //            tabBarColor = UIColor.myDeepGrey
-//            navBarColor = UIColor.myDeepGrey
             labelTextColor = UIColor.black
             backViewBackgroundColor = UIColor.white
-            navBarColor = UIColor.white
-            tabBarColor = UIColor.white
+            navBarColor = UIColor.myPurple
             buttonTextColor = UIColor.myMagenta
             buttonBackgroundColor = UIColor.white
+            textFieldTextColor = UIColor.black
+            textFieldBackgroundColor = UIColor.clear
         }
         
         backView.backgroundColor = backViewBackgroundColor
-//        tabBar.barTintColor = tabBarColor
         navBar.barTintColor = navBarColor
 //        navBarApp.barTintColor = navBarColor
-//        tabBarApp.barTintColor = tabBarColor
         if let labels = labels {
             for label in labels {
                 label.textColor = labelTextColor
@@ -67,6 +66,13 @@ extension ThemedViewController {
             for button in buttons {
                 button.setTitleColor(buttonTextColor, for: .normal)
     //            button.backgroundColor = buttonBackgroundColor
+            }
+        }
+        
+        if let textFields = textFields {
+            for textField in textFields {
+                textField.textColor = textFieldTextColor
+                textField.backgroundColor = textFieldBackgroundColor
             }
         }
         

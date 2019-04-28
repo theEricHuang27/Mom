@@ -12,12 +12,11 @@ import Kanna
 
 class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
     
-    
     var backView: UIView { return self.view }
-    var tabBar: UITabBar { return self.tabBarController!.tabBar }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? { return nil }
     var buttons: [UIButton]? { return nil }
+    var textFields: [UITextField]? { return nil }
     
 
     var webView: WKWebView!
@@ -41,7 +40,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

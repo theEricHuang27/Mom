@@ -11,12 +11,42 @@ var time = ""
 var subj = ""
 var desc = ""
 
-class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ThemedViewController {
+    
+    var backView: UIView { return self.view }
+    var navBar: UINavigationBar { return (self.navigationController?.navigationBar)! }
+    var labels: [UILabel]? {
+        return [DateLabel]
+    }
+    var buttons: [UIButton]? {
+        return [newEventButton, reloadButton]
+    }
+    var textFields: [UITextField]? { return nil }
+    
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+        if isDarkTheme {
+            Table.backgroundColor = UIColor.myDeepGrey
+            tableCellColor = UIColor.myDeepGrey
+            tableCellTextColor = UIColor.white
+        } else {
+            Table.backgroundColor = UIColor.white
+            tableCellColor = UIColor.white
+            tableCellTextColor = UIColor.black
+        }
+    }
+    
+    var tableCellColor: UIColor = UIColor.white
+    var tableCellTextColor: UIColor = UIColor.black
+    
+    @IBOutlet weak var newEventButton: UIButton!
+    @IBOutlet weak var reloadButton: UIButton!
     
     var events: [Event] = []
     var cellsArray: [UITableViewCell] = []
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet var Table: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DateLabel.text = dateString
@@ -35,6 +65,13 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         if events.count > 0{
             events = order(e: events)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
+        Table.reloadData()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +93,9 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.Date.text = ""
             cell.Subject.text = ""
         }
+        cell.backgroundColor = tableCellColor
+        cell.Date.textColor = tableCellTextColor
+        cell.Subject.textColor = tableCellTextColor
         cellsArray.append(cell)
         return cell
     }

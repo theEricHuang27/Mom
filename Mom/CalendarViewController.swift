@@ -12,8 +12,40 @@ import UserNotifications
 var dateString = ""
 var defaults = UserDefaults.standard
 
-class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ThemedViewController {
+    
+    var backView: UIView { return self.view }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel]? {
+        var labelHolder: [UILabel] = [MonthLabel]
+        labelHolder.append(contentsOf: (daysOfTheWeekStackView.arrangedSubviews as! [UILabel]))
+        return labelHolder
+    }
+    var buttons: [UIButton]? {
+        return [backButton, nextButton]
+    }
+    var textFields: [UITextField]? { return nil }
+    
+    var cellTextColor = UIColor.white
+    var weekendCellTextColor = UIColor.myGrey
+    
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+        if SettingsViewController.isDarkTheme {
+            Calendar.backgroundColor = UIColor.myDeepGrey
+            cellTextColor = UIColor.white
+            weekendCellTextColor = UIColor.myGrey
+        } else {
+            Calendar.backgroundColor = UIColor.white
+            cellTextColor = UIColor.myPurple
+            weekendCellTextColor = UIColor.myMagenta
+        }
+    }
+    
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var daysOfTheWeekStackView: UIStackView!
+    
     @IBOutlet weak var Calendar: UICollectionView!
     @IBOutlet weak var MonthLabel: UILabel!
     
@@ -29,6 +61,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var LeapYearCounter = 3
     var dayCounter = 0
     var cellsArray: [UICollectionViewCell] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentMonth = Months[month]
@@ -39,7 +72,13 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         GetStartDateDayPosition()
         UNUserNotificationCenter.current().delegate = self
         
-        Notifications.generateNotificationFrom(Event(d: Date(), subject: "help me dad", information: "you might need to study asshole"))
+        Notifications.generateNotificationFrom(Event(d: Date(), subject: "help me dad", information: "you might need to study dude"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
+        Calendar.reloadData()
     }
     
     @IBAction func Next(_ sender: Any) {
@@ -147,8 +186,9 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calendar", for: indexPath) as! DateCollectionViewCell
         cell.backgroundColor = UIColor.clear
-        cell.DateLabel.textColor = UIColor.black
+        cell.DateLabel.textColor = cellTextColor
         cell.dot.alpha = 1
+        cell.dot.textColor = cellTextColor
         if !(hasEvent(indexPath: indexPath)){
             cell.dot.alpha = 0
         }
@@ -172,7 +212,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         switch indexPath.row {                  // Makes weekends lightgray color
         case 0,6,7,13,14,20,21,27,28,34,35:       // Weekends
             if Int(cell.DateLabel.text!)! > 0 {
-                cell.DateLabel.textColor = UIColor.lightGray
+                cell.DateLabel.textColor = weekendCellTextColor
             }
         default:
             break
@@ -212,6 +252,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                 cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
             })
         }
+        
     }
     func setDirection(Direction: Int){
         self.Direction = Direction

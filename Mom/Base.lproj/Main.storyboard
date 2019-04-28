@@ -244,6 +244,9 @@
                     <connections>
                         <outlet property="Calendar" destination="pqA-tv-xwF" id="mux-o7-mWP"/>
                         <outlet property="MonthLabel" destination="fZG-hF-LOr" id="Xvb-bo-KgV"/>
+                        <outlet property="backButton" destination="8UY-ZQ-nf0" id="6Ed-iI-53a"/>
+                        <outlet property="daysOfTheWeekStackView" destination="a9f-vS-zWF" id="d6U-aL-ZFQ"/>
+                        <outlet property="nextButton" destination="10o-i4-eEw" id="gn7-wS-Roi"/>
                         <segue destination="fto-Co-tgb" kind="show" identifier="NextView" id="9jW-qg-D2q"/>
                     </connections>
                 </viewController>
@@ -254,6 +257,7 @@
         <!--Next View Controller-->
         <scene sceneID="1Nt-mJ-9Nb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVB-z8-BSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="fto-Co-tgb" customClass="NextViewController" customModule="Mom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iaf-Te-VfJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
@@ -359,10 +363,11 @@
                     <connections>
                         <outlet property="DateLabel" destination="1RY-me-GOm" id="SaK-6s-KVj"/>
                         <outlet property="Table" destination="JZ0-Qd-zVv" id="WZL-L2-NPx"/>
+                        <outlet property="newEventButton" destination="wa7-Sk-3W1" id="h0J-30-4Dy"/>
+                        <outlet property="reloadButton" destination="qfx-e3-pp8" id="grb-6o-nO7"/>
                         <segue destination="cqP-aS-SMs" kind="show" identifier="Description" id="Fdz-xO-n9o"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVB-z8-BSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="356.52173913043481" y="496.875"/>
         </scene>
@@ -517,6 +522,7 @@
         <!--Settings View Controller-->
         <scene sceneID="j1S-k0-sW0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kC5-WQ-ySd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="gDr-a0-52C" customClass="SettingsViewController" customModule="Mom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qET-yU-dcZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
@@ -676,7 +682,6 @@
                         <outlet property="themeLabel" destination="BpE-4v-bbS" id="uo0-gg-uSc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kC5-WQ-ySd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1133.3333333333335" y="1860.9375"/>
         </scene>

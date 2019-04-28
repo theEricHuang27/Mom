@@ -9,6 +9,15 @@ import UIKit
 
 class SettingsViewController: UIViewController, ThemedViewController {
     
+    static var isDarkTheme: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "DarkTheme")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "DarkTheme")
+        }
+    }
+    
     // labels
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var notificationSettingsLabel: UILabel!
@@ -23,13 +32,15 @@ class SettingsViewController: UIViewController, ThemedViewController {
     
     
     var backView: UIView { return self.view }
-    var tabBar: UITabBar { return self.tabBarController!.tabBar }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
         return [themeLabel, notificationSettingsLabel, alertMeBeforeAnEventLabel, snoozeTimeLabel]
     }
     var buttons: [UIButton]? {
         return [lightThemeButton, darkThemeButton, syncWithBlackboardButton, applyButton]
+    }
+    var textFields: [UITextField]? {
+        return [alertTimeBeforeTextField, snoozeTimeTextField]
     }
     
     
@@ -50,26 +61,18 @@ class SettingsViewController: UIViewController, ThemedViewController {
     
     
     @IBAction func lightThemeTouchedUp(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "DarkTheme") {
+        if SettingsViewController.isDarkTheme {
             // change current view as a preview of the theme
-//            UserDefaults.standard.set(false, forKey: "DarkTheme")
-//            self.navigationController?.navigationBar.barTintColor = UIColor.white
-//            self.tabBarController?.tabBar.barTintColor = UIColor.white
-            
-            // this should be the only line in this function once we is a good boy
-            theme(isDarkTheme: false)
+            SettingsViewController.isDarkTheme = false
+            theme(isDarkTheme: SettingsViewController.isDarkTheme)
         }
     }
     
     @IBAction func darkThemeTouchedUp(_ sender: UIButton) {
-        if !UserDefaults.standard.bool(forKey: "DarkTheme") {
+        if !SettingsViewController.isDarkTheme {
             // change current view as a preview of the theme
-//            UserDefaults.standard.set(true, forKey: "DarkTheme")
-//            self.navigationController?.navigationBar.barTintColor = UIColor.myDeepGrey
-//            self.tabBarController?.tabBar.barTintColor = UIColor.myDeepGrey
-            
-            // this should be the only line in this function once we is a good boy
-            theme(isDarkTheme: true)
+            SettingsViewController.isDarkTheme = true
+            theme(isDarkTheme: SettingsViewController.isDarkTheme)
         }
     }
     @IBAction func syncWithBlackboardButtonTouchedUp(_ sender: UIButton) {
@@ -108,7 +111,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         
-        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
         
         navBar.topItem?.title = "Settings"
         
