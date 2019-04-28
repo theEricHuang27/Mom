@@ -14,42 +14,11 @@ var defaults = UserDefaults.standard
 
 class CalendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ThemedViewController {
     
-    var backView: UIView { return self.view }
-    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
-    var labels: [UILabel]? {
-        var labelHolder: [UILabel] = [MonthLabel]
-        labelHolder.append(contentsOf: (daysOfTheWeekStackView.arrangedSubviews as! [UILabel]))
-        return labelHolder
-    }
-    var buttons: [UIButton]? {
-        return [backButton, nextButton]
-    }
-    var textFields: [UITextField]? { return nil }
-    
-    var cellTextColor = UIColor.white
-    var weekendCellTextColor = UIColor.myGrey
-    
-    func theme(isDarkTheme: Bool) {
-        defaultTheme(isDarkTheme: isDarkTheme)
-        if SettingsViewController.isDarkTheme {
-            Calendar.backgroundColor = UIColor.myDeepGrey
-            cellTextColor = UIColor.white
-            weekendCellTextColor = UIColor.myGrey
-        } else {
-            Calendar.backgroundColor = UIColor.white
-            cellTextColor = UIColor.myPurple
-            weekendCellTextColor = UIColor.myMagenta
-        }
-    }
-    
-
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var daysOfTheWeekStackView: UIStackView!
-    
     @IBOutlet weak var Calendar: UICollectionView!
     @IBOutlet weak var MonthLabel: UILabel!
-    
     let Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let DaysOfMonth = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     var DaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
@@ -62,6 +31,19 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var LeapYearCounter = 3
     var dayCounter = 0
     var cellsArray: [UICollectionViewCell] = []
+    var backView: UIView { return self.view }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel]? {
+        var labelHolder: [UILabel] = [MonthLabel]
+        labelHolder.append(contentsOf: (daysOfTheWeekStackView.arrangedSubviews as! [UILabel]))
+        return labelHolder
+    }
+    var buttons: [UIButton]? {
+        return [backButton, nextButton]
+    }
+    var textFields: [UITextField]? { return nil }
+    var cellTextColor = UIColor.white
+    var weekendCellTextColor = UIColor.myGrey
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -301,5 +283,16 @@ extension CalendarViewController : UNUserNotificationCenterDelegate {
         }
         return false
     }
-    
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+        if SettingsViewController.isDarkTheme {
+            Calendar.backgroundColor = UIColor.myDeepGrey
+            cellTextColor = UIColor.white
+            weekendCellTextColor = UIColor.myGrey
+        } else {
+            Calendar.backgroundColor = UIColor.white
+            cellTextColor = UIColor.myPurple
+            weekendCellTextColor = UIColor.myMagenta
+        }
+    }
 }

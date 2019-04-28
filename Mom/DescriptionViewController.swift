@@ -15,7 +15,7 @@ class DescriptionViewController: UIViewController, ThemedViewController {
     var labels: [UILabel]? {
         return [Subject, Day]
     }
-    var buttons: [UIButton]? { return nil }
+    var buttons: [UIButton]? { return [deleteButton] }
     var textFields: [UITextField]? { return nil }
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
@@ -33,6 +33,7 @@ class DescriptionViewController: UIViewController, ThemedViewController {
     @IBOutlet var Day: UILabel!
     @IBOutlet var Description: UITextView!
     var events: [Event] = []
+    @IBOutlet var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

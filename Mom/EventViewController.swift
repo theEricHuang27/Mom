@@ -9,6 +9,12 @@ import UIKit
 
 class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewController {
     
+    @IBOutlet var SubjectTextField: UITextField!
+    @IBOutlet var DatePicker: UIDatePicker!
+    @IBOutlet var InformationTextField: UITextField!
+    @IBOutlet var CreateEventButton: UIButton!
+    @IBOutlet var dateChooser: UIDatePicker!
+    var events: [Event] = []
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
@@ -20,33 +26,17 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
     var textFields: [UITextField]? {
         return [InformationTextField, SubjectTextField]
     }
-    func theme(isDarkTheme: Bool) {
-        defaultTheme(isDarkTheme: isDarkTheme)
-        
-    }
-    
-
-    var events: [Event] = []
-    @IBOutlet var SubjectTextField: UITextField!
-    @IBOutlet var DatePicker: UIDatePicker!
-    @IBOutlet var InformationTextField: UITextField!
-    @IBOutlet var CreateEventButton: UIButton!
-    @IBOutlet var dateChooser: UIDatePicker!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         SubjectTextField.delegate = self
         InformationTextField.delegate = self
         SubjectTextField.becomeFirstResponder()
         dateChooser.setDate(getDate(s: dateString), animated: false)
-        
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
-    
     @IBAction func CreateEvent(_ sender: UIButton) {
         guard let subject = SubjectTextField.text else {return}
         let d: Date = DatePicker.date
@@ -66,7 +56,6 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         }
         _ = navigationController?.popViewController(animated: true)
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if SubjectTextField.isFirstResponder {
             InformationTextField.becomeFirstResponder()
@@ -117,5 +106,8 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         d.minute = 30
         d.timeZone = TimeZone(abbreviation: "EST")
         return (NSCalendar(identifier: NSCalendar.Identifier.gregorian)?.date(from: d as DateComponents))!
+    }
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
     }
 }

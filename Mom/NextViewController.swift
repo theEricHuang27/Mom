@@ -4,7 +4,6 @@
 //
 //  Created by Connor Stange (student LM) on 1/29/19.
 //  Copyright © 2019 Duck Inc. All rights reserved.
-// display
 
 import UIKit
 var time = ""
@@ -13,6 +12,9 @@ var desc = ""
 
 class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ThemedViewController {
     
+    @IBOutlet weak var DateLabel: UILabel!
+    @IBOutlet var Table: UITableView!
+    @IBOutlet weak var newEventButton: UIButton!
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return (self.navigationController?.navigationBar)! }
     var labels: [UILabel]? {
@@ -22,36 +24,16 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [newEventButton]
     }
     var textFields: [UITextField]? { return nil }
-    
-    func theme(isDarkTheme: Bool) {
-        defaultTheme(isDarkTheme: isDarkTheme)
-        if isDarkTheme {
-            Table.backgroundColor = UIColor.myDeepGrey
-            tableCellColor = UIColor.myDeepGrey
-            tableCellTextColor = UIColor.white
-        } else {
-            Table.backgroundColor = UIColor.white
-            tableCellColor = UIColor.white
-            tableCellTextColor = UIColor.black
-        }
-    }
-    
     var tableCellColor: UIColor = UIColor.white
     var tableCellTextColor: UIColor = UIColor.black
-    
-    
-    @IBOutlet weak var newEventButton: UIButton!
-    
-    var loaded = false
     var events: [Event] = []
-    // why have this variable?
     var cellsArray: [UITableViewCell] = []
-    @IBOutlet weak var DateLabel: UILabel!
-    @IBOutlet var Table: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -72,69 +54,54 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
             events = order(e: events)
         }
         self.Reload()
-        
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
         Table.reloadData()
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
+        return 1
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return events.count
-    }
+    
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath) as! EventTableViewCell
-        if indexPath.row < events.count{
-            cell.Date.text = getTime(s: events[indexPath.row].d.description)
-            cell.Subject.text = events[indexPath.row].subject
-        }
-        else{
-            cell.Date.text = ""
-            cell.Subject.text = ""
-        }
-        cell.backgroundColor = tableCellColor
-        cell.Date.textColor = tableCellTextColor
-        cell.Subject.textColor = tableCellTextColor
-        cellsArray.append(cell)
-        
-        cell.Date.text = getTime(s: events[indexPath.section].d.description)
-        cell.Subject.text = events[indexPath.row].subject
-        
-        cell.layer.cornerRadius = 5
-        cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        cell.layoutSubviews()
-        
-        
-//        cellsArray.append(cell)
-        return cell
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return events.count
     }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 50
-//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        
-//        for x in cellsArray {
-//            let cell: UITableViewCell = x
-//            cell.alpha = 1
-//        }
-        
         cell.alpha = 1
         cell.backgroundColor = UIColor.myPurple
     }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath) as! EventTableViewCell
+        cell.Date.text = getTime(s: events[indexPath.section].d.description)
+        cell.Date.textColor = tableCellTextColor
+        cell.Subject.text = events[indexPath.section].subject
+        cell.Subject.textColor = tableCellTextColor
+        cell.backgroundColor = tableCellColor
+        cell.layer.cornerRadius = 5
+        cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        cell.layoutSubviews()
+        cellsArray.append(cell)
+        return cell
+    }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         time = getTime(s: events[indexPath.row].d.description)
         subj = events[indexPath.row].subject
         desc = events[indexPath.row].information
         performSegue(withIdentifier: "Description", sender: self)
     }
+    
     
     func Reload(){
         events = []
@@ -155,6 +122,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         Table.reloadData()
     }
+    
     
     func getTime(s: String) -> String{
         let r: String
@@ -190,6 +158,8 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return r
     }
+    
+    
     func order(e: [Event]) -> [Event]{
         var z = e
         var new: [Event] = []
@@ -216,5 +186,19 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
             z.remove(at: index)
         }
         return new
+    }
+    
+    
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+        if isDarkTheme {
+            Table.backgroundColor = UIColor.myDeepGrey
+            tableCellColor = UIColor.myDeepGrey
+            tableCellTextColor = UIColor.white
+        } else {
+            Table.backgroundColor = UIColor.white
+            tableCellColor = UIColor.white
+            tableCellTextColor = UIColor.black
+        }
     }
 }
