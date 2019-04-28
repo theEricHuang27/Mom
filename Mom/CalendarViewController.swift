@@ -56,6 +56,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         UNUserNotificationCenter.current().delegate = self
         
         Notifications.generateNotificationFrom(Event(d: Date(), subject: "help me dad", information: "you might need to study dude"))
+        
+        navBar.topItem?.title = "Calendar"
     }
     
     override func viewWillAppear(_ animated: Bool) {

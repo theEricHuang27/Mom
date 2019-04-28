@@ -16,7 +16,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var Table: UITableView!
     @IBOutlet weak var newEventButton: UIButton!
     var backView: UIView { return self.view }
-    var navBar: UINavigationBar { return (self.navigationController?.navigationBar)! }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
         return [DateLabel]
     }
