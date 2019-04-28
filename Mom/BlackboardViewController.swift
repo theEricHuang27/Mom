@@ -10,7 +10,15 @@ import UIKit
 import WebKit
 import Kanna
 
-class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
+    
+    
+    var backView: UIView { return self.view }
+    var tabBar: UITabBar { return self.tabBarController!.tabBar }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel]? { return nil }
+    var buttons: [UIButton]? { return nil }
+    
 
     var webView: WKWebView!
     var json: Data!
@@ -19,9 +27,6 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @IBAction func syncWithBlackBoard(_ sender: UIButton) {
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         let configuration = WKWebViewConfiguration()
@@ -31,6 +36,12 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
         webView.navigationDelegate = self
         let request = URLRequest(url: URL(string: "https://lmsd.blackboard.com/webapps/login/?action=relogin")!)
         webView.load(request)
+//        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theme(isDarkTheme: UserDefaults.standard.bool(forKey: "DarkTheme"))
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -53,9 +64,8 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
         }
 
         if(webView.url! == URL(string: "https://lmsd.blackboard.com/learn/api/public/v1/calendars/items?since=\(start)T00:00:00.000Z&until=\(end)T00:00:00.000Z&limit=1000")){
-            webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
-                                       completionHandler: { (html: Any?, error: Error?) in
-                                        do{
+            webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { (html: Any?, error: Error?) in
+                do{
                                             let doc = try Kanna.HTML(html: html as! String, encoding: String.Encoding.utf8)
                                             self.json = doc.body!.text!.data(using: .utf8)!
                                             self.blackboardStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
@@ -91,7 +101,8 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                         } catch let error as NSError {
                                             print(error)
                                         }
-            })
+                                        _ = self.navigationController?.popViewController(animated: true)
+            }
         }
         
     }
@@ -115,5 +126,10 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
         var year = d[...d.firstIndex(of: "-")!]
         year.remove(at: year.firstIndex(of: "-")!)
         return "\(month)/\(day)/\(year)"
+    }
+    
+    func theme(isDarkTheme: Bool) {
+        self.defaultTheme(isDarkTheme: isDarkTheme)
+        // addtional VC specific set up
     }
 }

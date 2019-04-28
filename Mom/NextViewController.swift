@@ -13,6 +13,7 @@ var desc = ""
 
 class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    var loaded = false
     var events: [Event] = []
     // why have this variable?
     var cellsArray: [UITableViewCell] = []
@@ -20,6 +21,10 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var Table: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         DateLabel.text = dateString
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
@@ -36,6 +41,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         if events.count > 0{
             events = order(e: events)
         }
+        self.Reload()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,8 +91,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "Description", sender: self)
     }
     
-    
-    @IBAction func Reload(_ sender: UIButton) {
+    func Reload(){
         events = []
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {

@@ -14,12 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().isTranslucent = true
-//        UINavigationBar.appearance()
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
                 // handle error, or granted is false do something
             if granted {
@@ -29,7 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Notifications.createOptions()
         
-        UserDefaults.standard.register(defaults: ["DarkTheme" : false])
+        UserDefaults.standard.register(defaults: ["DarkTheme": false, "snoozeTime": 5, "reminderTimeBefore": [0, 15]])
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        let tabBarAppearance = UITabBar.appearance()
+        navigationBarAppearance.isTranslucent = false
+        //  must add code to keep dark theme if the setting is there
+        if UserDefaults.standard.bool(forKey: "DarkTheme") {
+            navigationBarAppearance.barTintColor = UIColor.myDeepGrey
+            tabBarAppearance.barTintColor = UIColor.myPurple
+        }
+        else {
+            navigationBarAppearance.barTintColor = UIColor.white
+            tabBarAppearance.barTintColor = UIColor.myPurple
+        }
         
         return true
     }
