@@ -543,7 +543,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpE-4v-bbS">
-                                <rect key="frame" x="50" y="138" width="313.66666666666669" height="20.333333333333343"/>
+                                <rect key="frame" x="50" y="138" width="314" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -584,22 +584,22 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE8-Bl-P63">
-                                <rect key="frame" x="50" y="268.33333333333331" width="263.66666666666669" height="20.333333333333314"/>
+                                <rect key="frame" x="50" y="268.33333333333331" width="264" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="221" translatesAutoresizingMaskIntoConstraints="NO" id="9tx-tx-c31">
-                                <rect key="frame" x="50" y="328.33333333333331" width="313.66666666666669" height="31"/>
+                                <rect key="frame" x="50" y="328.33333333333331" width="314" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-bC-mMs">
-                                        <rect key="frame" x="0.0" y="0.0" width="43.666666666666664" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="31"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGZ-dY-Alj">
-                                        <rect key="frame" x="264.66666666666669" y="0.0" width="51" height="31"/>
+                                        <rect key="frame" x="265" y="0.0" width="51" height="31"/>
                                         <connections>
                                             <action selector="alertBeforeValueChanged:" destination="gDr-a0-52C" eventType="valueChanged" id="aco-7Z-CFX"/>
                                         </connections>
@@ -624,13 +624,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvR-eA-Jib">
-                                <rect key="frame" x="50" y="446.33333333333331" width="263.66666666666669" height="20"/>
+                                <rect key="frame" x="50" y="446.33333333333331" width="264" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex 5:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Zm-eN-HhX">
-                                <rect key="frame" x="50" y="496.33333333333331" width="263.66666666666669" height="26.999999999999943"/>
+                                <rect key="frame" x="50" y="496.33333333333331" width="264" height="26.999999999999943"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="MQC-gq-TGQ"/>
                                 </constraints>
@@ -639,7 +639,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-wG-wEE">
-                                <rect key="frame" x="184.66666666666666" y="733" width="44" height="30"/>
+                                <rect key="frame" x="185" y="733" width="44" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="j1a-lA-aQm"/>
                                 </constraints>
@@ -650,7 +650,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-nv-7Ka">
-                                <rect key="frame" x="132.66666666666666" y="598.33333333333337" width="147.99999999999997" height="54.666666666666629"/>
+                                <rect key="frame" x="133" y="598.33333333333337" width="148" height="54.666666666666629"/>
                                 <state key="normal" title="Sync with Blackboard"/>
                                 <connections>
                                     <action selector="syncWithBlackboardButtonTouchedUp:" destination="gDr-a0-52C" eventType="touchUpInside" id="jcN-jG-eQM"/>
@@ -712,10 +712,10 @@
             </objects>
             <point key="canvasLocation" x="-1133.3333333333335" y="1860.9375"/>
         </scene>
-        <!--View Controller-->
+        <!--Powerschool View Controller-->
         <scene sceneID="gnT-3Y-444">
             <objects>
-                <viewController id="TCN-qf-kbH" sceneMemberID="viewController">
+                <viewController id="TCN-qf-kbH" customClass="PowerschoolViewController" customModule="Mom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w53-Jz-MNd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

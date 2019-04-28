@@ -29,6 +29,7 @@
 		60C1CE1D21DE763F0045CF33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */; };
 		60C1CE2821DE763F0045CF33 /* MomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE2721DE763F0045CF33 /* MomTests.swift */; };
 		60C1CE3321DE76400045CF33 /* MomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE3221DE76400045CF33 /* MomUITests.swift */; };
+		60F22AC92276291F00481573 /* PowerschoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC82276291F00481573 /* PowerschoolViewController.swift */; };
 		67E375030B7136D3BF92A23B /* Pods_Mom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC31C4B05A3A0E7CD1ED4F4 /* Pods_Mom.framework */; };
 		E05F99E822754FF1001B0D58 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99DE22754FF0001B0D58 /* OpenSans-Bold.ttf */; };
 		E05F99E922754FF1001B0D58 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99DF22754FF0001B0D58 /* OpenSans-ExtraBoldItalic.ttf */; };
@@ -92,6 +93,7 @@
 		60C1CE2E21DE76400045CF33 /* MomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE3221DE76400045CF33 /* MomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomUITests.swift; sourceTree = "<group>"; };
 		60C1CE3421DE76400045CF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60F22AC82276291F00481573 /* PowerschoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerschoolViewController.swift; sourceTree = "<group>"; };
 		9D8CB3FE3ABAFE40683B0B66 /* Pods-Mom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mom.debug.xcconfig"; path = "Target Support Files/Pods-Mom/Pods-Mom.debug.xcconfig"; sourceTree = "<group>"; };
 		E05F99DE22754FF0001B0D58 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "Mom/font/OpenSans-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		E05F99DF22754FF0001B0D58 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "Mom/font/OpenSans-ExtraBoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
@@ -191,6 +193,7 @@
 				6012B4D7224AA5DD00B7A481 /* BlackboardViewController.swift */,
 				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
 				60498DE7227151B8009D77C1 /* ThemedViewController.swift */,
+				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
 			);
 			path = Mom;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				E0FAFDD2227548A900DBE1AC /* gifer.swift in Sources */,
 				60498DE8227151B8009D77C1 /* ThemedViewController.swift in Sources */,
 				6012B4D6224AA57700B7A481 /* blackboardJSON.swift in Sources */,
+				60F22AC92276291F00481573 /* PowerschoolViewController.swift in Sources */,
 				6012B4D8224AA5DD00B7A481 /* BlackboardViewController.swift in Sources */,
 				6012B4DA224AA7E400B7A481 /* Notifications.swift in Sources */,
 				51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */,

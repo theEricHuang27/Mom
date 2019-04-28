@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearance = UINavigationBar.appearance()
         let tabBarAppearance = UITabBar.appearance()
         navigationBarAppearance.isTranslucent = false
+        navigationBarAppearance.prefersLargeTitles = true
         //  must add code to keep dark theme if the setting is there
         if UserDefaults.standard.bool(forKey: "DarkTheme") {
             navigationBarAppearance.barTintColor = UIColor.myDeepGrey

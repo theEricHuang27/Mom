@@ -14,7 +14,7 @@ var desc = ""
 class NextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ThemedViewController {
     
     var backView: UIView { return self.view }
-    var navBar: UINavigationBar { return (self.navigationController?.navigationBar)! }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
         return [DateLabel]
     }
