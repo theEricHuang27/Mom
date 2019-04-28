@@ -29,6 +29,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var LeapYearCounter = 3
     var dayCounter = 0
     var cellsArray: [UICollectionViewCell] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentMonth = Months[month]
@@ -40,6 +41,9 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         UNUserNotificationCenter.current().delegate = self
         
         Notifications.generateNotificationFrom(Event(d: Date(), subject: "help me dad", information: "you might need to study asshole"))
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     @IBAction func Next(_ sender: Any) {
