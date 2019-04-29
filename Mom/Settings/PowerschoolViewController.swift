@@ -153,40 +153,40 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                     }
                     for grade in self.GPA{
                         if grade == "A+"{
-                            GPAAVG=GPAAVG+4.3
+                            GPAAVG=GPAAVG+4
                         }
                         else if grade == "A"{
                             GPAAVG=GPAAVG+4
                         }
                         else if grade == "A-"{
-                            GPAAVG=GPAAVG+3.7
+                            GPAAVG=GPAAVG+3.66
                         }
                         else if grade == "B+"{
-                            GPAAVG=GPAAVG+3.3
+                            GPAAVG=GPAAVG+3.33
                         }
                         else if grade == "B"{
                             GPAAVG=GPAAVG+3
                         }
                         else if grade == "B-"{
-                            GPAAVG=GPAAVG+2.7
+                            GPAAVG=GPAAVG+2.66
                         }
                         else if grade == "C+"{
-                            GPAAVG=GPAAVG+2.3
+                            GPAAVG=GPAAVG+2.33
                         }
                         else if grade == "C"{
                             GPAAVG=GPAAVG+2.0
                         }
                         else if grade == "C-"{
-                            GPAAVG=GPAAVG+1.7
+                            GPAAVG=GPAAVG+1.66
                         }
                         else if grade == "D+"{
-                            GPAAVG=GPAAVG+1.3
+                            GPAAVG=GPAAVG+1.33
                         }
                         else if grade == "D"{
                             GPAAVG=GPAAVG+1.0
                         }
                         else if grade == "D-"{
-                            GPAAVG=GPAAVG+0.7
+                            GPAAVG=GPAAVG+0.66
                         }
                         else {
                             miss=miss+1
@@ -202,6 +202,14 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                             self.webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
                                 do {
                                     self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
+                                        defaults.set(grades, forKey: "grades")
+                                    if z == self.links.count - 2
+                                    {
+                                        DispatchQueue.main.asyncAfter( deadline: .now() + .seconds(4), execute: {
+                                            self.navigationController?.popViewController(animated: true)
+                                        })
+                                    }
+                                    
                                 }
                                 catch _ {
                                 }
