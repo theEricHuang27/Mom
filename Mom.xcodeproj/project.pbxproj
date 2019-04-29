@@ -146,6 +146,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		606636CC22768AA900FCA3BF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
+				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
+				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
+				6012B4D7224AA5DD00B7A481 /* BlackboardViewController.swift */,
+				6012B4D5224AA57700B7A481 /* blackboardJSON.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		606636CD22768AB300FCA3BF /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				606636CA2276888900FCA3BF /* GradesViewController.swift */,
+			);
+			path = Grades;
+			sourceTree = "<group>";
+		};
+		606636CE22768AC000FCA3BF /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5192A68C220A17BA009F9A13 /* Event.swift */,
+				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
+				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
+				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
+				5192A6862200D071009F9A13 /* Animations.swift */,
+				606636CF22768ACE00FCA3BF /* VCs */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		606636CF22768ACE00FCA3BF /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				5192A68A2200D272009F9A13 /* NextViewController.swift */,
+				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
+				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
+				5166EA57225CF76300935B8A /* DescriptionViewController.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
 		60C1CE0621DE763B0045CF33 = {
 			isa = PBXGroup;
 			children = (
@@ -172,31 +216,18 @@
 			isa = PBXGroup;
 			children = (
 				60C1CE1221DE763B0045CF33 /* AppDelegate.swift */,
+				606636CE22768AC000FCA3BF /* Calendar */,
+				606636CD22768AB300FCA3BF /* Grades */,
+				606636CC22768AA900FCA3BF /* Settings */,
 				E05F99DD22754FCB001B0D58 /* font */,
 				E0FAFDD1227548A900DBE1AC /* gifer.swift */,
-				E05F99F4227676F5001B0D58 /* loader.gif */,
 				E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */,
-				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
-				5192A6862200D071009F9A13 /* Animations.swift */,
-				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
-				5192A68C220A17BA009F9A13 /* Event.swift */,
-				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
-				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
-				5192A68A2200D272009F9A13 /* NextViewController.swift */,
-				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
-				5166EA57225CF76300935B8A /* DescriptionViewController.swift */,
-				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
-				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
-				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
-				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
-				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
-				60C1CE1E21DE763F0045CF33 /* Info.plist */,
-				6012B4D5224AA57700B7A481 /* blackboardJSON.swift */,
-				6012B4D7224AA5DD00B7A481 /* BlackboardViewController.swift */,
-				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
 				60498DE7227151B8009D77C1 /* ThemedViewController.swift */,
-				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
-				606636CA2276888900FCA3BF /* GradesViewController.swift */,
+				E05F99F4227676F5001B0D58 /* loader.gif */,
+				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
+				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
+				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
+				60C1CE1E21DE763F0045CF33 /* Info.plist */,
 			);
 			path = Mom;
 			sourceTree = "<group>";
@@ -231,6 +262,7 @@
 		E05F99DD22754FCB001B0D58 /* font */ = {
 			isa = PBXGroup;
 			children = (
+				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
 				E05F99DE22754FF0001B0D58 /* OpenSans-Bold.ttf */,
 				E05F99E022754FF0001B0D58 /* OpenSans-BoldItalic.ttf */,
 				E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */,
