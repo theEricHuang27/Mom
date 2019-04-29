@@ -35,7 +35,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
         let myRequest = URLRequest(url: URL(string: "https://powerschool.lmsd.org/public/")!)
         webView.load(myRequest)
         // Do any additional setup after loading the view.
-        navBar.topItem?.title = "Powerschool"
     }
     
     override func viewWillAppear(_ animated: Bool) {

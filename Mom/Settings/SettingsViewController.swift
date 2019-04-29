@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
     @IBOutlet weak var lightThemeButton: UIButton!
     @IBOutlet weak var darkThemeButton: UIButton!
     @IBOutlet weak var syncWithBlackboardButton: UIButton!
+    @IBOutlet weak var syncWithPowerschoolButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     
     
@@ -37,7 +38,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
         return [themeLabel, notificationSettingsLabel, alertMeBeforeAnEventLabel, snoozeTimeLabel]
     }
     var buttons: [UIButton]? {
-        return [lightThemeButton, darkThemeButton, syncWithBlackboardButton, applyButton]
+        return [lightThemeButton, darkThemeButton, syncWithBlackboardButton, syncWithPowerschoolButton, applyButton]
     }
     var textFields: [UITextField]? {
         return [alertTimeBeforeTextField, snoozeTimeTextField]
@@ -77,6 +78,10 @@ class SettingsViewController: UIViewController, ThemedViewController {
     }
     @IBAction func syncWithBlackboardButtonTouchedUp(_ sender: UIButton) {
         self.performSegue(withIdentifier: "toBlackboard", sender: self)
+    }
+    
+    @IBAction func syncWithPowerschoolButtonTouchedUp(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toPowerschool", sender: self)
     }
     
     @IBAction func applyButtonTouchedUp(_ sender: UIButton) {

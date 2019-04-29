@@ -24,7 +24,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         return [newEventButton]
     }
     var textFields: [UITextField]? { return nil }
-    var tableCellColor: UIColor = UIColor.white
+    var tableCellColor: UIColor = UIColor.clear
     var tableCellTextColor: UIColor = UIColor.black
     var events: [Event] = []
     var cellsArray: [UITableViewCell] = []
@@ -86,7 +86,6 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.Date.textColor = tableCellTextColor
         cell.Subject.text = events[indexPath.section].subject
         cell.Subject.textColor = tableCellTextColor
-        cell.backgroundColor = tableCellColor
         cell.layer.cornerRadius = 5
         cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cell.layoutSubviews()

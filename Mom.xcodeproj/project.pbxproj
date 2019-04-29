@@ -22,6 +22,7 @@
 		6012B4DA224AA7E400B7A481 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012B4D9224AA7E400B7A481 /* Notifications.swift */; };
 		60498DE4226F84C1009D77C1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498DE3226F84C1009D77C1 /* SettingsViewController.swift */; };
 		60498DE8227151B8009D77C1 /* ThemedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498DE7227151B8009D77C1 /* ThemedViewController.swift */; };
+		606636CB2276888900FCA3BF /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606636CA2276888900FCA3BF /* GradesViewController.swift */; };
 		60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1221DE763B0045CF33 /* AppDelegate.swift */; };
 		60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1421DE763B0045CF33 /* ViewController.swift */; };
 		60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1621DE763B0045CF33 /* Main.storyboard */; };
@@ -41,9 +42,9 @@
 		E05F99EF22754FF1001B0D58 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99E522754FF1001B0D58 /* OpenSans-Regular.ttf */; };
 		E05F99F022754FF1001B0D58 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */; };
 		E05F99F122754FF1001B0D58 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99E722754FF1001B0D58 /* OpenSans-Italic.ttf */; };
+		E05F99F5227676F5001B0D58 /* loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = E05F99F4227676F5001B0D58 /* loader.gif */; };
 		E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */; };
 		E0FAFDD2227548A900DBE1AC /* gifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FAFDD1227548A900DBE1AC /* gifer.swift */; };
-		E0FAFDD4227549DA00DBE1AC /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E0FAFDD3227549DA00DBE1AC /* loading.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		6012B4D9224AA7E400B7A481 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		60498DE3226F84C1009D77C1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		60498DE7227151B8009D77C1 /* ThemedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedViewController.swift; sourceTree = "<group>"; };
+		606636CA2276888900FCA3BF /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE1221DE763B0045CF33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C1CE1421DE763B0045CF33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,9 +107,9 @@
 		E05F99E522754FF1001B0D58 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Mom/font/OpenSans-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "Mom/font/OpenSans-ExtraBold.ttf"; sourceTree = SOURCE_ROOT; };
 		E05F99E722754FF1001B0D58 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "Mom/font/OpenSans-Italic.ttf"; sourceTree = SOURCE_ROOT; };
+		E05F99F4227676F5001B0D58 /* loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loader.gif; sourceTree = "<group>"; };
 		E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleConstants.swift; sourceTree = "<group>"; };
 		E0FAFDD1227548A900DBE1AC /* gifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifer.swift; sourceTree = "<group>"; };
-		E0FAFDD3227549DA00DBE1AC /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		606636CC22768AA900FCA3BF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
+				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
+				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
+				6012B4D7224AA5DD00B7A481 /* BlackboardViewController.swift */,
+				6012B4D5224AA57700B7A481 /* blackboardJSON.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		606636CD22768AB300FCA3BF /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				606636CA2276888900FCA3BF /* GradesViewController.swift */,
+			);
+			path = Grades;
+			sourceTree = "<group>";
+		};
+		606636CE22768AC000FCA3BF /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5192A68C220A17BA009F9A13 /* Event.swift */,
+				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
+				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
+				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
+				5192A6862200D071009F9A13 /* Animations.swift */,
+				606636CF22768ACE00FCA3BF /* VCs */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		606636CF22768ACE00FCA3BF /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				5192A68A2200D272009F9A13 /* NextViewController.swift */,
+				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
+				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
+				5166EA57225CF76300935B8A /* DescriptionViewController.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
 		60C1CE0621DE763B0045CF33 = {
 			isa = PBXGroup;
 			children = (
@@ -170,30 +216,18 @@
 			isa = PBXGroup;
 			children = (
 				60C1CE1221DE763B0045CF33 /* AppDelegate.swift */,
+				606636CE22768AC000FCA3BF /* Calendar */,
+				606636CD22768AB300FCA3BF /* Grades */,
+				606636CC22768AA900FCA3BF /* Settings */,
 				E05F99DD22754FCB001B0D58 /* font */,
 				E0FAFDD1227548A900DBE1AC /* gifer.swift */,
 				E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */,
-				E0FAFDD3227549DA00DBE1AC /* loading.gif */,
-				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
-				5192A6862200D071009F9A13 /* Animations.swift */,
-				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
-				5192A68C220A17BA009F9A13 /* Event.swift */,
-				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
-				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
-				5192A68A2200D272009F9A13 /* NextViewController.swift */,
-				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
-				5166EA57225CF76300935B8A /* DescriptionViewController.swift */,
-				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
-				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
-				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
-				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
-				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
-				60C1CE1E21DE763F0045CF33 /* Info.plist */,
-				6012B4D5224AA57700B7A481 /* blackboardJSON.swift */,
-				6012B4D7224AA5DD00B7A481 /* BlackboardViewController.swift */,
-				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
 				60498DE7227151B8009D77C1 /* ThemedViewController.swift */,
-				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
+				E05F99F4227676F5001B0D58 /* loader.gif */,
+				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
+				60C1CE1B21DE763F0045CF33 /* LaunchScreen.storyboard */,
+				60C1CE1921DE763F0045CF33 /* Assets.xcassets */,
+				60C1CE1E21DE763F0045CF33 /* Info.plist */,
 			);
 			path = Mom;
 			sourceTree = "<group>";
@@ -228,6 +262,7 @@
 		E05F99DD22754FCB001B0D58 /* font */ = {
 			isa = PBXGroup;
 			children = (
+				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
 				E05F99DE22754FF0001B0D58 /* OpenSans-Bold.ttf */,
 				E05F99E022754FF0001B0D58 /* OpenSans-BoldItalic.ttf */,
 				E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */,
@@ -352,7 +387,6 @@
 				60C1CE1D21DE763F0045CF33 /* LaunchScreen.storyboard in Resources */,
 				E05F99EE22754FF1001B0D58 /* OpenSans-SemiBold.ttf in Resources */,
 				E05F99E922754FF1001B0D58 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				E0FAFDD4227549DA00DBE1AC /* loading.gif in Resources */,
 				E05F99EA22754FF1001B0D58 /* OpenSans-BoldItalic.ttf in Resources */,
 				60C1CE1A21DE763F0045CF33 /* Assets.xcassets in Resources */,
 				E05F99E822754FF1001B0D58 /* OpenSans-Bold.ttf in Resources */,
@@ -360,6 +394,7 @@
 				E05F99ED22754FF1001B0D58 /* OpenSans-Light.ttf in Resources */,
 				E05F99EF22754FF1001B0D58 /* OpenSans-Regular.ttf in Resources */,
 				60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */,
+				E05F99F5227676F5001B0D58 /* loader.gif in Resources */,
 				E05F99F022754FF1001B0D58 /* OpenSans-ExtraBold.ttf in Resources */,
 				E05F99F122754FF1001B0D58 /* OpenSans-Italic.ttf in Resources */,
 			);
@@ -444,6 +479,7 @@
 				5192A6872200D071009F9A13 /* Animations.swift in Sources */,
 				E0FAFDD2227548A900DBE1AC /* gifer.swift in Sources */,
 				60498DE8227151B8009D77C1 /* ThemedViewController.swift in Sources */,
+				606636CB2276888900FCA3BF /* GradesViewController.swift in Sources */,
 				6012B4D6224AA57700B7A481 /* blackboardJSON.swift in Sources */,
 				60F22AC92276291F00481573 /* PowerschoolViewController.swift in Sources */,
 				6012B4D8224AA5DD00B7A481 /* BlackboardViewController.swift in Sources */,
