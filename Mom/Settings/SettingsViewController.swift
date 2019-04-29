@@ -86,7 +86,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
     
     @IBAction func applyButtonTouchedUp(_ sender: UIButton) {
         
-        if alertBeforeSwitch.isOn {
+        if !alertBeforeSwitch.isOn {
             Notifications.reminderDateComponents = nil
         } else {
             let dateComponents = Calendar.current.dateComponents([.minute, .hour], from: (notificationTimeBeforeDatePicker?.date)!)

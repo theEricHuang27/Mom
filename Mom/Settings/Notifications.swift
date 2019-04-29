@@ -25,8 +25,10 @@ class Notifications : NSObject {
             // MUST FIND WAY TO STORE NIL
             // try using object(forKey:) again
             if let arr =  UserDefaults.standard.array(forKey: "reminderTimeBefore") as! [Int]? {
+                print("getting \(DateComponents(hour: arr[0], minute: arr[1])) from \(UserDefaults.standard.array(forKey: "reminderTimeBefore") as! [Int])")
                 return DateComponents(hour: arr[0], minute: arr[1])
             } else {
+                print("returning nil")
                 return nil
             }
         }
@@ -34,6 +36,7 @@ class Notifications : NSObject {
             if let comps = newValue {
                 let arr = [comps.hour, comps.minute]
                 UserDefaults.standard.set(arr, forKey: "reminderTimeBefore")
+                print("setting \(UserDefaults.standard.array(forKey: "reminderTimeBefore") as! [Int]? ?? [0]) from \([comps.hour, comps.minute])")
             } else {
                 UserDefaults.standard.set(nil, forKey: "reminderTimeBefore")
             }

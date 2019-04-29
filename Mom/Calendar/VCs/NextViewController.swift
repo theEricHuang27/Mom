@@ -73,6 +73,12 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         return events.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let newView =  UIView()
+        newView.backgroundColor = tableCellColor
+        return newView
+    }
+    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 1

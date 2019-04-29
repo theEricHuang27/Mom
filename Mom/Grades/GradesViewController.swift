@@ -18,12 +18,17 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     var labels: [UILabel]? { return [gpaLabel, gpaScoreLabel] }
     var buttons: [UIButton]? { return nil }
     var textFields: [UITextField]? { return nil }
+    
+    var tableCellBackgroundColor: UIColor = UIColor.white
+    
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
         if isDarkTheme {
             tableView.backgroundColor = UIColor.myDeepGrey
+            tableCellBackgroundColor = UIColor.myDeepGrey
         } else {
             tableView.backgroundColor = UIColor.white
+            tableCellBackgroundColor = UIColor.white
         }
     }
     
@@ -42,6 +47,8 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
+        gpaScoreLabel.text = String(format: "%.2f", GPAAVG)
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +81,11 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let newView =  UIView()
+        newView.backgroundColor = tableCellBackgroundColor
+        return newView
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // make a view controller that could view like the description of an event
