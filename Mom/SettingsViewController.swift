@@ -76,6 +76,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
         }
     }
     @IBAction func syncWithBlackboardButtonTouchedUp(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toBlackboard", sender: self)
     }
     
     @IBAction func applyButtonTouchedUp(_ sender: UIButton) {

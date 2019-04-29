@@ -74,11 +74,11 @@
             </objects>
             <point key="canvasLocation" x="-388" y="1861"/>
         </scene>
-        <!--Blackboard-->
+        <!--Powerschool-->
         <scene sceneID="gbM-CQ-dp3">
             <objects>
                 <navigationController id="XfA-uX-UAQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Blackboard" id="uct-wg-SoV"/>
+                    <tabBarItem key="tabBarItem" title="Powerschool" id="uct-wg-SoV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gDQ-a2-e0R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -544,9 +544,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpE-4v-bbS">
-
                                 <rect key="frame" x="179.33333333333334" y="138" width="55.666666666666657" height="20.333333333333343"/>
-
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -581,14 +579,12 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE8-Bl-P63">
-
                                 <rect key="frame" x="124.33333333333333" y="268.33333333333331" width="165.66666666666669" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="221" translatesAutoresizingMaskIntoConstraints="NO" id="9tx-tx-c31">
-
                                 <rect key="frame" x="50" y="318.66666666666669" width="314" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-bC-mMs">
@@ -623,15 +619,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvR-eA-Jib">
-
                                 <rect key="frame" x="50" y="436.66666666666669" width="314" height="20"/>
-
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex 5:00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Zm-eN-HhX">
-
                                 <rect key="frame" x="50" y="486.66666666666669" width="314" height="27.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="MQC-gq-TGQ"/>
@@ -652,13 +645,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-nv-7Ka">
-
                                 <rect key="frame" x="133" y="588.66666666666663" width="148" height="64.333333333333371"/>
-
                                 <state key="normal" title="Sync with Blackboard"/>
                                 <connections>
                                     <action selector="syncWithBlackboardButtonTouchedUp:" destination="gDr-a0-52C" eventType="touchUpInside" id="jcN-jG-eQM"/>
-                                    <segue destination="9F1-5e-FWk" kind="show" id="xup-Gk-EHr"/>
+                                    <segue destination="9F1-5e-FWk" kind="show" identifier="toBlackboard" id="xup-Gk-EHr"/>
                                 </connections>
                             </button>
                         </subviews>
