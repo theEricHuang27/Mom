@@ -149,11 +149,11 @@
 		606636CC22768AA900FCA3BF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
 				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
 				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
 				6012B4D7224AA5DD00B7A481 /* BlackboardViewController.swift */,
 				6012B4D5224AA57700B7A481 /* blackboardJSON.swift */,
+				6012B4D9224AA7E400B7A481 /* Notifications.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

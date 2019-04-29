@@ -44,6 +44,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
         return [alertTimeBeforeTextField, snoozeTimeTextField]
     }
     
+    var hasBeenChanged = false
     
     @IBOutlet weak var alertTimeBeforeTextField: UITextField!
     @IBOutlet weak var snoozeTimeTextField: UITextField!
@@ -85,7 +86,11 @@ class SettingsViewController: UIViewController, ThemedViewController {
     }
     
     @IBAction func applyButtonTouchedUp(_ sender: UIButton) {
-        
+        saveChanges()
+    }
+    
+    func saveChanges() {
+        if !hasBeenChanged { return }
         if !alertBeforeSwitch.isOn {
             Notifications.reminderDateComponents = nil
         } else {
@@ -123,31 +128,36 @@ class SettingsViewController: UIViewController, ThemedViewController {
         
     }
     
-    // so should i make them able to test out the dark theme or not
-    // if i make it so they can't they have to save changes before viewing the theme
-    // if i make it so they can, i have to use this function to stop them from leaving the view controller without applying
-    //      otherwise the rest of the app won't be on the new theme
-    // first option seems easier
-    //      should probaby make it a switch then, instead of using two labels
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        resetNotificationDatePicker()
+        resetSnoozeTimeDatePicker()
+    }
     
-    // or i could make it so that you don't have to hit apply when changing themes
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        
-//        let alertController = UIAlertController(title: "Save Changes?", message: nil, preferredStyle: .alert)
-//
-//        let okAction = UIAlertAction(title: "Leave", style: .destructive) { (action) in
-//
-//        }
-//        let denyAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
-//            self.present(self, animated: false, completion: nil)
-//        }
-//
-//        alertController.addAction(denyAction)
-//        alertController.addAction(okAction)
-//
-//        self.present(alertController, animated: true, completion: nil)
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        hasBeenChanged = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if !hasBeenChanged { return }
+        
+        let alertController = UIAlertController(title: "Save Changes?", message: nil, preferredStyle: .alert)
+
+        let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (action) in
+            
+        }
+        let saveAction = UIAlertAction(title: "Save", style: .default) { (action) in
+            self.saveChanges()
+        }
+
+        alertController.addAction(saveAction)
+        alertController.addAction(leaveAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -157,6 +167,15 @@ class SettingsViewController: UIViewController, ThemedViewController {
         notificationTimeBeforeDatePicker = UIDatePicker()
         notificationTimeBeforeDatePicker?.datePickerMode = .countDownTimer
         notificationTimeBeforeDatePicker?.minuteInterval = 5
+        
+        resetNotificationDatePicker()
+        
+        notificationTimeBeforeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
+        alertTimeBeforeTextField.inputView = notificationTimeBeforeDatePicker
+        
+    }
+    
+    func resetNotificationDatePicker() {
         if let components = Notifications.reminderDateComponents {
             if let startDate = Calendar.current.date(from: components) {
                 notificationTimeBeforeDatePicker?.setDate(startDate, animated: false)
@@ -165,21 +184,22 @@ class SettingsViewController: UIViewController, ThemedViewController {
         } else {
             alertTimeBeforeTextField.text = "None"
         }
-        
-        notificationTimeBeforeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
-        alertTimeBeforeTextField.inputView = notificationTimeBeforeDatePicker
-        
     }
     
     func setUpSnoozeTimeDatePicker() {
         snoozeTimeDatePicker = UIDatePicker()
         snoozeTimeDatePicker?.datePickerMode = .countDownTimer
-        if let startDate = Calendar.current.date(from: DateComponents(minute: Notifications.snoozeTime)) {
-            snoozeTimeDatePicker?.setDate(startDate, animated: false)
-        }
+
+        resetSnoozeTimeDatePicker()
         
         snoozeTimeDatePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
         snoozeTimeTextField.inputView = snoozeTimeDatePicker
+    }
+    
+    func resetSnoozeTimeDatePicker() {
+        if let startDate = Calendar.current.date(from: DateComponents(minute: Notifications.snoozeTime)) {
+            snoozeTimeDatePicker?.setDate(startDate, animated: false)
+        }
         snoozeTimeTextField.text = "\(Notifications.snoozeTime) minutes"
     }
     
@@ -191,6 +211,7 @@ class SettingsViewController: UIViewController, ThemedViewController {
             let dateComponents = Calendar.current.dateComponents([.minute], from: datePicker.date)
             snoozeTimeTextField.text = "\(dateComponents.minute ?? 0) minutes"
         }
+        hasBeenChanged = true
     }
     
     func theme(isDarkTheme: Bool) {
