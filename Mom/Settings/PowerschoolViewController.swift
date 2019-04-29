@@ -9,6 +9,10 @@
 import UIKit
 import Kanna
 import WebKit
+
+var GPAAVG = 0.0
+var grades: [String] = []
+
 class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
     
     var backView: UIView { return self.view }
@@ -18,7 +22,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
     var textFields: [UITextField]? { return nil }
     @IBOutlet var webView: WKWebView!
     var links: [String] = []
-    var grades: [String] = []
     var GPA:[String]=[]
     var timer : Timer?
     var click = 0
@@ -85,7 +88,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         }
                         ghold = "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count-2)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char-2)]) \(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char+count2)])"
                         print(ghold)
-                        self.grades.append(ghold)
+                        grades.append(ghold)
                         count2=0
                         count=93
                     }
@@ -104,7 +107,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
             webView.load(request)
             webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html: Any?, error: Error?) in
                 do {
-                    var GPAAVG = 0.0
+                 
                     let htmlDoc = try Kanna.HTML(html: html as! String, encoding: String.Encoding.utf8, option: kDefaultHtmlParseOption)
                     var html = htmlDoc.innerHTML
                     var holder = ""

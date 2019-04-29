@@ -29,7 +29,7 @@ class GradesViewController: UIViewController, ThemedViewController {
         // Do any additional setup after loading the view.
         navBar.topItem?.title = "Grades"
         
-//        gpaScoreLabel.text = PowerschoolViewController.GPA[0]
+        gpaScoreLabel.text = String(format: "%.2f", GPAAVG)
     }
     
     override func viewWillAppear(_ animated: Bool) {
