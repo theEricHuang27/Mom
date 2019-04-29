@@ -13,6 +13,7 @@ import WebKit
 var GPAAVG = 0.0
 var grades: [String] = []
 
+
 class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
     
     var backView: UIView { return self.view }
@@ -35,9 +36,10 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let myRequest = URLRequest(url: URL(string: "https://powerschool.lmsd.org/public/")!)
         webView.load(myRequest)
-        // Do any additional setup after loading the view.
+//         Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -191,7 +193,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         }
                     }
                     GPAAVG=GPAAVG/Double(self.GPA.count-miss)
-                    print(GPAAVG)
+                    defaults.set(GPAAVG, forKey: "GPA")
                     
                     print(self.links)
                     for z in 0...self.links.count-2{
@@ -207,6 +209,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         })
                         //                        Thread.sleep(until: Date(timeIntervalSinceNow: 5))
                     }
+                    defaults.set(grades, forKey: "grades")
                 }
                 catch _ {
                 }

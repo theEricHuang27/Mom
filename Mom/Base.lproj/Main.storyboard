@@ -69,8 +69,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="he1-yU-sss">
-                                <rect key="frame" x="87" y="342" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingSign" translatesAutoresizingMaskIntoConstraints="NO" id="he1-yU-sss">
+                                <rect key="frame" x="79" y="278.5" width="256" height="256"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lM7-jp-F5b">
-                                <rect key="frame" x="183.5" y="94" width="47.5" height="50"/>
+                                <rect key="frame" x="183" y="94" width="48" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2OF-hA-D4u"/>
                                 </constraints>
@@ -844,6 +844,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingSign" translatesAutoresizingMaskIntoConstraints="NO" id="jXn-Pw-MZ0">
+                                <rect key="frame" x="79" y="278.5" width="256" height="256"/>
+                            </imageView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFr-E5-JSi">
                                 <rect key="frame" x="87" y="175" width="240" height="511"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -856,9 +859,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nFr-E5-JSi" firstAttribute="leading" secondItem="BIh-cp-cnn" secondAttribute="leading" constant="87" id="C3U-ce-MmE"/>
+                            <constraint firstItem="jXn-Pw-MZ0" firstAttribute="centerX" secondItem="w53-Jz-MNd" secondAttribute="centerX" id="Rbr-yn-5VH"/>
                             <constraint firstItem="nFr-E5-JSi" firstAttribute="top" secondItem="BIh-cp-cnn" secondAttribute="top" constant="87" id="Taf-Y7-xgd"/>
                             <constraint firstItem="BIh-cp-cnn" firstAttribute="bottom" secondItem="nFr-E5-JSi" secondAttribute="bottom" constant="127" id="dxD-VZ-Kr6"/>
                             <constraint firstItem="BIh-cp-cnn" firstAttribute="trailing" secondItem="nFr-E5-JSi" secondAttribute="trailing" constant="87" id="pWd-XY-AcL"/>
+                            <constraint firstItem="jXn-Pw-MZ0" firstAttribute="centerY" secondItem="w53-Jz-MNd" secondAttribute="centerY" id="tQn-9x-fbP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BIh-cp-cnn"/>
                     </view>
@@ -872,6 +877,9 @@
             <point key="canvasLocation" x="-1133" y="2555"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="loadingSign" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Dgx-7H-IYq"/>
     </inferredMetricsTieBreakers>

@@ -65,7 +65,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     
@@ -101,9 +101,9 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        time = getTime(s: events[indexPath.row].d.description)
-        subj = events[indexPath.row].subject
-        desc = events[indexPath.row].information
+        time = getTime(s: events[indexPath.section].d.description)
+        subj = events[indexPath.section].subject
+        desc = events[indexPath.section].information
         performSegue(withIdentifier: "Description", sender: self)
     }
     
@@ -140,7 +140,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         if m >= 16{
             m = m-16
             if m == 0{
-                r = "12:00 PM"
+                r = "12\(time) PM"
             }
             else if m >= 10{
                 r = "\(m)\(time) PM"
@@ -152,7 +152,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         else{
             m = m-4
             if m == 0{
-                r = "12:00 AM"
+                r = "12\(time) AM"
             }
             else if m >= 10{
                 r = "\(m)\(time) AM"
