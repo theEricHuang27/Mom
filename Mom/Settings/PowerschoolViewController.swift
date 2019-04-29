@@ -35,9 +35,10 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let myRequest = URLRequest(url: URL(string: "https://powerschool.lmsd.org/public/")!)
         webView.load(myRequest)
-        // Do any additional setup after loading the view.
+//         Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
