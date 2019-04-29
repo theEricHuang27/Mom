@@ -53,11 +53,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
         self.webView.load( URLRequest(url: URL(string: "https://powerschool.lmsd.org/guardian/"+self.links[0])!))
         self.click=self.click+1
         self.webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
-            do {
-                self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
-            }
-            catch _ {
-            }
+            self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
         })
     }
     
@@ -132,7 +128,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                             count=0
                         }
                     }
-                    var c = self.links.count
+                    let c = self.links.count
                     print(c)
                     for i in 1...c{
                         if "\(self.links[c-i][self.links[c-i].index(self.links[c-i].firstIndex(of: "s")!,offsetBy: self.links[c-i].count-2)])" != "Y"{
