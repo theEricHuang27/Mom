@@ -28,7 +28,7 @@ extension UIColor {
 }
 
 extension UIFont {
-    
+
 }
 
 class style {

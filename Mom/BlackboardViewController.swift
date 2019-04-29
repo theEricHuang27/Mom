@@ -27,7 +27,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingGif.image = UIImage.gif(name: "loading")
+        loadingGif.image = UIImage.gif(name: "loader")
 //        loadingGif.loadGif(name: "loading")
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
