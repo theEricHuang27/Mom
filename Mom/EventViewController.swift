@@ -32,11 +32,20 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         InformationTextField.delegate = self
         SubjectTextField.becomeFirstResponder()
         dateChooser.setDate(getDate(s: dateString), animated: false)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBAction func CreateEvent(_ sender: UIButton) {
         guard let subject = SubjectTextField.text else {return}
         let d: Date = DatePicker.date
