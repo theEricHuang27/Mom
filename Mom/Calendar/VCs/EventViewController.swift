@@ -53,13 +53,17 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
             if let loadedEvents = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? [Event] {
                 events = loadedEvents
-                events.append(Event(d: d, subject: subject, information: information))
+                let event = Event(d: d, subject: subject, information: information)
+                Notifications.generateNotificationFrom(event)
+                events.append(event)
                 let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
                 defaults.set(eventData, forKey: "\(dateString)*1")
             }
         }
         else{
-            events.append(Event(d: d, subject: subject, information: information))
+            let event = Event(d: d, subject: subject, information: information)
+            Notifications.generateNotificationFrom(event)
+            events.append(event)
             let eventData = NSKeyedArchiver.archivedData(withRootObject: events)
             defaults.set(eventData, forKey: "\(dateString)*1")
         }

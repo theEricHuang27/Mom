@@ -80,6 +80,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                                 formatter.formatOptions.insert(ISO8601DateFormatter.Options.withFractionalSeconds)
                                                 let date =                                                 formatter.date(from: results.start!)!
                                                 let event = Event(d: date, subject: subject, information: information)
+                                                Notifications.generateNotificationFrom(event)
                                                 let dateString = self.getDate(d: event.d)
                                                 // checks if it exists
                                                 if let loadedData = defaults.data(forKey: "\(dateString)*2"){
