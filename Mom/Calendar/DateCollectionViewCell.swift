@@ -9,17 +9,19 @@
 import UIKit
 
 class DateCollectionViewCell: UICollectionViewCell {
+    // Labels for cells in table view in CalendarView
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet weak var Circle: UIView!
     @IBOutlet var dot: UILabel!
     
+    // Draws a fancy shmancy circle around a calendar day
     func DrawCircle(){
         let circleCenter = Circle.center
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: (Circle.bounds.width/2 - 5), startAngle: -CGFloat.pi/2, endAngle: 2*CGFloat.pi, clockwise: true)
         let circleLayer = CAShapeLayer()
         circleLayer.path = circlePath.cgPath
         circleLayer.strokeColor = UIColor.red.cgColor
-        circleLayer.lineWidth = 2
+        circleLayer.lineWidth = 4
         circleLayer.strokeEnd = 0
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineCap = CAShapeLayerLineCap.round

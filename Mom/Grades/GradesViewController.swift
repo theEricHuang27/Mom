@@ -94,7 +94,7 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
         }
 //        cell.textLabel?.text = grades[indexPath.section]
         cell.layer.cornerRadius = 5
-        cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        cell.separatorInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         cell.layoutSubviews()
         return cell
     }

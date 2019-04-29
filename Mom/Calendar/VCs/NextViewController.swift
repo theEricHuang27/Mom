@@ -15,6 +15,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet var Table: UITableView!
     @IBOutlet weak var newEventButton: UIButton!
+    // Themed View Controller
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
@@ -29,12 +30,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
     var events: [Event] = []
     var cellsArray: [UITableViewCell] = []
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
+    // Creates a table for the events of the given day
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DateLabel.text = dateString
@@ -58,34 +54,35 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         Table.reloadData()
     }
     
-    
+    // Creates individual sections in order to better distance events
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    
+    // Distances events
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
-    
+    // Creates sections based on number of events
     func numberOfSections(in tableView: UITableView) -> Int {
         return events.count
     }
     
+    // Colors the tableview
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let newView =  UIView()
         newView.backgroundColor = tableCellColor
         return newView
     }
     
-    
+    // Colors cells
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 1
         cell.backgroundColor = UIColor.myPurple
     }
     
-    
+    // Creates cells with a date and a subject based on an event
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Table", for: indexPath) as! EventTableViewCell
         cell.Date.text = getTime(s: events[indexPath.section].d.description)
@@ -93,13 +90,13 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.Subject.text = events[indexPath.section].subject
         cell.Subject.textColor = tableCellTextColor
         cell.layer.cornerRadius = 5
-        cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        cell.separatorInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         cell.layoutSubviews()
         cellsArray.append(cell)
         return cell
     }
     
-    
+    // Creates a segue to DescriptionViewController to see everything about the event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         time = getTime(s: events[indexPath.section].d.description)
         subj = events[indexPath.section].subject
@@ -107,7 +104,7 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "Description", sender: self)
     }
     
-    
+    // Reloads the events
     func Reload(){
         events = []
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
@@ -128,72 +125,64 @@ class NextViewController: UIViewController, UITableViewDelegate, UITableViewData
         Table.reloadData()
     }
     
-    
+    // Func: getTime
+    // Input: String Date ("mm/dd/yyyy")
+    // Output: Time representive of input
     func getTime(s: String) -> String{
-        let r: String
+        let returnStr: String
         var time = s[s.firstIndex(of: ":")!...s.lastIndex(of: ":")!]
         time.remove(at: time.lastIndex(of: ":")!)
         var hour = s[s.firstIndex(of: " ")!...s.firstIndex(of: ":")!]
         hour.remove(at: hour.firstIndex(of: " ")!)
         hour.remove(at: hour.firstIndex(of: ":")!)
-        var m = Int(hour)!
-        if m >= 16{
-            m = m-16
-            if m == 0{
-                r = "12\(time) PM"
-            }
-            else if m >= 10{
-                r = "\(m)\(time) PM"
-            }
-            else{
-                r = " \(m)\(time) PM"
-            }
+        var hours = Int(hour)!
+        if hours >= 16{
+            hours = hours-16
+            if hours == 0{ returnStr = "12\(time) PM" }
+            else if hours >= 10{ returnStr = "\(hours)\(time) PM" }
+            else{ returnStr = " \(hours)\(time) PM" }
         }
         else{
-            m = m-4
-            if m == 0{
-                r = "12\(time) AM"
-            }
-            else if m >= 10{
-                r = "\(m)\(time) AM"
-            }
-            else{
-                r = " \(m)\(time) AM"
-            }
+            hours = hours-4
+            if hours == 0{ returnStr = "12\(time) AM" }
+            else if hours >= 10{ returnStr = "\(hours)\(time) AM" }
+            else{ returnStr = "\(hours)\(time) AM" }
         }
-        return r
+        return returnStr
     }
     
-    
+    // Func: order
+    // Input: Array of Events
+    // Output: Array of Events ordered by time
     func order(e: [Event]) -> [Event]{
-        var z = e
-        var new: [Event] = []
+        var eventz = e
+        var returnEvents: [Event] = []
         var next: Event = Event()
         var index: Int = 0
         var lowest = 2500
-        var a: String
-        var b: Substring
-        for _ in 0...z.count-1{
-            for y in z{
-                a = "\(y.d.description)"
-                b = a[a.firstIndex(of: " ")!...a.lastIndex(of: ":")!]
-                b.remove(at: b.firstIndex(of: " ")!)
-                b.remove(at: b.firstIndex(of: ":")!)
-                b.remove(at: b.firstIndex(of: ":")!)
-                if Int("\(b)")! < lowest{
-                    lowest = Int("\(b)")!
-                    next = y
-                    index = z.firstIndex(of: y)!
+        var str1: String
+        var str2: Substring
+        for _ in 0...eventz.count-1{
+            for event in eventz{
+                str1 = "\(event.d.description)"
+                str2 = str1[str1.firstIndex(of: " ")!...str1.lastIndex(of: ":")!]
+                str2.remove(at: str2.firstIndex(of: " ")!)
+                str2.remove(at: str2.firstIndex(of: ":")!)
+                str2.remove(at: str2.firstIndex(of: ":")!)
+                if Int("\(str2)")! < lowest{
+                    lowest = Int("\(str2)")!
+                    next = event
+                    index = eventz.firstIndex(of: event)!
                 }
             }
             lowest = 2500
-            new.append(next)
-            z.remove(at: index)
+            returnEvents.append(next)
+            eventz.remove(at: index)
         }
-        return new
+        return returnEvents
     }
     
-    
+    // Themes the components of the view
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
         if isDarkTheme {

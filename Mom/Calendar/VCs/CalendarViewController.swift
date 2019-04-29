@@ -31,6 +31,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var LeapYearCounter = 3
     var dayCounter = 0
     var cellsArray: [UICollectionViewCell] = []
+    // Themed View Controller
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
@@ -44,7 +45,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var textFields: [UITextField]? { return nil }
     var cellTextColor = UIColor.white
     var weekendCellTextColor = UIColor.myGrey
-
+    
+    // Creates the initial calendar
     override func viewDidLoad() {
         super.viewDidLoad()
         currentMonth = Months[month]
@@ -60,12 +62,14 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         navBar.topItem?.title = "Calendar"
     }
     
+    // Reloads calendar when view appears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
         Calendar.reloadData()
     }
     
+    // Reloads the calendar for the next month correctly
     @IBAction func Next(_ sender: Any) {
         switch currentMonth {
         case "December":
@@ -97,6 +101,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             Calendar.reloadData()
         }
     }
+    
+    // Reloads the calendar for the previous month correctly
     @IBAction func Back(_ sender: Any) {
         switch currentMonth {
         case "January":
@@ -128,6 +134,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // Used to start the first day of the month on the correct weekday
     func GetStartDateDayPosition(){                                                 // Gives us number of "empty boxes"
         switch Direction {
         case 0:                                                                     // Current Month
@@ -155,6 +162,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // Creates the number of cells needed for the days in the month and the "empty" days before first day
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Direction {      // returns number of days in month and number of "empty boxes" based on direction
         case 0:
@@ -168,6 +176,7 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    // Creates cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calendar", for: indexPath) as! DateCollectionViewCell
         cell.backgroundColor = UIColor.clear
@@ -209,6 +218,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         cellsArray.append(cell)
         return cell
     }
+    
+    // Creates a segue to the NextViewController dependent upon the selected cell
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let month: Int
         if(currentMonth == "January"){ month = 1 }
@@ -227,6 +238,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         performSegue(withIdentifier: "NextView", sender: self)
         collectionView.reloadData()
     }
+    
+    // Creates an illustration of days being added into the calendar
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
         cell.alpha = 0
         cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
@@ -239,6 +252,8 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
     }
+    
+    // Sets the direction, either -1 or 1
     func setDirection(Direction: Int){
         self.Direction = Direction
     }
@@ -246,10 +261,10 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
 
 extension CalendarViewController : UNUserNotificationCenterDelegate {
     
+    // Creates notifications for calendar events
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
-    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         // code when an action is chosen
         switch response.actionIdentifier {
@@ -259,11 +274,13 @@ extension CalendarViewController : UNUserNotificationCenterDelegate {
         }
         completionHandler()
     }
+    
+    // Checks if a day has either a user created or blackboard event
     func hasEvent(indexPath: IndexPath) -> Bool{
-        let d = defaults.dictionaryRepresentation().keys
+        let keys = defaults.dictionaryRepresentation().keys
         let month: Int
-        var s: String
-        var s2: String
+        var day: String
+        var day2: String
         if(currentMonth == "January"){ month = 1 }
         else if(currentMonth == "February"){ month = 2 }
         else if(currentMonth == "March"){ month = 3 }
@@ -276,15 +293,17 @@ extension CalendarViewController : UNUserNotificationCenterDelegate {
         else if(currentMonth == "October"){ month = 10 }
         else if(currentMonth == "November"){ month = 11 }
         else { month = 12 }
-        s = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)*1"
-        s2 = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)*2"
-        for x in d{
-            if s == x || s2 == x{
+        day = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)*1"
+        day2 = "\(month)/\(indexPath.row - PositionIndex + 1)/\(year)*2"
+        for key in keys{
+            if day == key || day2 == key{
                 return true
             }
         }
         return false
     }
+    
+    // Themes the components of the view
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
         if SettingsViewController.isDarkTheme {

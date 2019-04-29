@@ -15,6 +15,7 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
     @IBOutlet var CreateEventButton: UIButton!
     @IBOutlet var dateChooser: UIDatePicker!
     var events: [Event] = []
+    // Themed View Controller
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
@@ -26,26 +27,30 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
     var textFields: [UITextField]? {
         return [InformationTextField, SubjectTextField]
     }
+    
+    // Loads the components for creating a new event
     override func viewDidLoad() {
         super.viewDidLoad()
         SubjectTextField.delegate = self
         InformationTextField.delegate = self
         SubjectTextField.becomeFirstResponder()
         dateChooser.setDate(getDate(s: dateString), animated: false)
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
-        
     }
+    
+    // Sets the theme
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
     
+    // Allows user to tap out of text fields
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+    // Creates an event using the user defined components
     @IBAction func CreateEvent(_ sender: UIButton) {
         guard let subject = SubjectTextField.text else {return}
         let d: Date = DatePicker.date
@@ -69,6 +74,8 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         }
         _ = navigationController?.popViewController(animated: true)
     }
+    
+    // Forces the user to complete an event
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if SubjectTextField.isFirstResponder {
             InformationTextField.becomeFirstResponder()
@@ -79,6 +86,7 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         }
         return true
     }
+    
     // Func: getDate
     // Input: Date
     // Output: String Date ("mm/dd/yyyy") representive of input
@@ -100,6 +108,7 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         year.remove(at: year.firstIndex(of: "-")!)
         return "\(month)/\(day)/\(year)"
     }
+    
     // Func: getDate
     // Input: String Date ("mm/dd/yyyy")
     // Output: Date representive of input
@@ -120,6 +129,8 @@ class EventViewController: UIViewController, UITextFieldDelegate, ThemedViewCont
         d.timeZone = TimeZone(abbreviation: "EST")
         return (NSCalendar(identifier: NSCalendar.Identifier.gregorian)?.date(from: d as DateComponents))!
     }
+    
+    // Themes the components of the view
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
     }

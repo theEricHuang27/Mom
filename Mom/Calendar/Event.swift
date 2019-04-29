@@ -25,6 +25,7 @@ class Event: NSObject, NSCoding{
         self.subject = subject
         self.information = information
     }
+    // NSCoding Compliance
     func encode(with coder: NSCoder) {
         coder.encode(d, forKey: "d")
         coder.encode(subject, forKey: "subject")

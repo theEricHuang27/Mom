@@ -9,7 +9,13 @@
 import UIKit
 
 class DescriptionViewController: UIViewController, ThemedViewController {
-    
+
+    @IBOutlet var Subject: UILabel!
+    @IBOutlet var Day: UILabel!
+    @IBOutlet var Description: UITextView!
+    var events: [Event] = []
+    @IBOutlet var deleteButton: UIButton!
+    // Themed View Controller
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? {
@@ -28,13 +34,7 @@ class DescriptionViewController: UIViewController, ThemedViewController {
         }
     }
     
-
-    @IBOutlet var Subject: UILabel!
-    @IBOutlet var Day: UILabel!
-    @IBOutlet var Description: UITextView!
-    var events: [Event] = []
-    @IBOutlet var deleteButton: UIButton!
-    
+    // Displays every component of the event
     override func viewDidLoad() {
         super.viewDidLoad()
         Subject.text = subj
@@ -44,8 +44,16 @@ class DescriptionViewController: UIViewController, ThemedViewController {
         let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
         let attributedString = try! NSAttributedString(data: htmlData!, options: options, documentAttributes: nil)
         Description.attributedText = attributedString
-        Description.font = UIFont(descriptor: UIFontDescriptor(name: "Helvetica Neue", size: 17), size: 17)
+        Description.font = UIFont(descriptor: UIFontDescriptor(name: "Open Sans", size: 20), size: 20)
     }
+    
+    // Sets the theme
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theme(isDarkTheme: SettingsViewController.isDarkTheme)
+    }
+    
+    // Deletes the event
     @IBAction func deleteEvent(_ sender: UIButton) {
         var a = 0
         if let loadedData = defaults.data(forKey: "\(dateString)*1") {
@@ -87,70 +95,61 @@ class DescriptionViewController: UIViewController, ThemedViewController {
         }
         _ = navigationController?.popViewController(animated: true)
     }
+    
+    // Func: order
+    // Input: Array of Events
+    // Output: Array of Events ordered by time
     func order(e: [Event]) -> [Event]{
-        var z = e
-        var new: [Event] = []
+        var eventz = e
+        var returnEvents: [Event] = []
         var next: Event = Event()
         var index: Int = 0
         var lowest = 2500
-        var a: String
-        var b: Substring
-        for _ in 0...z.count-1{
-            for y in z{
-                a = "\(y.d.description)"
-                b = a[a.firstIndex(of: " ")!...a.lastIndex(of: ":")!]
-                b.remove(at: b.firstIndex(of: " ")!)
-                b.remove(at: b.firstIndex(of: ":")!)
-                b.remove(at: b.firstIndex(of: ":")!)
-                if Int("\(b)")! < lowest{
-                    lowest = Int("\(b)")!
-                    next = y
-                    index = z.firstIndex(of: y)!
+        var str1: String
+        var str2: Substring
+        for _ in 0...eventz.count-1{
+            for event in eventz{
+                str1 = "\(event.d.description)"
+                str2 = str1[str1.firstIndex(of: " ")!...str1.lastIndex(of: ":")!]
+                str2.remove(at: str2.firstIndex(of: " ")!)
+                str2.remove(at: str2.firstIndex(of: ":")!)
+                str2.remove(at: str2.firstIndex(of: ":")!)
+                if Int("\(str2)")! < lowest{
+                    lowest = Int("\(str2)")!
+                    next = event
+                    index = eventz.firstIndex(of: event)!
                 }
             }
             lowest = 2500
-            new.append(next)
-            z.remove(at: index)
+            returnEvents.append(next)
+            eventz.remove(at: index)
         }
-        return new
+        return returnEvents
     }
+    
+    // Func: getTime
+    // Input: String Date ("mm/dd/yyyy")
+    // Output: Time representive of input
     func getTime(s: String) -> String{
-        let r: String
+        let returnStr: String
         var time = s[s.firstIndex(of: ":")!...s.lastIndex(of: ":")!]
         time.remove(at: time.lastIndex(of: ":")!)
         var hour = s[s.firstIndex(of: " ")!...s.firstIndex(of: ":")!]
         hour.remove(at: hour.firstIndex(of: " ")!)
         hour.remove(at: hour.firstIndex(of: ":")!)
-        var m = Int(hour)!
-        if m >= 16{
-            m = m-16
-            if m == 0{
-                r = "12:00 PM"
-            }
-            else if m >= 10{
-                r = "\(m)\(time) PM"
-            }
-            else{
-                r = " \(m)\(time) PM"
-            }
+        var hours = Int(hour)!
+        if hours >= 16{
+            hours = hours-16
+            if hours == 0{ returnStr = "12\(time) PM" }
+            else if hours >= 10{ returnStr = "\(hours)\(time) PM" }
+            else{ returnStr = " \(hours)\(time) PM" }
         }
         else{
-            m = m-4
-            if m == 0{
-                r = "12:00 AM"
-            }
-            else if m >= 10{
-                r = "\(m)\(time) AM"
-            }
-            else{
-                r = " \(m)\(time) AM"
-            }
+            hours = hours-4
+            if hours == 0{ returnStr = "12\(time) AM" }
+            else if hours >= 10{ returnStr = "\(hours)\(time) AM" }
+            else{ returnStr = "\(hours)\(time) AM" }
         }
-        return r
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        theme(isDarkTheme: SettingsViewController.isDarkTheme)
+        return returnStr
     }
 }

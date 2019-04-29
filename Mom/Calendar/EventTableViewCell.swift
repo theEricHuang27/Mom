@@ -9,7 +9,7 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-    
+    // Labels for cells in table view in NextView
     @IBOutlet var Date: UILabel!
     @IBOutlet var Subject: UILabel!
     

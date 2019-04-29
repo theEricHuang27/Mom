@@ -16,11 +16,6 @@ var grades: [String] = []
 
 class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
     
-    var backView: UIView { return self.view }
-    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
-    var labels: [UILabel]? { return nil }
-    var buttons: [UIButton]? { return nil }
-    var textFields: [UITextField]? { return nil }
     @IBOutlet var webView: WKWebView!
     var links: [String] = []
     var GPA:[String]=[]
@@ -29,34 +24,27 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
     var finished = false
     var timer2 : Timer?
     var timer3 : Timer?
-    func theme(isDarkTheme: Bool) {
-        defaultTheme(isDarkTheme: isDarkTheme)
-    }
+    // Themed View Controller
+    var backView: UIView { return self.view }
+    var navBar: UINavigationBar { return self.navigationController!.navigationBar }
+    var labels: [UILabel]? { return nil }
+    var buttons: [UIButton]? { return nil }
+    var textFields: [UITextField]? { return nil }
     
-
+    // Opens powerschool
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let myRequest = URLRequest(url: URL(string: "https://powerschool.lmsd.org/public/")!)
         webView.load(myRequest)
-//         Do any additional setup after loading the view.
     }
     
+    // Sets the theme
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
     }
-    @objc func fireTimer2() {
-        if click>self.links.count{
-            timer2?.invalidate()
-        }
-        self.webView.load( URLRequest(url: URL(string: "https://powerschool.lmsd.org/guardian/"+self.links[0])!))
-        self.click=self.click+1
-        self.webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
-            self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
-        })
-    }
     
+    // Scrapes missing assignments from a class
     @objc func fireTimer() {
         self.webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
             do {
@@ -67,6 +55,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                 for char in [Character]((try Kanna.HTML(html: html1 as! String, encoding: String.Encoding.utf8, option: kDefaultHtmlParseOption).content?.characters)!){
                     grade.append(char)
                 }
+                // removes useless parts of the string
                 grade = String(grade[grade.index(grade.firstIndex(of: "@")!, offsetBy: 31968)...])
                 grade = grade.removeExtraSpaces()
                 grade = grade.replacingOccurrences(of: " collected late missing exempt from final grade absent incomplete excluded from final grade ", with: " ")
@@ -97,6 +86,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
         self.finished=true
     }
     
+    // Webview that moves around powerschool and saves grades in order to find gpa and missing assignments
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if(webView.url! == URL(string: "https://powerschool.lmsd.org/guardian/home.html")){
             let request = URLRequest(url: URL(string: "https://powerschool.lmsd.org/guardian/home.html")!)
@@ -219,6 +209,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
         }
     }
     
+    // Loads the view
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -226,8 +217,14 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
         view = webView
         webView.navigationDelegate = self
     }
+    
+    // Sets the theme
+    func theme(isDarkTheme: Bool) {
+        defaultTheme(isDarkTheme: isDarkTheme)
+    }
 }
 
+// Sets any instances of two or more spaces together to just a single space in a string
 extension String {
     func removeExtraSpaces() -> String {
         return self.replacingOccurrences(of: "[\\s\n]+", with: " ", options: .regularExpression, range: nil)

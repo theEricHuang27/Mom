@@ -171,8 +171,8 @@
 			children = (
 				5192A68C220A17BA009F9A13 /* Event.swift */,
 				5192A6842200CB92009F9A13 /* CalendarVars.swift */,
-				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
 				5192A6882200D138009F9A13 /* DateCollectionViewCell.swift */,
+				515AF32B224E7AA80068C49D /* EventTableViewCell.swift */,
 				5192A6862200D071009F9A13 /* Animations.swift */,
 				606636CF22768ACE00FCA3BF /* VCs */,
 			);
