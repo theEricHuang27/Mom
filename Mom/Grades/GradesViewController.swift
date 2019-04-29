@@ -13,16 +13,20 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     @IBOutlet weak var gpaLabel: UILabel!
     @IBOutlet weak var gpaScoreLabel: UILabel!
     
+    // implement ThemedViewController Protocol
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? { return [gpaLabel, gpaScoreLabel] }
     var buttons: [UIButton]? { return nil }
     var textFields: [UITextField]? { return nil }
     
+    // used to k eep background color consistent
     var tableCellBackgroundColor: UIColor = UIColor.white
     
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
+        
+        // VC specific theme
         if isDarkTheme {
             tableView.backgroundColor = UIColor.myDeepGrey
             tableCellBackgroundColor = UIColor.myDeepGrey
@@ -36,20 +40,15 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navBar.topItem?.title = "Grades"
-        if let gpa = defaults.double(forKey: "GPA") as Double?{
-            gpaScoreLabel.text = String(format: "%.2f", gpa)
-        }
-        else{
-            gpaScoreLabel.text = "0.00"
-        }
         
+        // set title of VC
+        navBar.topItem?.title = "Grades"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
-        if let gpa = defaults.double(forKey: "GPA") as Double?{
+        if let gpa = defaults.double(forKey: "GPA") as Double? {
             gpaScoreLabel.text = String(format: "%.2f", gpa)
         }
         else{
@@ -62,14 +61,14 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
         return 1
     }
     
-    
+    // spacing between cells
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
-    
+    // set to however many grades need to be displayed
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let glist = defaults.array(forKey: "grades") as! [String]?{
+        if let glist = defaults.array(forKey: "grades") as! [String]? {
             return glist.count
         }
         else{
@@ -79,20 +78,23 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // color updates should be done here
         cell.alpha = 1
         cell.backgroundColor = UIColor.myPurple
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // set cell content and aesthetics
         let cell = UITableViewCell()
-        if let glist = defaults.array(forKey: "grades") as! [String]?{
+        if let glist = defaults.array(forKey: "grades") as! [String]? {
             cell.textLabel?.text = glist[indexPath.section]
         }
         else{
             cell.textLabel?.text = ""
         }
-//        cell.textLabel?.text = grades[indexPath.section]
+        
         cell.layer.cornerRadius = 5
         cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cell.layoutSubviews()
@@ -100,15 +102,9 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // set color to get clean look
         let newView =  UIView()
-        newView.backgroundColor = tableCellBackgroundColor
+        newView.backgroundColor = UIColor.clear
         return newView
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // make a view controller that could view like the description of an event
-        // we are pressed on time so idc
-//        performSegue(withIdentifier: "toDescription", sender: self)
-    }
-
 }

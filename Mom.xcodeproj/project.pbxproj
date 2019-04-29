@@ -43,7 +43,7 @@
 		E05F99F022754FF1001B0D58 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */; };
 		E05F99F122754FF1001B0D58 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05F99E722754FF1001B0D58 /* OpenSans-Italic.ttf */; };
 		E05F99F5227676F5001B0D58 /* loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = E05F99F4227676F5001B0D58 /* loader.gif */; };
-		E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */; };
+		E08A66CE21E8CFAB00C23BCE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08A66CD21E8CFAB00C23BCE /* Colors.swift */; };
 		E0FAFDD2227548A900DBE1AC /* gifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FAFDD1227548A900DBE1AC /* gifer.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +108,7 @@
 		E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "Mom/font/OpenSans-ExtraBold.ttf"; sourceTree = SOURCE_ROOT; };
 		E05F99E722754FF1001B0D58 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "Mom/font/OpenSans-Italic.ttf"; sourceTree = SOURCE_ROOT; };
 		E05F99F4227676F5001B0D58 /* loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loader.gif; sourceTree = "<group>"; };
-		E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleConstants.swift; sourceTree = "<group>"; };
+		E08A66CD21E8CFAB00C23BCE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E0FAFDD1227548A900DBE1AC /* gifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,7 +222,7 @@
 				E05F99DD22754FCB001B0D58 /* font */,
 				E0FAFDD1227548A900DBE1AC /* gifer.swift */,
 				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
-				E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */,
+				E08A66CD21E8CFAB00C23BCE /* Colors.swift */,
 				60498DE7227151B8009D77C1 /* ThemedViewController.swift */,
 				E05F99F4227676F5001B0D58 /* loader.gif */,
 				60C1CE1621DE763B0045CF33 /* Main.storyboard */,
@@ -485,7 +485,7 @@
 				6012B4D8224AA5DD00B7A481 /* BlackboardViewController.swift in Sources */,
 				6012B4DA224AA7E400B7A481 /* Notifications.swift in Sources */,
 				51AB0D9F221C8D9D0040D4D5 /* EventViewController.swift in Sources */,
-				E08A66CE21E8CFAB00C23BCE /* styleConstants.swift in Sources */,
+				E08A66CE21E8CFAB00C23BCE /* Colors.swift in Sources */,
 				60498DE4226F84C1009D77C1 /* SettingsViewController.swift in Sources */,
 				5192A6852200CB92009F9A13 /* CalendarVars.swift in Sources */,
 				5166EA58225CF76300935B8A /* DescriptionViewController.swift in Sources */,

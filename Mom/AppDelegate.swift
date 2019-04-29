@@ -16,29 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
-                // handle error, or granted is false do something
-            if granted {
-                
-            }
-            })
+        // request notification access
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in })
         
+        // create notification categories
         Notifications.createOptions()
         
+        // create defaults for theme and notification reminders
         UserDefaults.standard.register(defaults: ["DarkTheme": false, "snoozeTime": 5, "reminderTimeBefore": [0, 15]])
         
-        let navigationBarAppearance = UINavigationBar.appearance()
+        // color tab bar
         let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = UIColor.myPurple
+        
+        
+        // create look for nav bar depending on theme
+        let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.prefersLargeTitles = true
-        //  must add code to keep dark theme if the setting is there
         if UserDefaults.standard.bool(forKey: "DarkTheme") {
             navigationBarAppearance.barTintColor = UIColor.myDeepGrey
-            tabBarAppearance.barTintColor = UIColor.myPurple
         }
         else {
             navigationBarAppearance.barTintColor = UIColor.white
-            tabBarAppearance.barTintColor = UIColor.myPurple
         }
         
         return true

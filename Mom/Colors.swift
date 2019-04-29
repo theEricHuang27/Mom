@@ -11,6 +11,8 @@ import UIKit
 
 extension UIColor {
     
+    // Our colors are an extension of the UIColor class for ease of use
+    
     /*
     https://drive.google.com/drive/folders/1WIEAaqItFUd0yJjCw2Ryyc_qko64gJQ2
     */
