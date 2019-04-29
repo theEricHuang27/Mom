@@ -84,7 +84,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                             count2 = count2+1
                         }
                         ghold = "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count-2)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char-2)]) \(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char+count2)])"
-                        print(ghold)
                         grades.append(ghold)
                         count2=0
                         count=93
@@ -189,8 +188,8 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         }
                     }
                     GPAAVG=GPAAVG/Double(self.GPA.count-miss)
+
                     defaults.set(GPAAVG, forKey: "GPA")
-                    
                     print(self.links)
                     for z in 0...self.links.count-2{
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4*(z)), execute: {
@@ -213,7 +212,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         })
                         //                        Thread.sleep(until: Date(timeIntervalSinceNow: 5))
                     }
-                    defaults.set(grades, forKey: "grades")
                 }
                 catch _ {
                 }

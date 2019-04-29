@@ -36,8 +36,6 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         navBar.topItem?.title = "Grades"
         if let gpa = defaults.double(forKey: "GPA") as Double?{
             gpaScoreLabel.text = String(format: "%.2f", gpa)
@@ -51,7 +49,12 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
-        gpaScoreLabel.text = String(format: "%.2f", GPAAVG)
+        if let gpa = defaults.double(forKey: "GPA") as Double?{
+            gpaScoreLabel.text = String(format: "%.2f", gpa)
+        }
+        else{
+            gpaScoreLabel.text = "0.00"
+        }
         tableView.reloadData()
     }
     
@@ -66,7 +69,12 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return grades.count
+        if let glist = defaults.array(forKey: "grades") as! [String]?{
+            return glist.count
+        }
+        else{
+            return 0
+        }
     }
     
     
@@ -78,7 +86,13 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = grades[indexPath.row]
+        if let glist = defaults.array(forKey: "grades") as! [String]?{
+            cell.textLabel?.text = glist[indexPath.section]
+        }
+        else{
+            cell.textLabel?.text = ""
+        }
+//        cell.textLabel?.text = grades[indexPath.section]
         cell.layer.cornerRadius = 5
         cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cell.layoutSubviews()
