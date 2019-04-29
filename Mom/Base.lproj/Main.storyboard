@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycd-IZ-td8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-388" y="1861"/>
+            <point key="canvasLocation" x="-387" y="1861"/>
         </scene>
         <!--Powerschool-->
         <scene sceneID="gbM-CQ-dp3">
@@ -94,10 +94,30 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="m92-cX-X4o" kind="show" id="Dgx-7H-IYq"/>
+                        <segue destination="m92-cX-X4o" kind="relationship" relationship="rootViewController" id="LXD-JP-G7R"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFQ-b9-wir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1133" y="1194"/>
+        </scene>
+        <!--Grades View Controller-->
+        <scene sceneID="lq2-Sd-uJ2">
+            <objects>
+                <viewController id="m92-cX-X4o" customClass="GradesViewController" customModule="Mom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M1E-bD-tJf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="voM-ZK-IEX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kGA-sb-9PO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tzs-Vk-wyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-387" y="1194"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="wSs-Ww-lJL">
@@ -769,4 +789,7 @@
             <point key="canvasLocation" x="-1133" y="2555"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Dgx-7H-IYq"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -22,6 +22,7 @@
 		6012B4DA224AA7E400B7A481 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012B4D9224AA7E400B7A481 /* Notifications.swift */; };
 		60498DE4226F84C1009D77C1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498DE3226F84C1009D77C1 /* SettingsViewController.swift */; };
 		60498DE8227151B8009D77C1 /* ThemedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60498DE7227151B8009D77C1 /* ThemedViewController.swift */; };
+		606636CB2276888900FCA3BF /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606636CA2276888900FCA3BF /* GradesViewController.swift */; };
 		60C1CE1321DE763B0045CF33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1221DE763B0045CF33 /* AppDelegate.swift */; };
 		60C1CE1521DE763B0045CF33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C1CE1421DE763B0045CF33 /* ViewController.swift */; };
 		60C1CE1821DE763B0045CF33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C1CE1621DE763B0045CF33 /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		6012B4D9224AA7E400B7A481 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		60498DE3226F84C1009D77C1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		60498DE7227151B8009D77C1 /* ThemedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedViewController.swift; sourceTree = "<group>"; };
+		606636CA2276888900FCA3BF /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		60C1CE0F21DE763B0045CF33 /* Mom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C1CE1221DE763B0045CF33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C1CE1421DE763B0045CF33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				60498DE3226F84C1009D77C1 /* SettingsViewController.swift */,
 				60498DE7227151B8009D77C1 /* ThemedViewController.swift */,
 				60F22AC82276291F00481573 /* PowerschoolViewController.swift */,
+				606636CA2276888900FCA3BF /* GradesViewController.swift */,
 			);
 			path = Mom;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				5192A6872200D071009F9A13 /* Animations.swift in Sources */,
 				E0FAFDD2227548A900DBE1AC /* gifer.swift in Sources */,
 				60498DE8227151B8009D77C1 /* ThemedViewController.swift in Sources */,
+				606636CB2276888900FCA3BF /* GradesViewController.swift in Sources */,
 				6012B4D6224AA57700B7A481 /* blackboardJSON.swift in Sources */,
 				60F22AC92276291F00481573 /* PowerschoolViewController.swift in Sources */,
 				6012B4D8224AA5DD00B7A481 /* BlackboardViewController.swift in Sources */,
