@@ -182,8 +182,8 @@
 		606636CF22768ACE00FCA3BF /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				5192A68A2200D272009F9A13 /* NextViewController.swift */,
 				5192A68221FF705C009F9A13 /* CalendarViewController.swift */,
+				5192A68A2200D272009F9A13 /* NextViewController.swift */,
 				51AB0D9E221C8D9D0040D4D5 /* EventViewController.swift */,
 				5166EA57225CF76300935B8A /* DescriptionViewController.swift */,
 			);
