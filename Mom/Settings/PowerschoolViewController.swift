@@ -118,7 +118,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         }
                     }
                     let c = self.links.count
-                    print(c)
                     for i in 1...c{
                         if "\(self.links[c-i][self.links[c-i].index(self.links[c-i].firstIndex(of: "s")!,offsetBy: self.links[c-i].count-2)])" != "Y"{
                             self.links.remove(at: c-i)
@@ -180,7 +179,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                     GPAAVG=GPAAVG/Double(self.GPA.count-miss)
 
                     defaults.set(GPAAVG, forKey: "GPA")
-                    print(self.links)
                     for z in 0...self.links.count-2{
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4*(z)), execute: {
                             self.webView.load( URLRequest(url: URL(string: "https://powerschool.lmsd.org/guardian/"+self.links[z])!))
