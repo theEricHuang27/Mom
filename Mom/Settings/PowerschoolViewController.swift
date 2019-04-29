@@ -76,7 +76,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                 grade = grade.replacingOccurrences(of: "Legend 1 - This final grade may include assignments that are not yet published, or may be the result of special weighting used by the teacher. Click to view additional information on special weighting. Icons - Has Description | - Has Comment | - Collected | - Late | - Missing | - Exempt from Final Grade | - Absent | - Incomplete | - Excluded notifier.displayGuardian();", with: " ")
                 grade = grade.replacingOccurrences(of: "td.stdCol { padding: 2px; width: 40px; min-width: 40px; } td.codeCol { padding: 2px; width: 20px; min-width: 20px; } td.stdNA { opacity: .5; border: none !important; } .noStyle td { background-color: #fff !important; } table.zebra tbody tr.sub>td { border-top: none; border-bottom: none; }", with: " ")
                 grade = "\(grade)"
-                print(grade)
                 for char in 0...grade.count-10{
                     if "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char)])" == "0" && "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char+1)])" == "/" && "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-1)])" == " " {
                         while !("\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count)])" == "/" && "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count+3)])" == "/"){

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradesViewController: UIViewController, ThemedViewController {
+class GradesViewController: UIViewController, ThemedViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var gpaLabel: UILabel!
     @IBOutlet weak var gpaScoreLabel: UILabel!
@@ -20,9 +20,15 @@ class GradesViewController: UIViewController, ThemedViewController {
     var textFields: [UITextField]? { return nil }
     func theme(isDarkTheme: Bool) {
         defaultTheme(isDarkTheme: isDarkTheme)
+        if isDarkTheme {
+            tableView.backgroundColor = UIColor.myDeepGrey
+        } else {
+            tableView.backgroundColor = UIColor.white
+        }
     }
     
-
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,11 +36,49 @@ class GradesViewController: UIViewController, ThemedViewController {
         navBar.topItem?.title = "Grades"
         
         gpaScoreLabel.text = String(format: "%.2f", GPAAVG)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         theme(isDarkTheme: SettingsViewController.isDarkTheme)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return grades.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 1
+        cell.backgroundColor = UIColor.myPurple
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = grades[indexPath.row]
+        cell.layer.cornerRadius = 5
+        cell.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        cell.layoutSubviews()
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // make a view controller that could view like the description of an event
+        // we are pressed on time so idc
+//        performSegue(withIdentifier: "toDescription", sender: self)
     }
 
 }
