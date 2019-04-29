@@ -39,8 +39,12 @@ class GradesViewController: UIViewController, ThemedViewController, UITableViewD
 
         // Do any additional setup after loading the view.
         navBar.topItem?.title = "Grades"
-        
-        gpaScoreLabel.text = String(format: "%.2f", GPAAVG)
+        if let gpa = defaults.double(forKey: "GPA") as Double?{
+            gpaScoreLabel.text = String(format: "%.2f", gpa)
+        }
+        else{
+            gpaScoreLabel.text = "0.00"
+        }
         
     }
     
