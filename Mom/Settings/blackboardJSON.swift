@@ -4,7 +4,7 @@
 //
 //  Created by Chang-Chi Huang (student LM) on 3/6/19.
 //  Copyright © 2019 Chang-Chi Huang (student LM). All rights reserved.
-//
+//class for creating the JSON for the blackboard response
 
 import Foundation
 

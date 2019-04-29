@@ -11,7 +11,7 @@ import WebKit
 import Kanna
 
 class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, ThemedViewController {
-    
+    //style constants
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
     var labels: [UILabel]? { return nil }
@@ -27,6 +27,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //sets up view controller
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         let configuration = WKWebViewConfiguration()
@@ -45,9 +46,11 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        //sets blackboard timeframe
         let dates = DateInterval.init(start: Date.init(timeIntervalSinceNow: -2419200), duration: 9590400)
         let start = dates.start.description.split(separator: " ")[0]
         let end = dates.end.description.split(separator: " ")[0]
+        //resets blackboardEvents
         if(webView.url! == URL(string: "https://lmsd.blackboard.com/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1")){
             for x in defaults.dictionaryRepresentation().keys{
                 if x.description.last == "2"{
@@ -62,13 +65,16 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
             let request = URLRequest(url: URL(string:"https://lmsd.blackboard.com/learn/api/public/v1/calendars/items?since=\(start)T00:00:00.000Z&until=\(end)T00:00:00.000Z&limit=1000")!)
             webView.load(request)
         }
-
+//loads the events for a certain time
         if(webView.url! == URL(string: "https://lmsd.blackboard.com/learn/api/public/v1/calendars/items?since=\(start)T00:00:00.000Z&until=\(end)T00:00:00.000Z&limit=1000")){
+            //gets html data
             webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { (html: Any?, error: Error?) in
                 do{
+                    //parses html for json
                                             let doc = try Kanna.HTML(html: html as! String, encoding: String.Encoding.utf8)
                                             self.json = doc.body!.text!.data(using: .utf8)!
                                             self.blackboardStruct = try JSONDecoder().decode(blackboardResponse.self, from: self.json)
+                    //loops through the array and creates an event object
                                             for results in self.blackboardStruct.results {
                                                 let subject = results.title!
 //                                                var information = ""
@@ -89,6 +95,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                                         self.events = loadedEvents
                                                         self.events.append(event)
                                                         let eventData = NSKeyedArchiver.archivedData(withRootObject: self.events)
+                                                        //stores into userDefaults
                                                         defaults.set(eventData, forKey: "\(dateString)*2")
                                                     }
                                                 }
@@ -102,6 +109,7 @@ class BlackboardViewController: UIViewController, WKUIDelegate, WKNavigationDele
                                         } catch let error as NSError {
                                             print(error)
                                         }
+                //segues back
                                         _ = self.navigationController?.popViewController(animated: true)
             }
         }
