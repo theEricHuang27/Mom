@@ -62,13 +62,17 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
             do {
                 var grade = ""
                 var ghold:String  = ""
-                var count = 93
+                var count = 2
                 var count2 = 0
                 for char in [Character]((try Kanna.HTML(html: html1 as! String, encoding: String.Encoding.utf8, option: kDefaultHtmlParseOption).content?.characters)!){
                     grade.append(char)
                 }
                 grade = String(grade[grade.index(grade.firstIndex(of: "@")!, offsetBy: 31968)...])
                 grade = grade.removeExtraSpaces()
+                grade = grade.replacingOccurrences(of: " collected late missing exempt from final grade absent incomplete excluded from final grade ", with: " ")
+                grade = grade.replacingOccurrences(of: "DISCLAIMER: This system is provided as a convenience. Grades and other information provided by this system are not official records and may or may not be accurate. Neither this institution nor PowerSchool Group LLC or its affiliates accepts any responsibility for information provided by this system and/or for any damages resulting from information provided by this system. For official grades and student records contact your school. Copyright © 2005-2018 PowerSchool Group LLC and/or its affiliate(s). All rights reserved.All trademarks are either owned or licensed by PowerSchool Group LLC and/or its affiliates.", with: " ")
+                grade = grade.replacingOccurrences(of: "Legend 1 - This final grade may include assignments that are not yet published, or may be the result of special weighting used by the teacher. Click to view additional information on special weighting. Icons - Has Description | - Has Comment | - Collected | - Late | - Missing | - Exempt from Final Grade | - Absent | - Incomplete | - Excluded notifier.displayGuardian();", with: " ")
+                print(grade)
                 for char in 0...grade.count-1{
                     if "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char)])" == "0" && "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char+1)])" == "/" && "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-1)])" == " " {
                         while !("\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count)])" == "/" && "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count+3)])" == "/"){
@@ -78,7 +82,7 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         while "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char+count2)])" != " " {
                             count2 = count2+1
                         }
-                        ghold = "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count-2)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char-93)]) \(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char+count2)])"
+                        ghold = "\(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char-count-2)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char-2)]) \(grade[grade.index(grade.firstIndex(of: " ")!, offsetBy: char)...grade.index(grade.firstIndex(of: " ")!, offsetBy: char+count2)])"
                         print(ghold)
                         self.grades.append(ghold)
                         count2=0
@@ -187,22 +191,12 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                     print(GPAAVG)
                     
                     print(self.links)
-                    //                        webView.load( URLRequest(url: URL(string: "https://powerschool.lmsd.org/guardian/"+i)!))
-                    //
-                    //
-                    //                    weView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
-                    //                        do {
-                    //                            let timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
-                    //                        }
-                    //                        catch _ {
-                    //                        }
-                    //                    })
                     for z in 0...self.links.count-2{
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(12*(z)), execute: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4*(z)), execute: {
                             self.webView.load( URLRequest(url: URL(string: "https://powerschool.lmsd.org/guardian/"+self.links[z])!))
                             self.webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
                                 do {
-                                    self.timer = Timer.scheduledTimer(timeInterval: 12, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
+                                    self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
                                 }
                                 catch _ {
                                 }
@@ -210,13 +204,6 @@ class PowerschoolViewController: UIViewController, WKUIDelegate, WKNavigationDel
                         })
                         //                        Thread.sleep(until: Date(timeIntervalSinceNow: 5))
                     }
-                    //                    self.webView.evaluateJavaScript("document.documentElement.outerHTML.toString()", completionHandler: { (html1: Any?, error: Error?) in
-                    //                        do {
-                    //                            self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: false)
-                    //                        }
-                    //                        catch _ {
-                    //                        }
-                    //                    })
                 }
                 catch _ {
                 }
