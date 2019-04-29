@@ -221,6 +221,7 @@
 				606636CC22768AA900FCA3BF /* Settings */,
 				E05F99DD22754FCB001B0D58 /* font */,
 				E0FAFDD1227548A900DBE1AC /* gifer.swift */,
+				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
 				E08A66CD21E8CFAB00C23BCE /* styleConstants.swift */,
 				60498DE7227151B8009D77C1 /* ThemedViewController.swift */,
 				E05F99F4227676F5001B0D58 /* loader.gif */,
@@ -262,7 +263,6 @@
 		E05F99DD22754FCB001B0D58 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				60C1CE1421DE763B0045CF33 /* ViewController.swift */,
 				E05F99DE22754FF0001B0D58 /* OpenSans-Bold.ttf */,
 				E05F99E022754FF0001B0D58 /* OpenSans-BoldItalic.ttf */,
 				E05F99E622754FF1001B0D58 /* OpenSans-ExtraBold.ttf */,

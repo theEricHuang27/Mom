@@ -120,10 +120,40 @@
                     <view key="view" contentMode="scaleToFill" id="M1E-bD-tJf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lM7-jp-F5b">
+                                <rect key="frame" x="183.5" y="94" width="47.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2OF-hA-D4u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngG-By-zUL">
+                                <rect key="frame" x="186" y="183" width="42" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="nql-5M-zNc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ngG-By-zUL" firstAttribute="top" secondItem="lM7-jp-F5b" secondAttribute="bottom" constant="39" id="7FG-f6-T2q"/>
+                            <constraint firstItem="lM7-jp-F5b" firstAttribute="centerX" secondItem="M1E-bD-tJf" secondAttribute="centerX" id="bfV-xt-3eK"/>
+                            <constraint firstItem="lM7-jp-F5b" firstAttribute="top" secondItem="voM-ZK-IEX" secondAttribute="top" constant="50" id="ida-Lc-fEc"/>
+                            <constraint firstItem="ngG-By-zUL" firstAttribute="centerX" secondItem="M1E-bD-tJf" secondAttribute="centerX" id="rSf-06-cin"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="voM-ZK-IEX"/>
                     </view>
                     <navigationItem key="navigationItem" id="kGA-sb-9PO"/>
+                    <connections>
+                        <outlet property="gpaLabel" destination="lM7-jp-F5b" id="gW4-Y6-FP8"/>
+                        <outlet property="gpaScoreLabel" destination="ngG-By-zUL" id="azZ-U8-o7X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzs-Vk-wyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

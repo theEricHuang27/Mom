@@ -10,9 +10,12 @@ import UIKit
 
 class GradesViewController: UIViewController, ThemedViewController {
     
+    @IBOutlet weak var gpaLabel: UILabel!
+    @IBOutlet weak var gpaScoreLabel: UILabel!
+    
     var backView: UIView { return self.view }
     var navBar: UINavigationBar { return self.navigationController!.navigationBar }
-    var labels: [UILabel]? { return nil }
+    var labels: [UILabel]? { return [gpaLabel, gpaScoreLabel] }
     var buttons: [UIButton]? { return nil }
     var textFields: [UITextField]? { return nil }
     func theme(isDarkTheme: Bool) {
@@ -25,6 +28,8 @@ class GradesViewController: UIViewController, ThemedViewController {
 
         // Do any additional setup after loading the view.
         navBar.topItem?.title = "Grades"
+        
+//        gpaScoreLabel.text = PowerschoolViewController.GPA[0]
     }
     
     override func viewWillAppear(_ animated: Bool) {
